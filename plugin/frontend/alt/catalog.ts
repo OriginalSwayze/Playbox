@@ -107,6 +107,16 @@ export const CATALOG: InterfaceInfo[] = [
 	{ id: 'launcher', name: 'Launcher', blurb: 'A keyboard launcher: type, Enter, play', swatch: ['#101014', '#FF6363'] },
 	{ id: 'assistant', name: 'Assistant', blurb: 'Ask questions about your library', swatch: ['#FAF9F6', '#7C5CFA'] },
 	{ id: 'notifications', name: 'Notifications', blurb: 'A lock screen of game notifications', swatch: ['#0D0F1A', '#4F8BFF'] },
+	{ id: 'wallet', name: 'Wallet', blurb: 'A phone wallet of passes, one per game', swatch: ['#000000', '#30D158'] },
+	{ id: 'contacts', name: 'Contacts', blurb: 'An address book of your games', swatch: ['#F2F2F7', '#007AFF'] },
+	{ id: 'appshop', name: 'Appshop', blurb: 'A mobile app store with Today stories', swatch: ['#FFFFFF', '#0A84FF'] },
+	{ id: 'preferences', name: 'Preferences', blurb: 'A system-settings app with a pane per game', swatch: ['#ECECEE', '#0071E3'] },
+	{ id: 'commits', name: 'Commits', blurb: 'A version-control client: sessions as commits', swatch: ['#0D1117', '#3FB950'] },
+	{ id: 'sql', name: 'SQL', blurb: 'A database console that runs real queries', swatch: ['#1E1E1E', '#CE9178'] },
+	{ id: 'logs', name: 'Logs', blurb: 'An observability log explorer', swatch: ['#0B0C0E', '#F46800'] },
+	{ id: 'graph', name: 'Graph', blurb: 'A force-directed network of collections and games', swatch: ['#0F1020', '#8B7BFF'] },
+	{ id: 'treemap', name: 'Treemap', blurb: 'A disk-usage treemap by size or hours', swatch: ['#12161C', '#4DA3FF'] },
+	{ id: 'heatmap', name: 'Heatmap', blurb: 'A calendar heatmap of your activity', swatch: ['#FFFFFF', '#E65100'] },
 ];
 
 export const uiIds = () => CATALOG.map((c) => c.id);
