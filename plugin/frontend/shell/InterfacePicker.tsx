@@ -4,7 +4,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Icon } from '../ui/icons';
 import { setState, useKestrel } from '../state/store';
-import { updateSettings } from '../state/settings';
+import { switchInterface } from '../state/nav';
 import { CATALOG, GROUPS, groupOf, type InterfaceInfo } from '../alt/catalog';
 import { mainWindow } from '../steam/env';
 
@@ -48,7 +48,7 @@ export function InterfacePicker() {
 	const pick = (id: string) => {
 		const r = [id, ...recent.filter((x) => x !== id)].slice(0, 8);
 		try { localStorage.setItem(RECENT, JSON.stringify(r)); } catch { /* storage off */ }
-		setRecent(r); updateSettings({ ui: id }); setState({ pickerOpen: false, view: { kind: 'home' } });
+		setRecent(r); switchInterface(id);
 	};
 	useEffect(() => {
 		if (!open) return;

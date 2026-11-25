@@ -2,6 +2,7 @@
 // Steam-owned pages (Store, Community, profile, the classic game page, downloads) are shown natively.
 import { mainWindow } from '../steam/env';
 import { getState, setState, type Space, type View } from './store';
+import { updateSettings } from './settings';
 
 const SPACE_URL: Record<Exclude<Space, 'play'>, string> = {
 	discover: 'https://store.steampowered.com/',
@@ -74,3 +75,12 @@ export function openCollection(id: string | null) {
 }
 
 export const openClassicGamePage = (appid: number) => goNative(`/library/app/${appid}`, 'play');
+
+/** Switch interface and show it: Steam leaves any Store/Community page for the library route first, otherwise its
+ *  web view stays on top of the new interface (and Kestrel would follow Steam back to that page). */
+export function switchInterface(id: string) {
+	setState({ pickerOpen: false, commandOpen: false, panelOpen: false, settingsOpen: false });
+	updateSettings({ ui: id });
+	go({ kind: 'home' });
+	setState({ space: 'play' });
+}

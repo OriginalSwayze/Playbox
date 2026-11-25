@@ -2,7 +2,7 @@
 import { useEffect, useMemo, useRef, useState, type KeyboardEvent as ReactKeyboardEvent } from 'react';
 import { Icon } from '../ui/icons';
 import { getState, setState, useKestrel } from '../state/store';
-import { go, goNative, goSpace, openCollection, openGame } from '../state/nav';
+import { go, goNative, goSpace, openCollection, openGame, switchInterface } from '../state/nav';
 import { byRecent, formatAgo, playOrInstall, type Game } from '../steam/library';
 import { openAddGame, openFriendsList } from '../steam/activity';
 import { client } from '../steam/env';
@@ -23,7 +23,7 @@ const ACTIONS: Item[] = [
 	{ id: 'a-dl', group: 'Go to', label: 'Downloads', sub: 'Queue and history', icon: 'download', run: () => goNative('/library/downloads', 'play') },
 	{ id: 'a-wish', group: 'Go to', label: 'Wishlist', sub: 'Store', icon: 'spark', run: () => goNative('https://store.steampowered.com/wishlist/', 'discover') },
 	{ id: 'a-friends', group: 'Steam', label: 'Friends and chat', sub: 'Opens the friends list', icon: 'chat', run: () => { setState({ commandOpen: false }); openFriendsList() || steamUrl('steam://open/friends'); } },
-	...CATALOG.map((c): Item => ({ id: 'ui-' + c.id, group: 'Interfaces', label: 'Interface: ' + c.name, sub: c.blurb, icon: 'grid', run: () => { setState({ commandOpen: false }); updateSettings({ ui: c.id }); } })),
+	...CATALOG.map((c): Item => ({ id: 'ui-' + c.id, group: 'Interfaces', label: 'Interface: ' + c.name, sub: c.blurb, icon: 'grid', run: () => switchInterface(c.id) })),
 	{ id: 'a-kestrel', group: 'Kestrel', label: 'Kestrel settings', sub: 'Motion, opening, cover tilt, spotlight', icon: 'spark', run: () => setState({ commandOpen: false, settingsOpen: true }) },
 	{ id: 'a-settings', group: 'Steam', label: 'Steam settings', sub: 'Steam settings', icon: 'settings', run: () => { setState({ commandOpen: false }); steamUrl('steam://open/settings'); } },
 	{ id: 'a-add', group: 'Steam', label: 'Add a game', sub: 'Non-Steam game, activate a product', icon: 'plus', run: () => { setState({ commandOpen: false }); openAddGame(); } },

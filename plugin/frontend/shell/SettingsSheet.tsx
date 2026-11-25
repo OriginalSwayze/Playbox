@@ -1,7 +1,8 @@
 // Kestrel settings: a sheet that rises from the bottom of the window. Changes apply immediately.
 import { useEffect, useState } from 'react';
 import { Icon, Mark } from '../ui/icons';
-import { setState, useKestrel, type Settings } from '../state/store';
+import { getState, setState, useKestrel, type Settings } from '../state/store';
+import { switchInterface } from '../state/nav';
 import { updateSettings } from '../state/settings';
 import { CATALOG } from '../alt/catalog';
 import { mainWindow } from '../steam/env';
@@ -41,7 +42,7 @@ export function SettingsSheet() {
 				<div className="k-gallery-head">Interface<span>{CATALOG.length}</span><input className="k-gallery-find" value={find} onChange={(e) => setFind(e.target.value)} onKeyDown={(e) => e.stopPropagation()} placeholder="Find an interface" spellCheck={false} /></div>
 				<div className="k-gallery">
 					{CATALOG.filter((c) => !find.trim() || (c.name + ' ' + c.blurb).toLowerCase().includes(find.trim().toLowerCase())).map((c) => (
-						<button key={c.id} className={'k-gal' + (settings.ui === c.id ? ' on' : '')} onClick={() => updateSettings({ ui: c.id })}>
+						<button key={c.id} className={'k-gal' + (settings.ui === c.id ? ' on' : '')} onClick={() => (getState().view.kind === 'native' ? switchInterface(c.id) : updateSettings({ ui: c.id }))}>
 							<span className="sw" style={{ background: `linear-gradient(135deg, ${c.swatch[0]} 55%, ${c.swatch[1]} 55%)` }} />
 							<b>{c.name}</b><span className="bl">{c.blurb}</span>
 						</button>
