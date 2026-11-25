@@ -3,7 +3,7 @@
 Kestrel is a new interface for the Steam desktop client, built on Millennium (3.4+).
 
 ## Parts
-- **plugin/** — a Millennium plugin (TypeScript + React, compiled with starlight). Its frontend runs in Steam's
+- **The repository root** — a Millennium plugin (`millennium.toml`, `frontend/`, `webview/`) (TypeScript + React, compiled with starlight). Its frontend runs in Steam's
   `SharedJSContext` and renders Kestrel's shell into the main Steam window with Steam's own React (`SP_REACT`,
   `SP_REACTDOM.createRoot`). No Lua backend is needed so far.
   - `frontend/steam/` — feature-detected adapters over Steam's stores: `appStore`, `collectionStore`,
@@ -65,7 +65,6 @@ APIs or clicking those hidden controls (friends list, add a game). Nothing in St
   Ctrl+Shift+K switches Kestrel off and on.
 
 ## Develop
-    cd plugin
     bun install
     bun run build      # debug build: compiles, installs into Millennium and reloads Steam's UI
     bun run release    # release build

@@ -181,7 +181,8 @@ All of them use the same Steam integration as Kestrel, keep Ctrl+K, and open Ste
 - Nothing in Steam's installation is modified. Disable the plugin in Millennium to remove it completely.
 
 ## Build
-    cd plugin
+The plugin lives at the repository root (`millennium.toml`, `frontend/`); the theme is in `skin/`.
+
     bun install
     bun run release        # or: bun run build  (debug)
     node skin-src/gen.js && node "<Steam Theme Builder>/kit/build.js" skin-src
@@ -189,7 +190,7 @@ All of them use the same Steam integration as Kestrel, keep Ctrl+K, and open Ste
 See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for how it fits together and what Steam does not allow.
 
 ### Make your own interface
-Each interface is one file in `plugin/frontend/alt/` (a React component plus its CSS). Copy one that is close to
+Each interface is one file in `frontend/alt/` (a React component plus its CSS). Copy one that is close to
 what you want, give it a new id, then add it to `alt/catalog.ts` (name, one-line description, two swatch colours
 and a group) and `alt/registry.tsx`. Rebuild and it appears in the picker.
 
