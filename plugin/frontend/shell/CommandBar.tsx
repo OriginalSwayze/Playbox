@@ -7,6 +7,7 @@ import { byRecent, formatAgo, playOrInstall, type Game } from '../steam/library'
 import { openAddGame, openFriendsList } from '../steam/activity';
 import { client } from '../steam/env';
 import { openAccountMenu, openNotifications, openRootMenu, system } from '../steam/native';
+import { updateSettings } from '../state/settings';
 
 type Item = { id: string; group: string; label: string; sub?: string; icon?: string; img?: string; act?: string; run: () => void; alt?: () => void };
 
@@ -21,6 +22,10 @@ const ACTIONS: Item[] = [
 	{ id: 'a-dl', group: 'Go to', label: 'Downloads', sub: 'Queue and history', icon: 'download', run: () => goNative('/library/downloads', 'play') },
 	{ id: 'a-wish', group: 'Go to', label: 'Wishlist', sub: 'Store', icon: 'spark', run: () => goNative('https://store.steampowered.com/wishlist/', 'discover') },
 	{ id: 'a-friends', group: 'Steam', label: 'Friends and chat', sub: 'Opens the friends list', icon: 'chat', run: () => { setState({ commandOpen: false }); openFriendsList() || steamUrl('steam://open/friends'); } },
+	{ id: 'ui-kestrel', group: 'Kestrel', label: 'Interface: Kestrel', sub: 'Spaces, dashboard, library wall', icon: 'play', run: () => { setState({ commandOpen: false }); updateSettings({ ui: 'kestrel' }); } },
+	{ id: 'ui-atlas', group: 'Kestrel', label: 'Interface: Atlas', sub: 'Your library as a map', icon: 'discover', run: () => { setState({ commandOpen: false }); updateSettings({ ui: 'atlas' }); } },
+	{ id: 'ui-shelf', group: 'Kestrel', label: 'Interface: Shelf', sub: 'A 3D games shelf', icon: 'library', run: () => { setState({ commandOpen: false }); updateSettings({ ui: 'shelf' }); } },
+	{ id: 'ui-terminal', group: 'Kestrel', label: 'Interface: Terminal', sub: 'Steam as a command line', icon: 'menu', run: () => { setState({ commandOpen: false }); updateSettings({ ui: 'terminal' }); } },
 	{ id: 'a-kestrel', group: 'Kestrel', label: 'Kestrel settings', sub: 'Motion, opening, cover tilt, spotlight', icon: 'spark', run: () => setState({ commandOpen: false, settingsOpen: true }) },
 	{ id: 'a-settings', group: 'Steam', label: 'Steam settings', sub: 'Steam settings', icon: 'settings', run: () => { setState({ commandOpen: false }); steamUrl('steam://open/settings'); } },
 	{ id: 'a-add', group: 'Steam', label: 'Add a game', sub: 'Non-Steam game, activate a product', icon: 'plus', run: () => { setState({ commandOpen: false }); openAddGame(); } },

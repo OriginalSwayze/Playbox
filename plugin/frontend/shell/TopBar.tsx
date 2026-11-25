@@ -33,7 +33,7 @@ function Switcher() {
 	);
 }
 
-function ActivityButton() {
+export function ActivityButton() {
 	const dl = useKestrel((s) => s.downloads);
 	const open = useKestrel((s) => s.panelOpen);
 	const pct = dl.active ? dl.active.percent : 0;
@@ -52,7 +52,7 @@ function ActivityButton() {
 	);
 }
 
-function WindowControls() {
+export function WindowControls() {
 	const win = () => mainWindow()?.BrowserWindow.SteamClient?.Window;
 	return (
 		<div className="k-win">
@@ -64,7 +64,7 @@ function WindowControls() {
 }
 
 /** Steam's notifications and account menus, kept one click away. */
-function AccountCluster() {
+export function AccountCluster() {
 	const [info, setInfo] = useState(() => ({ ...accountInfo(), unread: unreadNotifications() }));
 	useEffect(() => {
 		const t = setInterval(() => setInfo({ ...accountInfo(), unread: unreadNotifications() }), 3000);

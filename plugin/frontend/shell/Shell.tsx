@@ -11,6 +11,9 @@ import { Intro } from './Intro';
 import { SettingsSheet } from './SettingsSheet';
 import { GameMenu } from './GameMenu';
 import { useKestrel } from '../state/store';
+import { Atlas } from '../alt/Atlas';
+import { Shelf } from '../alt/Shelf';
+import { Terminal } from '../alt/Terminal';
 
 function Stage() {
 	const view = useKestrel((s) => s.view);
@@ -27,16 +30,15 @@ function Stage() {
 
 export function Shell({ onMount }: { onMount?: () => void }) {
 	useEffect(() => { onMount?.(); }, []);
+	const ui = useKestrel((s) => s.settings.ui);
 	return (
 		<>
-			<TopBar />
-			<Stage />
-			<Morph />
+			{ui === 'atlas' ? <Atlas /> : ui === 'shelf' ? <Shelf /> : ui === 'terminal' ? <Terminal /> : <><TopBar /><Stage /><Morph /></>}
 			<ActivityPanel />
 			<CommandBar />
 			<GameMenu />
 			<SettingsSheet />
-			<Intro />
+			{ui === 'kestrel' && <Intro />}
 		</>
 	);
 }

@@ -13,8 +13,10 @@ export type Settings = {
 	tilt: boolean; // covers lean towards the pointer
 	rotate: boolean; // the home spotlight moves through recent games on its own
 	start: 'home' | 'library'; // where Kestrel opens
+	ui: UI; // which interface is drawn
 };
-export const DEFAULT_SETTINGS: Settings = { motion: 'auto', intro: true, tilt: true, rotate: false, start: 'home' };
+export type UI = 'kestrel' | 'atlas' | 'shelf' | 'terminal';
+export const DEFAULT_SETTINGS: Settings = { motion: 'auto', intro: true, tilt: true, rotate: false, start: 'home', ui: 'kestrel' };
 
 export type State = {
 	space: Space;

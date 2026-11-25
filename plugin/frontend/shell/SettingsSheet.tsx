@@ -7,7 +7,8 @@ import { mainWindow } from '../steam/env';
 
 type Opt<K extends keyof Settings> = { key: K; label: string; hint: string; options: { value: Settings[K]; label: string }[] };
 
-const ROWS: (Opt<'motion'> | Opt<'intro'> | Opt<'tilt'> | Opt<'rotate'> | Opt<'start'>)[] = [
+const ROWS: (Opt<'ui'> | Opt<'motion'> | Opt<'intro'> | Opt<'tilt'> | Opt<'rotate'> | Opt<'start'>)[] = [
+	{ key: 'ui', label: 'Interface', hint: 'Kestrel, a map of your library, a 3D games shelf, or a command line.', options: [{ value: 'kestrel', label: 'Kestrel' }, { value: 'atlas', label: 'Atlas' }, { value: 'shelf', label: 'Shelf' }, { value: 'terminal', label: 'Terminal' }] },
 	{ key: 'motion', label: 'Motion', hint: 'Auto follows Windows. Reduced keeps only quick fades.', options: [{ value: 'auto', label: 'Auto' }, { value: 'full', label: 'Full' }, { value: 'reduced', label: 'Reduced' }] },
 	{ key: 'intro', label: 'Opening animation', hint: 'The Kestrel mark when Steam starts.', options: [{ value: true, label: 'On' }, { value: false, label: 'Off' }] },
 	{ key: 'tilt', label: 'Cover tilt', hint: 'Covers lean towards the pointer and catch the light.', options: [{ value: true, label: 'On' }, { value: false, label: 'Off' }] },
