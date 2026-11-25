@@ -9,6 +9,7 @@ import { gameActions } from '../steam/details';
 import { openFriendsList } from '../steam/activity';
 import { openRootMenu, system, type RootMenu } from '../steam/native';
 import { client, mainWindow } from '../steam/env';
+import { CATALOG, uiIds } from './catalog';
 import { AltChrome, Brand, PlaceButtons, useIslands, useNativeShowing } from './common';
 
 type Entry = { id: number; cmd?: string; out: ReactNode };
@@ -25,7 +26,7 @@ const HELP: [string, string][] = [
 	['online · friends', "who's online · open the friends list"],
 	['menu <steam|view|friends|games|help>', "open one of Steam's menus"],
 	['settings · kestrel', "Steam's settings · Kestrel's settings"],
-	['ui <kestrel|gazette|shelf|terminal>', 'switch interface'],
+	['ui [name]', 'list interfaces, or switch to one'],
 	['clear · history · exit', 'clear the screen · past commands · quit Steam'],
 ];
 
@@ -151,7 +152,7 @@ export function Terminal() {
 				case 'menu': { const m = (arg[0]?.toUpperCase() + arg.slice(1).toLowerCase()) as RootMenu; if (!['Steam', 'View', 'Friends', 'Games', 'Help'].includes(m)) return <span className="tm-err">usage: menu steam|view|friends|games|help</span>; openRootMenu(m); return <>opening the {m} menu</>; }
 				case 'settings': try { client().URL.ExecuteSteamURL('steam://open/settings'); } catch { /* ignore */ } return <>opening Steam settings</>;
 				case 'kestrel': setState({ settingsOpen: true }); return <>opening Kestrel settings</>;
-				case 'ui': { const u = arg.toLowerCase(); if (!['kestrel', 'gazette', 'shelf', 'terminal'].includes(u)) return <span className="tm-err">usage: ui kestrel|gazette|shelf|terminal</span>; updateSettings({ ui: u as 'kestrel' }); return <>switching to {u}</>; }
+				case 'ui': { const u = arg.toLowerCase(); if (!u) return <div className="tm-help">{CATALOG.map((c) => <div key={c.id}><button className="tm-link" onClick={() => run('ui ' + c.id)}>{pad(c.id, 16)}</button>{c.blurb}</div>)}</div>; if (!uiIds().includes(u)) return <span className="tm-err">no interface called "{u}". type <A cmd="ui">ui</A> for the list</span>; updateSettings({ ui: u }); return <>switching to {u}</>; }
 				case 'exit': if (arg === '--yes') { system.exit(); return <>shutting Steam down…</>; } return <>this quits Steam completely. type <A cmd="exit --yes">exit --yes</A> to confirm</>;
 				default: {
 					const g = resolve(text);
@@ -190,7 +191,7 @@ export function Terminal() {
 			return;
 		}
 		const cmd = parts[0].toLowerCase(), arg = parts.slice(1).join(' ').toLowerCase();
-		const pool = cmd === 'ls' ? [...islands.map((i) => i.name), 'installed', 'recent', 'played', 'unplayed', 'all'] : cmd === 'menu' ? ['steam', 'view', 'friends', 'games', 'help'] : cmd === 'ui' ? ['kestrel', 'gazette', 'shelf', 'terminal'] : sorted.map((g) => g.name);
+		const pool = cmd === 'ls' ? [...islands.map((i) => i.name), 'installed', 'recent', 'played', 'unplayed', 'all'] : cmd === 'menu' ? ['steam', 'view', 'friends', 'games', 'help'] : cmd === 'ui' ? uiIds() : sorted.map((g) => g.name);
 		const m = pool.filter((n) => n.toLowerCase().startsWith(arg));
 		if (m.length === 1) setLine(`${parts[0]} ${m[0]}`);
 		else if (m.length > 1) {

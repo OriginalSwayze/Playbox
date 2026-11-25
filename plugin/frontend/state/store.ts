@@ -15,7 +15,7 @@ export type Settings = {
 	start: 'home' | 'library'; // where Kestrel opens
 	ui: UI; // which interface is drawn
 };
-export type UI = 'kestrel' | 'gazette' | 'shelf' | 'terminal';
+export type UI = string; // an id from alt/catalog.ts
 export const DEFAULT_SETTINGS: Settings = { motion: 'auto', intro: true, tilt: true, rotate: false, start: 'home', ui: 'kestrel' };
 
 export type State = {

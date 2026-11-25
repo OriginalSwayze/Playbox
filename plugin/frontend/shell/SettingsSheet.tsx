@@ -3,12 +3,12 @@ import { useEffect } from 'react';
 import { Icon, Mark } from '../ui/icons';
 import { setState, useKestrel, type Settings } from '../state/store';
 import { updateSettings } from '../state/settings';
+import { CATALOG } from '../alt/catalog';
 import { mainWindow } from '../steam/env';
 
 type Opt<K extends keyof Settings> = { key: K; label: string; hint: string; options: { value: Settings[K]; label: string }[] };
 
-const ROWS: (Opt<'ui'> | Opt<'motion'> | Opt<'intro'> | Opt<'tilt'> | Opt<'rotate'> | Opt<'start'>)[] = [
-	{ key: 'ui', label: 'Interface', hint: 'Kestrel, a printed newspaper, a 3D games shelf, or a command line.', options: [{ value: 'kestrel', label: 'Kestrel' }, { value: 'gazette', label: 'Gazette' }, { value: 'shelf', label: 'Shelf' }, { value: 'terminal', label: 'Terminal' }] },
+const ROWS: (Opt<'motion'> | Opt<'intro'> | Opt<'tilt'> | Opt<'rotate'> | Opt<'start'>)[] = [
 	{ key: 'motion', label: 'Motion', hint: 'Auto follows Windows. Reduced keeps only quick fades.', options: [{ value: 'auto', label: 'Auto' }, { value: 'full', label: 'Full' }, { value: 'reduced', label: 'Reduced' }] },
 	{ key: 'intro', label: 'Opening animation', hint: 'The Kestrel mark when Steam starts.', options: [{ value: true, label: 'On' }, { value: false, label: 'Off' }] },
 	{ key: 'tilt', label: 'Cover tilt', hint: 'Covers lean towards the pointer and catch the light.', options: [{ value: true, label: 'On' }, { value: false, label: 'Off' }] },
@@ -37,6 +37,15 @@ export function SettingsSheet() {
 					<div><h2>Kestrel</h2><span>Settings for this interface. Steam's own settings are in the command bar.</span></div>
 					<button className="k-icon-btn" aria-label="Close" onClick={close}><Icon name="close" size={18} /></button>
 				</header>
+				<div className="k-gallery-head">Interface</div>
+				<div className="k-gallery">
+					{CATALOG.map((c) => (
+						<button key={c.id} className={'k-gal' + (settings.ui === c.id ? ' on' : '')} onClick={() => updateSettings({ ui: c.id })}>
+							<span className="sw" style={{ background: `linear-gradient(135deg, ${c.swatch[0]} 55%, ${c.swatch[1]} 55%)` }} />
+							<b>{c.name}</b><span className="bl">{c.blurb}</span>
+						</button>
+					))}
+				</div>
 				<div className="k-sheet-rows">
 					{ROWS.map((r, i) => (
 						<div className="k-sheet-row" key={r.key} style={{ animationDelay: `${60 + i * 40}ms` }}>

@@ -40,6 +40,15 @@ export const motion = `
 .k-sheet-row .tx { flex: 1; }
 .k-sheet-row .tx b { display: block; font: 600 14px var(--k-text); }
 .k-sheet-row .tx span { font-size: 12.5px; color: var(--k-fg-3); }
+.k-gallery-head { padding: 6px 24px 8px; font: 600 11px var(--k-small); letter-spacing: .06em; text-transform: uppercase; color: var(--k-fg-3); }
+.k-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; padding: 0 24px 10px; max-height: 280px; overflow-y: auto; }
+.k-gal { display: flex; flex-direction: column; gap: 3px; padding: 8px; border-radius: 12px; text-align: left; background: var(--k-s2); box-shadow: inset 0 0 0 1px var(--k-line); transition: box-shadow var(--k-t2), transform var(--k-t2) var(--k-spring); }
+.k-gal:hover { transform: translateY(-2px); box-shadow: inset 0 0 0 1px var(--k-line-2); }
+.k-gal.on { box-shadow: inset 0 0 0 2px var(--k-accent); }
+.k-gal .sw { height: 34px; border-radius: 8px; margin-bottom: 4px; box-shadow: inset 0 0 0 1px rgba(128,128,128,.25); }
+.k-gal b { font: 650 13px var(--k-text); color: var(--k-fg); }
+.k-gal .bl { font-size: 11.5px; line-height: 1.3; color: var(--k-fg-3); }
+.k-sheet { max-height: calc(100vh - var(--k-top) - 20px); overflow-y: auto; }
 .k-sheet footer { padding: 12px 24px 22px; font-size: 12px; color: var(--k-fg-3); border-top: 1px solid var(--k-line); }
 
 /* ---- Account cluster and brand button ---- */

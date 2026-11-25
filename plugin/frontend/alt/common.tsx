@@ -1,11 +1,11 @@
 // Shared pieces for the alternative interfaces (Gazette, Shelf, Terminal): their window strip, the game action
 // list, and the collection/game data they all read. Each interface supplies its own look around these.
-import { useMemo, type ReactNode } from 'react';
+import { useMemo, useState, type ReactNode } from 'react';
 import { Icon } from '../ui/icons';
 import { setState, useKestrel } from '../state/store';
 import { back, canGoBack, goNative, goSpace } from '../state/nav';
 import { ActivityButton, AccountCluster, WindowControls } from '../shell/TopBar';
-import { playOrInstall, type Game } from '../steam/library';
+import { artFor, playOrInstall, type Game } from '../steam/library';
 import { gameActions } from '../steam/details';
 
 /** The 56px strip every interface keeps at the top: its own content, then activity, account and window buttons. */
@@ -85,3 +85,63 @@ export function useSelectedGame(): [Game | null, (appid: number | null) => void]
 
 /** Whether a Steam page (Store, Community, classic page…) is showing instead of the interface. */
 export const useNativeShowing = () => useKestrel((s) => s.view.kind === 'native');
+
+/** One interface page: its strip (brand, optional search, Steam places) and a stage that steps aside for Steam pages. */
+export function AltPage({ brand, brandClass, search, onSearch, searchPlaceholder, className, children }: {
+	brand: ReactNode; brandClass?: string; search?: string; onSearch?: (q: string) => void; searchPlaceholder?: string; className: string; children: ReactNode;
+}) {
+	const native = useNativeShowing();
+	return (
+		<>
+			<AltChrome className={className + '-top'}>
+				<Brand className={'alt-brand ' + (brandClass ?? className + '-brand')}>{brand}</Brand>
+				{onSearch && (
+					<label className={'alt-search ' + className + '-search'}>
+						<Icon name="search" size={15} />
+						<input value={search ?? ''} onChange={(e) => onSearch(e.target.value)} onKeyDown={(e) => e.key === 'Escape' && onSearch('')} placeholder={searchPlaceholder ?? 'Search your games'} spellCheck={false} />
+					</label>
+				)}
+				<PlaceButtons />
+			</AltChrome>
+			<main className={'k-stage ' + className + '-stage' + (native ? ' is-hidden' : '')} aria-hidden={native}>{children}</main>
+		</>
+	);
+}
+
+/** Game artwork with Steam's fallback chain; kind picks the cover, the wide header or the hero. */
+export function Art({ g, kind = 'capsule', className }: { g: Game; kind?: 'capsule' | 'header' | 'hero'; className?: string }) {
+	const list = kind === 'capsule' ? g.capsules : kind === 'header' ? [g.header, ...g.capsules] : [artFor(g.appid).hero, g.header];
+	const [n, setN] = useState(0);
+	const src = list[n];
+	if (!src) return <span className={'alt-noart ' + (className ?? '')}>{g.name}</span>;
+	return <img className={className} src={src} alt="" loading="lazy" draggable={false} onError={() => setN(n + 1)} />;
+}
+
+/** The lists most interfaces want. */
+export function useLibraryLists() {
+	const library = useKestrel((s) => s.library);
+	return useMemo(() => {
+		const recent = library.filter((g) => g.lastPlayed).sort((a, b) => b.lastPlayed - a.lastPlayed);
+		return {
+			all: library,
+			recent,
+			installed: library.filter((g) => g.installed).sort((a, b) => b.lastPlayed - a.lastPlayed),
+			unplayed: library.filter((g) => g.minutes === 0),
+			top: [...library].sort((a, b) => b.minutes - a.minutes),
+		};
+	}, [library]);
+}
+
+/** Case-insensitive name search over the library. */
+export function useSearch(q: string): Game[] | null {
+	const library = useKestrel((s) => s.library);
+	return useMemo(() => {
+		const t = q.trim().toLowerCase();
+		return t ? library.filter((g) => g.name.toLowerCase().includes(t)).sort((a, b) => b.lastPlayed - a.lastPlayed) : null;
+	}, [q, library]);
+}
+
+/** Small action list for detail panels; the first command (Play/Install) is left to the interface to style. */
+export function Actions({ g, className }: { g: Game; className?: string }) {
+	return <div className={'alt-actions ' + (className ?? '')}>{gameCommands(g).slice(1).map((c) => <button key={c.id} onClick={c.run}><Icon name={c.icon} size={15} />{c.label}</button>)}</div>;
+}
