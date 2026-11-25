@@ -57,6 +57,16 @@ export const CATALOG: InterfaceInfo[] = [
 	{ id: 'analytics', name: 'Analytics', blurb: 'A product-analytics dashboard of your library', swatch: ['#F6F7FB', '#5B5BF7'] },
 	{ id: 'gantt', name: 'Gantt', blurb: 'A project planner with a bar per game', swatch: ['#FFFFFF', '#2F80ED'] },
 	{ id: 'mindmap', name: 'Mind Map', blurb: 'A mind map branching from your library', swatch: ['#FBFAF6', '#E85D3F'] },
+	{ id: 'flashcards', name: 'Flashcards', blurb: 'A study app: flip cards and rate what you know', swatch: ['#EEF1FF', '#4255FF'] },
+	{ id: 'quiz', name: 'Quiz Night', blurb: 'A game show about your own library', swatch: ['#1A0B3D', '#FFC400'] },
+	{ id: 'habits', name: 'Habits', blurb: 'A habit tracker with fortnightly goals', swatch: ['#F7F5F0', '#2FB67C'] },
+	{ id: 'envelopes', name: 'Envelopes', blurb: 'A time budget in envelopes per collection', swatch: ['#F9F3E3', '#1E8E5A'] },
+	{ id: 'ereader', name: 'E-reader', blurb: 'An e-ink reader with page turns', swatch: ['#F2F1EC', '#1A1A1A'] },
+	{ id: 'radio', name: 'Radio', blurb: 'A valve radio: tune the dial to a game', swatch: ['#8A5A34', '#FFB347'] },
+	{ id: 'camera', name: 'Camera', blurb: 'A camera app: the shutter plays', swatch: ['#000000', '#FFD60A'] },
+	{ id: 'cctv', name: 'CCTV', blurb: 'A security-monitor wall of feeds', swatch: ['#050806', '#39FF7A'] },
+	{ id: 'tiles', name: 'Tiles', blurb: 'A tiling window manager with workspaces', swatch: ['#1D2021', '#FABD2F'] },
+	{ id: 'phone', name: 'Phone', blurb: 'An early-2000s mobile phone with a keypad', swatch: ['#9ED36A', '#7D868F'] },
 ];
 
 export const uiIds = () => CATALOG.map((c) => c.id);

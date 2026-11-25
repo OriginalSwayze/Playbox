@@ -54,6 +54,16 @@ import { Delivery, deliveryCss } from './Delivery';
 import { Analytics, analyticsCss } from './Analytics';
 import { Gantt, ganttCss } from './Gantt';
 import { Mindmap, mindmapCss } from './Mindmap';
+import { Flashcards, flashcardsCss } from './Flashcards';
+import { Quiz, quizCss } from './Quiz';
+import { Habits, habitsCss } from './Habits';
+import { Envelopes, envelopesCss } from './Envelopes';
+import { Ereader, ereaderCss } from './Ereader';
+import { Radio, radioCss } from './Radio';
+import { Camera, cameraCss } from './Camera';
+import { Cctv, cctvCss } from './Cctv';
+import { Tiles, tilesCss } from './Tiles';
+import { Phone, phoneCss } from './Phone';
 
 export const INTERFACES: Record<string, ComponentType> = {
 	gazette: Gazette,
@@ -109,7 +119,17 @@ export const INTERFACES: Record<string, ComponentType> = {
 	analytics: Analytics,
 	gantt: Gantt,
 	mindmap: Mindmap,
+	flashcards: Flashcards,
+	quiz: Quiz,
+	habits: Habits,
+	envelopes: Envelopes,
+	ereader: Ereader,
+	radio: Radio,
+	camera: Camera,
+	cctv: Cctv,
+	tiles: Tiles,
+	phone: Phone,
 };
 
 /** Styles contributed by interfaces that carry their own (the first three live in styles/alt.ts and styles/gazette.ts). */
-export const INTERFACE_CSS: string[] = [kitCss, vinylCss, arcadeCss, deckCss, museumCss, corkboardCss, chronicleCss, missionCss, springboardCss, channelsCss, comicCss, backlogCss, cinemaCss, vendingCss, inboxCss, ledgerCss, gardenCss, journalCss, transitCss, retroCss, indexCss, weatherCss, streamCss, chatCss, calendarCss, photosCss, notesCss, codeCss, filesCss, tubeCss, feedCss, swipeCss, tickerCss, shopCss, readerCss, boardingCss, homeCss, driveCss, watchCss, wikiCss, forumCss, slidesCss, canvasCss, studioCss, cutCss, paintCss, clocksCss, deliveryCss, analyticsCss, ganttCss, mindmapCss];
+export const INTERFACE_CSS: string[] = [kitCss, vinylCss, arcadeCss, deckCss, museumCss, corkboardCss, chronicleCss, missionCss, springboardCss, channelsCss, comicCss, backlogCss, cinemaCss, vendingCss, inboxCss, ledgerCss, gardenCss, journalCss, transitCss, retroCss, indexCss, weatherCss, streamCss, chatCss, calendarCss, photosCss, notesCss, codeCss, filesCss, tubeCss, feedCss, swipeCss, tickerCss, shopCss, readerCss, boardingCss, homeCss, driveCss, watchCss, wikiCss, forumCss, slidesCss, canvasCss, studioCss, cutCss, paintCss, clocksCss, deliveryCss, analyticsCss, ganttCss, mindmapCss, flashcardsCss, quizCss, habitsCss, envelopesCss, ereaderCss, radioCss, cameraCss, cctvCss, tilesCss, phoneCss];
