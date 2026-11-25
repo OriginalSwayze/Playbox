@@ -87,6 +87,16 @@ export const CATALOG: InterfaceInfo[] = [
 	{ id: 'stars', name: 'Stars', blurb: 'A planetarium: games are stars, collections constellations', swatch: ['#030712', '#9EC1FF'] },
 	{ id: 'elements', name: 'Elements', blurb: 'A periodic table of your 118 most-played games', swatch: ['#FAFAF7', '#82B1FF'] },
 	{ id: 'scope', name: 'Scope', blurb: 'An oscilloscope tracing your games as signals', swatch: ['#26292C', '#FFE14D'] },
+	{ id: 'synth', name: 'Synth', blurb: 'A modular synth: patch a game to the output', swatch: ['#17181B', '#FF6B3D'] },
+	{ id: 'wheel', name: 'Wheel', blurb: 'A decision wheel: spin to pick what to play', swatch: ['#2B2147', '#FFE45E'] },
+	{ id: 'advent', name: 'Advent', blurb: 'An advent calendar with a game behind each door', swatch: ['#0F2A1E', '#E0393E'] },
+	{ id: 'blueprint', name: 'Blueprint', blurb: 'A floor plan: collections are rooms', swatch: ['#0D3B66', '#FFFFFF'] },
+	{ id: 'circuit', name: 'Circuit', blurb: 'A circuit board: collections are chips', swatch: ['#0B5A2E', '#E7B54A'] },
+	{ id: 'family', name: 'Family Tree', blurb: 'A family tree of collections and games', swatch: ['#F3EAD7', '#7A4E24'] },
+	{ id: 'orgchart', name: 'Org Chart', blurb: 'A company directory with departments', swatch: ['#F5F7FB', '#3B5BDB'] },
+	{ id: 'bracket', name: 'Bracket', blurb: 'A knockout tournament of sixteen games', swatch: ['#0E1726', '#FFC531'] },
+	{ id: 'menuboard', name: 'Menu Board', blurb: 'A café chalkboard menu', swatch: ['#2A3631', '#F4D35E'] },
+	{ id: 'stamps', name: 'Stamps', blurb: 'A stamp album with postmarks', swatch: ['#F3EEDC', '#B23A48'] },
 ];
 
 export const uiIds = () => CATALOG.map((c) => c.id);
