@@ -14,6 +14,11 @@ import { Mission, missionCss } from './Mission';
 import { Springboard, springboardCss } from './Springboard';
 import { Channels, channelsCss } from './Channels';
 import { Comic, comicCss } from './Comic';
+import { Backlog, backlogCss } from './Backlog';
+import { Cinema, cinemaCss } from './Cinema';
+import { Vending, vendingCss } from './Vending';
+import { Inbox, inboxCss } from './Inbox';
+import { Ledger, ledgerCss } from './Ledger';
 
 export const INTERFACES: Record<string, ComponentType> = {
 	gazette: Gazette,
@@ -29,7 +34,12 @@ export const INTERFACES: Record<string, ComponentType> = {
 	springboard: Springboard,
 	channels: Channels,
 	comic: Comic,
+	backlog: Backlog,
+	cinema: Cinema,
+	vending: Vending,
+	inbox: Inbox,
+	ledger: Ledger,
 };
 
 /** Styles contributed by interfaces that carry their own (the first three live in styles/alt.ts and styles/gazette.ts). */
-export const INTERFACE_CSS: string[] = [kitCss, vinylCss, arcadeCss, deckCss, museumCss, corkboardCss, chronicleCss, missionCss, springboardCss, channelsCss, comicCss];
+export const INTERFACE_CSS: string[] = [kitCss, vinylCss, arcadeCss, deckCss, museumCss, corkboardCss, chronicleCss, missionCss, springboardCss, channelsCss, comicCss, backlogCss, cinemaCss, vendingCss, inboxCss, ledgerCss];

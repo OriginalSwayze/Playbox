@@ -17,6 +17,11 @@ export const CATALOG: InterfaceInfo[] = [
 	{ id: 'springboard', name: 'Springboard', blurb: 'A phone home screen of games', swatch: ['#3A2A6B', '#0A84FF'] },
 	{ id: 'channels', name: 'Channels', blurb: 'A cable TV guide of your games', swatch: ['#0A1548', '#FFE14A'] },
 	{ id: 'comic', name: 'Comic', blurb: 'Your library as a comic book', swatch: ['#2B6CB0', '#E8231F'] },
+	{ id: 'backlog', name: 'Backlog', blurb: 'Your games as a kanban board', swatch: ['#F4F5F7', '#0C66E4'] },
+	{ id: 'cinema', name: 'Cinema', blurb: 'A picture palace with a marquee and tickets', swatch: ['#0B0506', '#F5C04A'] },
+	{ id: 'vending', name: 'Vending', blurb: 'A vending machine with a keypad', swatch: ['#C81E1E', '#6CFF8F'] },
+	{ id: 'inbox', name: 'Inbox', blurb: 'Your library as a mail client', swatch: ['#F6F8FC', '#1A73E8'] },
+	{ id: 'ledger', name: 'Ledger', blurb: 'Your library as a spreadsheet', swatch: ['#FFFFFF', '#107C41'] },
 ];
 
 export const uiIds = () => CATALOG.map((c) => c.id);
