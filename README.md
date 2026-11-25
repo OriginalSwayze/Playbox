@@ -6,7 +6,24 @@ store, overlay); Playbox replaces how you move around it, and the interface butt
 switches between them. The default interface, **Kestrel**, is described first; the rest follow under
 "Other interfaces".
 
-## What it does
+## Install (all in one)
+1. Install [Millennium](https://steambrew.app) for Steam if you don't have it (version 3.4 or newer).
+2. Download **Playbox-1.0.0.zip** from the [latest release](https://github.com/OriginalSwayze/Playbox/releases/latest).
+3. Close Steam, then unzip it into your Steam folder (usually `C:\Program Files (x86)\Steam`), merging the
+   `millennium` folder. That puts:
+   - the plugin at `Steam\millennium\plugins\com.originalswayze.kestrel.star`
+   - the companion theme at `Steam\millennium\themes\Playbox\`
+4. Start Steam. In Millennium's settings, turn on the **Playbox** plugin and choose the **Playbox** theme, then let
+   Steam restart.
+
+The theme is optional: it dresses Steam's own pages, dialogs and menus to match. The plugin is the interfaces.
+
+## Changing the design
+Every interface has a **button in its top strip** showing the current design's name. Click it (or press **Ctrl+I**
+anywhere) to open the picker: search by name or idea ("music", "retro", "map"), browse the six groups, jump back
+through **Recent**, or hit **Surprise me**. Arrow keys and Enter work too. Your choice is remembered.
+
+## What it does (the default interface, Kestrel)
 - **Spaces instead of Steam's top bar:** Play, Discover, Social and You, with a gliding switcher (Alt+1–4).
 - **Command bar (Ctrl+K):** find any game by name or initials, open or play it (Ctrl+Enter), jump to pages,
   run Steam actions, open Steam's menus, search the store. Works over the Store and Community too.
@@ -159,8 +176,8 @@ And 100 more, each shaped like a different kind of app or object:
 All of them use the same Steam integration as Kestrel, keep Ctrl+K, and open Steam's own pages for the Store.
 
 ## Safety
-- **Ctrl+Shift+K** switches between Kestrel and Steam's own interface at any time.
-- If Kestrel's interface ever fails, it steps aside and leaves Steam's normal interface on screen.
+- **Ctrl+Shift+K** switches between Playbox and Steam's own interface at any time.
+- If an interface ever fails, Playbox steps aside and leaves Steam's normal interface on screen.
 - Nothing in Steam's installation is modified. Disable the plugin in Millennium to remove it completely.
 
 ## Build
@@ -170,3 +187,16 @@ All of them use the same Steam integration as Kestrel, keep Ctrl+K, and open Ste
     node skin-src/gen.js && node "<Steam Theme Builder>/kit/build.js" skin-src
 
 See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for how it fits together and what Steam does not allow.
+
+### Make your own interface
+Each interface is one file in `plugin/frontend/alt/` (a React component plus its CSS). Copy one that is close to
+what you want, give it a new id, then add it to `alt/catalog.ts` (name, one-line description, two swatch colours
+and a group) and `alt/registry.tsx`. Rebuild and it appears in the picker.
+
+## Changes
+### 1.0.0
+- First public release: 124 interfaces in one plugin, a picker button in every top strip (Ctrl+I), the companion
+  theme, and the default Kestrel interface.
+
+## License
+MIT. See [LICENSE](LICENSE).
