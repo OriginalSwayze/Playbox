@@ -44,6 +44,16 @@ import { Drive, driveCss } from './Drive';
 import { Watch, watchCss } from './Watch';
 import { Wiki, wikiCss } from './Wiki';
 import { Forum, forumCss } from './Forum';
+import { Slides, slidesCss } from './Slides';
+import { Canvas, canvasCss } from './Canvas';
+import { Studio, studioCss } from './Studio';
+import { Cut, cutCss } from './Cut';
+import { Paint, paintCss } from './Paint';
+import { Clocks, clocksCss } from './Clocks';
+import { Delivery, deliveryCss } from './Delivery';
+import { Analytics, analyticsCss } from './Analytics';
+import { Gantt, ganttCss } from './Gantt';
+import { Mindmap, mindmapCss } from './Mindmap';
 
 export const INTERFACES: Record<string, ComponentType> = {
 	gazette: Gazette,
@@ -89,7 +99,17 @@ export const INTERFACES: Record<string, ComponentType> = {
 	watch: Watch,
 	wiki: Wiki,
 	forum: Forum,
+	slides: Slides,
+	canvas: Canvas,
+	studio: Studio,
+	cut: Cut,
+	paint: Paint,
+	clocks: Clocks,
+	delivery: Delivery,
+	analytics: Analytics,
+	gantt: Gantt,
+	mindmap: Mindmap,
 };
 
 /** Styles contributed by interfaces that carry their own (the first three live in styles/alt.ts and styles/gazette.ts). */
-export const INTERFACE_CSS: string[] = [kitCss, vinylCss, arcadeCss, deckCss, museumCss, corkboardCss, chronicleCss, missionCss, springboardCss, channelsCss, comicCss, backlogCss, cinemaCss, vendingCss, inboxCss, ledgerCss, gardenCss, journalCss, transitCss, retroCss, indexCss, weatherCss, streamCss, chatCss, calendarCss, photosCss, notesCss, codeCss, filesCss, tubeCss, feedCss, swipeCss, tickerCss, shopCss, readerCss, boardingCss, homeCss, driveCss, watchCss, wikiCss, forumCss];
+export const INTERFACE_CSS: string[] = [kitCss, vinylCss, arcadeCss, deckCss, museumCss, corkboardCss, chronicleCss, missionCss, springboardCss, channelsCss, comicCss, backlogCss, cinemaCss, vendingCss, inboxCss, ledgerCss, gardenCss, journalCss, transitCss, retroCss, indexCss, weatherCss, streamCss, chatCss, calendarCss, photosCss, notesCss, codeCss, filesCss, tubeCss, feedCss, swipeCss, tickerCss, shopCss, readerCss, boardingCss, homeCss, driveCss, watchCss, wikiCss, forumCss, slidesCss, canvasCss, studioCss, cutCss, paintCss, clocksCss, deliveryCss, analyticsCss, ganttCss, mindmapCss];

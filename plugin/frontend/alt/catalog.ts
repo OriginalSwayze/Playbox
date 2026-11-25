@@ -47,6 +47,16 @@ export const CATALOG: InterfaceInfo[] = [
 	{ id: 'watch', name: 'Watch', blurb: 'A smartwatch honeycomb with activity rings', swatch: ['#000000', '#A4FF3C'] },
 	{ id: 'wiki', name: 'Wiki', blurb: 'An encyclopedia with an article per game', swatch: ['#FFFFFF', '#3366CC'] },
 	{ id: 'forum', name: 'Forum', blurb: 'An old-school message board', swatch: ['#2B4A73', '#E67E22'] },
+	{ id: 'slides', name: 'Slides', blurb: 'Presentation software: each collection is a deck', swatch: ['#D35230', '#FFFFFF'] },
+	{ id: 'canvas', name: 'Canvas', blurb: 'A design tool with artboards on an infinite canvas', swatch: ['#2C2C2C', '#0D99FF'] },
+	{ id: 'studio', name: 'Studio', blurb: 'A music workstation: tracks, clips and a mixer', swatch: ['#1B1C20', '#FF8A3D'] },
+	{ id: 'cut', name: 'Cut', blurb: 'A video editor with a scrubbable timeline', swatch: ['#1A1A1D', '#7C5CFF'] },
+	{ id: 'paint', name: 'Paint', blurb: 'A paint program: draw on your covers', swatch: ['#C9D4E3', '#ED1C24'] },
+	{ id: 'clocks', name: 'Clocks', blurb: 'A clock app set to your last sessions', swatch: ['#101114', '#FF9F0A'] },
+	{ id: 'delivery', name: 'Delivery', blurb: 'A food-delivery app: collections are restaurants', swatch: ['#FFFFFF', '#00A082'] },
+	{ id: 'analytics', name: 'Analytics', blurb: 'A product-analytics dashboard of your library', swatch: ['#F6F7FB', '#5B5BF7'] },
+	{ id: 'gantt', name: 'Gantt', blurb: 'A project planner with a bar per game', swatch: ['#FFFFFF', '#2F80ED'] },
+	{ id: 'mindmap', name: 'Mind Map', blurb: 'A mind map branching from your library', swatch: ['#FBFAF6', '#E85D3F'] },
 ];
 
 export const uiIds = () => CATALOG.map((c) => c.id);
