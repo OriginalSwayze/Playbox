@@ -1,6 +1,6 @@
 # Playbox
 
-124 complete interfaces for the Steam desktop client in one box, built as a [Millennium](https://steambrew.app)
+163 complete interfaces for the Steam desktop client in one box, built as a [Millennium](https://steambrew.app)
 plugin with a companion theme. Steam keeps doing all the work (library, launching, installs, downloads, friends,
 store, overlay); Playbox replaces how you move around it, and the interface button in every top strip (or Ctrl+I)
 switches between them. The default interface, **Kestrel**, is described first; the rest follow under
@@ -22,7 +22,7 @@ installed from Millennium's theme browser once listed.
 
 ## Changing the design
 Every interface has a **button in its top strip** showing the current design's name. Click it (or press **Ctrl+I**
-anywhere) to open the picker: search by name or idea ("music", "retro", "map"), browse the six groups, jump back
+anywhere) to open the picker: search by name or idea ("music", "retro", "map"), browse the eight groups, jump back
 through **Recent**, or hit **Surprise me**. Arrow keys and Enter work too. Your choice is remembered.
 
 ## What it does (the default interface, Kestrel)
@@ -43,9 +43,42 @@ through **Recent**, or hit **Surprise me**. Arrow keys and Enter work too. Your 
 
 ## Other interfaces
 The **interface button** in the top strip (it shows the current interface's name) or **Ctrl+I** opens the interface picker:
-search, groups (Originals, Everyday apps, Work tools, Retro machines, Objects and places, Styles and games),
+search, groups (Game launchers, Game worlds, Originals, Styles, Everyday apps, Work tools, Retro machines, Objects and
+places),
 recently used and "Surprise me"; arrow keys and Enter switch. Kestrel settings, the command bar ("Interface: …") and
-Terminal's `ui <id>` still work too. There are 123 alternatives:
+Terminal's `ui <id>` still work too. There are 162 alternatives.
+
+**Game launchers** — built like real launchers: each game's logo over its key art, live status, a big Play button,
+and arrow keys / Enter / Esc / Page Up-Down everywhere (a connected controller's d-pad, stick, A, B and bumpers are
+read too):
+- **Dashboard** — a console home: key art fills the screen, a tile row across the top, big actions below.
+- **Billboard** — a streaming front page: a rotating billboard, then a row per collection, and a game sheet.
+- **Hub** — a modern PC launcher: sidebar with search and collection folders, game page with a play bar.
+- **Spotlight** — one game at a time, full screen, with a cover strip along the bottom.
+- **Couch** — a ten-foot TV interface: huge type, a glowing focus ring, made for the sofa.
+- **Coverflow** — covers in a 3D row with reflections.
+- **Mosaic** — an art wall with tiles sized by how much you play.
+- **Posters** — a cinematic wall of tall covers that lean towards the pointer.
+- **Compact** — a dense sortable table for big libraries, with filters and a details pane.
+- **Dock** — a desktop with key-art wallpaper and a magnifying dock.
+- **Blades** — collections as sliding coloured blades.
+- **Orbit** — a VR-style curved wall of games around you.
+- **Holo** — a hologram projector over a control deck.
+- **Zen** — a quiet minimal launcher; type anywhere to filter.
+
+**Game worlds** — Steam dressed as the menus of games themselves:
+- **Lobby** (matchmaking, with your online friends as the party and Find match), **Pause** (a pause menu over your
+  last game), **Saves** (a save-file select), **Loadout** (a shooter's loadout), **Pitlane** (a racing garage with a
+  rev counter), **Kickoff** (a sports menu with a news ticker), **Realm** (an online RPG character select).
+- **Codex** (a fantasy grimoire), **Overworld** (a level-select map with stars), **Ascent** (a roguelike branching
+  map up to a boss), **Hexmap** (a strategy campaign map), **Galaxy** (star systems of orbiting game planets),
+  **Skyline** (a night city where games are buildings).
+- **Season** (a battle-pass track), **Trophy Room** (graded trophies on lit shelves), **Rhythm** (a song select),
+  **Radial** (a weapon wheel), **HUD** (a sci-fi targeting display), **Neon** (cyberpunk), **Dread** (survival
+  horror by flashlight), **Dossier** (spy case files), **Pixel** (an 8-bit RPG menu), **Cartridge** (a cartridge
+  shelf and console), **Board** (a board game with dice) and **Summon** (pull from a banner to decide what to play).
+
+**Everything else** — the original novelty interfaces, each modelled on a different kind of app or object:
 - **Gazette** — your library as a printed newspaper: the game you're most likely to play is the front-page
   story, collections are the paper's sections, unplayed games run as classifieds, and a game opens as a full
   article set from its store description, with an honours list of achievements and a Play stamp.
@@ -197,6 +230,11 @@ what you want, give it a new id, then add it to `alt/catalog.ts` (name, one-line
 and a group) and `alt/registry.tsx`. Rebuild and it appears in the picker.
 
 ## Changes
+### 1.1.0
+- 39 new interfaces built as game launchers and game-style menus (listed above under Game launchers and Game
+  worlds), on a shared launcher kit: game logos and key art, keyboard and controller navigation, live status.
+- The picker opens on the new Game launchers and Game worlds groups; the earlier designs follow in their groups.
+
 ### 1.0.0
 - First public release: 124 interfaces in one plugin, a picker button in every top strip (Ctrl+I), the companion
   theme, and the default Kestrel interface.
