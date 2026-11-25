@@ -157,6 +157,15 @@ export const CATALOG: InterfaceInfo[] = [
 	{ id: 'gacha', name: 'Summon', blurb: 'Pull from a banner to decide what to play', swatch: ['#0E1230', '#FFD86B'] },
 	{ id: 'compact', name: 'Compact', blurb: 'A dense sortable table for big libraries', swatch: ['#15171A', '#5B9CFF'] },
 	{ id: 'zen', name: 'Zen', blurb: 'A quiet minimal launcher: type to filter', swatch: ['#F6F4EF', '#2B2A27'] },
+	{ id: 'pixel', name: 'Pixel', blurb: 'An 8-bit RPG menu with pixelated art', swatch: ['#1830A8', '#FCE0A8'] },
+	{ id: 'cartridge', name: 'Cartridge', blurb: 'A shelf of cartridges and a console to slot them in', swatch: ['#3A2A1E', '#D8312A'] },
+	{ id: 'galaxy', name: 'Galaxy', blurb: 'Star systems of orbiting game planets', swatch: ['#02030A', '#8FA8FF'] },
+	{ id: 'dossier', name: 'Dossier', blurb: 'Spy case files with redactions and a mission briefing', swatch: ['#23262A', '#B3261E'] },
+	{ id: 'realm', name: 'Realm', blurb: 'An online RPG character select', swatch: ['#0A0C12', '#E3B455'] },
+	{ id: 'ascent', name: 'Ascent', blurb: 'A roguelike branching map up to a boss', swatch: ['#1B1712', '#D94F30'] },
+	{ id: 'skyline', name: 'Skyline', blurb: 'A night city: games are buildings, taller with hours', swatch: ['#070B1E', '#FFC857'] },
+	{ id: 'board', name: 'Board', blurb: 'A board game: roll the dice to land on a game', swatch: ['#1E6B52', '#E84A5F'] },
+	{ id: 'kickoff', name: 'Kickoff', blurb: 'A sports game main menu with angled tiles and a ticker', swatch: ['#0A1A3A', '#00E07A'] },
 ];
 
 export const uiIds = () => CATALOG.map((c) => c.id);
