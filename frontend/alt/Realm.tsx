@@ -34,7 +34,7 @@ export function Realm() {
 					</button>
 				))}</aside>
 				{g && (
-					<section className="pb-rlm-stage" key={g.appid}>
+					<section className="pb-rlm-podium" key={g.appid}>
 						<div className="pb-rlm-hero"><Art g={g} kind="capsule" /></div>
 						<div className="pb-rlm-rune"><i /><i /></div>
 						<div className="pb-rlm-name"><h1>{g.name}</h1><p>Level {lvl(g)} {CLASSES[g.appid % CLASSES.length]} · {status}</p></div>
@@ -68,7 +68,7 @@ export const realmCss = tok('realm', { bg: '#0A0C12', s1: 'rgba(255,230,180,.08)
 .pb-rlm-realms button { display: grid; grid-template-columns: 1fr auto; gap: 4px 10px; width: 100%; margin-bottom: 4px; padding: 9px 10px; text-align: left; border: 1px solid transparent; font: 15px ${serif}; color: #CBBB98; }
 .pb-rlm-realms button i { grid-column: 1; height: 4px; background: rgba(255,255,255,.08); } .pb-rlm-realms button i b { display: block; height: 100%; background: linear-gradient(90deg, #7A5A20, #E3B455); } .pb-rlm-realms button small { grid-row: 1 / 3; grid-column: 2; align-self: center; font: italic 12px ${serif}; color: #8C7E62; }
 .pb-rlm-realms button:hover { color: #F2E6CC; } .pb-rlm-realms button.on { border-color: rgba(227,180,85,.5); background: rgba(227,180,85,.08); color: #F2E6CC; }
-.pb-rlm-stage { position: relative; display: grid; justify-items: center; align-content: end; padding-bottom: 40px; min-height: 0; }
+.pb-rlm-podium { position: relative; display: grid; justify-items: center; align-content: end; padding-bottom: 40px; min-height: 0; }
 .pb-rlm-hero { position: relative; z-index: 1; height: min(56vh, 470px); aspect-ratio: 2/3; margin-bottom: -40px; animation: pb-rlm-rise .7s var(--k-out) both; } @keyframes pb-rlm-rise { from { transform: translateY(40px); opacity: 0; filter: brightness(3); } }
 .pb-rlm-hero img, .pb-rlm-hero .alt-noart { width: 100%; height: 100%; object-fit: cover; border-radius: 4px; box-shadow: 0 0 0 2px rgba(227,180,85,.6), 0 0 60px rgba(227,180,85,.3), 0 30px 60px rgba(0,0,0,.7); mask: linear-gradient(#000 85%, transparent); -webkit-mask: linear-gradient(#000 85%, transparent); }
 .pb-rlm-rune { position: relative; width: 380px; height: 90px; } .pb-rlm-rune i { position: absolute; inset: 0; border-radius: 50%; border: 2px solid rgba(227,180,85,.7); box-shadow: 0 0 30px rgba(227,180,85,.6), inset 0 0 30px rgba(227,180,85,.4); animation: pb-rlm-glow 3s ease-in-out infinite alternate; }

@@ -38,7 +38,7 @@ export function Lobby() {
 			<div className="pb-lob-app">
 				<Backdrop g={g} className="pb-lob-bd" />
 				<nav className="pb-lob-modes">{b.islands.map((i) => <button key={i.id} className={!b.found && i.id === b.cur ? 'on' : ''} onClick={() => { b.setCur(i.id); setLead(0); select(null); }}>{i.name}<small>{i.games.length} games</small></button>)}</nav>
-				<section className="pb-lob-stage">{squad.map((x, n) => (
+				<section className="pb-lob-floor">{squad.map((x, n) => (
 					<button key={x.appid} data-appid={x.appid} className={'pb-lob-op' + (n === lead ? ' on' : '')} style={{ ['--i' as string]: n - (squad.length - 1) / 2 }} onMouseEnter={() => setLead(n)} onClick={() => select(x.appid)}>
 						<Art g={x} kind="capsule" /><span className="pb-lob-tag"><b>{x.name}</b><em>LVL {Math.max(1, Math.round(x.minutes / 60))}</em></span>{n === 0 && <i className="pb-lob-crown">★ PARTY LEAD</i>}
 					</button>
@@ -79,7 +79,7 @@ html.kestrel[data-ui="lobby"] .k-top { position: relative; z-index: 3; border: 0
 .pb-lob-modes { position: absolute; left: 30px; top: 12px; right: 330px; z-index: 2; display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; }
 .pb-lob-modes button { flex: none; display: grid; justify-items: start; gap: 2px; min-width: 150px; padding: 10px 14px; text-align: left; background: rgba(0,0,0,.45); box-shadow: inset 0 -3px 0 rgba(255,255,255,.1); font: 700 15px ${f}; text-transform: uppercase; color: #C5CCE0; }
 .pb-lob-modes small { font: 500 11px ${f}; letter-spacing: .1em; color: #7D87A6; } .pb-lob-modes button.on { background: rgba(255,197,49,.15); box-shadow: inset 0 -3px 0 #FFC531; color: #fff; } .pb-lob-modes button:hover { color: #fff; }
-.pb-lob-stage { position: absolute; left: 0; right: 300px; top: 90px; bottom: 120px; display: flex; justify-content: center; align-items: flex-end; perspective: 1000px; }
+.pb-lob-floor { position: absolute; left: 0; right: 300px; top: 90px; bottom: 120px; display: flex; justify-content: center; align-items: flex-end; perspective: 1000px; }
 .pb-lob-op { position: relative; width: 17%; max-width: 210px; margin: 0 -1%; transform: translateZ(calc(var(--i) * var(--i) * -40px)) translateY(calc(var(--i) * var(--i) * -6px)); transition: transform .3s var(--k-out), filter .3s; filter: brightness(.7); }
 .pb-lob-op img, .pb-lob-op .alt-noart { width: 100%; aspect-ratio: 2/3; object-fit: cover; border-radius: 6px; box-shadow: 0 20px 40px rgba(0,0,0,.6); }
 .pb-lob-op::after { content: ""; position: absolute; left: 10%; right: 10%; bottom: -18px; height: 20px; border-radius: 50%; background: radial-gradient(rgba(255,197,49,.35), transparent 70%); }
