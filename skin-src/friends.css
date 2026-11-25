@@ -1,0 +1,14 @@
+/* ===== KESTREL friends and chat ===== */
+html .currentUserContainer { border-radius: 18px !important; background: var(--ks-s2) !important; box-shadow: var(--ks-edge) !important; }
+html .currentUserContainer .playerName { background: none !important; -webkit-text-fill-color: #fff; font-family: var(--ks-display) !important; font-weight: 650 !important; }
+html .avatarHolder img.avatar, html .avatarHolder .avatar { border-radius: 50% !important; }
+html .avatarHolder.online img.avatar { box-shadow: 0 0 0 2px var(--ks-s1), 0 0 0 4px var(--ks-cool) !important; }
+html .avatarHolder.ingame img.avatar { box-shadow: 0 0 0 2px var(--ks-s1), 0 0 0 4px var(--ks-ok) !important; }
+html .avatarHolder.awayOrSnooze img.avatar { box-shadow: 0 0 0 2px var(--ks-s1), 0 0 0 4px #FFC24A !important; }
+html .friendTab, html .socialListTab, html .chatSectionTitle, html .friendsListSectionTitle { background: transparent !important; box-shadow: inset 0 -1px 0 var(--ks-line) !important; font-family: var(--ks-display) !important; font-weight: 650 !important; text-transform: none !important; letter-spacing: 0 !important; }
+html .friendGroup .groupName { font: 600 11px var(--ks-small) !important; letter-spacing: .06em !important; text-transform: uppercase !important; color: var(--ks-fg-3) !important; }
+html .friend { border-radius: 12px !important; }
+html .friend:hover { background: var(--ks-s2) !important; }
+html .friend.ingame .playerName, html .friend.ingame .gameName { color: var(--ks-ok) !important; }
+html .chatEntry .chatEntryControls, html .chatentry_chatTextarea_113iu, html textarea.chatTextarea { border-radius: 14px !important; }
+html .ChatMessageBlock .speaker .speakerName { color: var(--ks-accent-2) !important; }

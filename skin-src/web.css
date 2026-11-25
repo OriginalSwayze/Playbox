@@ -1,0 +1,63 @@
+/* ===== KESTREL web layer: Store and Community in Kestrel's language =====
+   Steam's page layouts stay; the colour, type, shapes and buttons become Kestrel's. */
+:root { --ks-page: #08090C; }
+html, body, body.v6, body.v7, .responsive_page_frame, .responsive_page_content, .page_content_ctn, .home_page_body_ctn, .game_page_background, .store_page_bg, .apphub_background, .pagecontent, .profile_page { background-color: var(--ks-page) !important; }
+body, body.v6 { font-family: "Segoe UI Variable Text", "Segoe UI", sans-serif !important; }
+h1, h2, .pageheader, .home_page_content h2, .home_section_title, .apphub_AppName, #appHubAppName, .home_page_content .home_page_sign_in_ctn h2 { font-family: "Segoe UI Variable Display", "Segoe UI", sans-serif !important; font-weight: 650 !important; text-transform: none !important; letter-spacing: -.01em !important; color: #F2EFE8 !important; }
+
+/* store navigation bar: a dark pill instead of Valve's blue strip */
+#store_nav_area .store_nav_bg, .store_nav_bg { background: #0E1015 !important; border-radius: 99px !important; box-shadow: inset 0 0 0 1px rgba(236,232,222,.08) !important; }
+#store_nav_area .store_nav .tab, .store_nav .tab > span { color: #C9C6BE !important; font-family: "Segoe UI Variable Text", "Segoe UI", sans-serif !important; font-weight: 600 !important; text-transform: none !important; }
+#store_nav_area .store_nav .tab:hover, .store_nav .tab.focus { background: rgba(240,162,59,.14) !important; border-radius: 99px; }
+#store_search { background: #141720 !important; border-radius: 99px !important; border: none !important; box-shadow: inset 0 0 0 1px rgba(236,232,222,.08) !important; }
+#store_search_link img, #store_search .searchbox button { filter: none !important; }
+#store_search_link, #store_search .searchbox button, button[class*="SearchButton"] { background: linear-gradient(180deg, #FFCB7A, #F0A23B) !important; border-radius: 99px !important; }
+
+/* capsules and rows */
+.store_main_capsule, .store_capsule, .tab_item, .search_result_row, .apphub_Card, .game_area_purchase_game, .home_area_spotlight, .special_tiny_cap, .store_capsule img, img.tab_item_cap_img, .wishlist_row { border-radius: 14px !important; }
+.store_capsule, .store_main_capsule, .home_area_spotlight { overflow: hidden; }
+.tab_item, .search_result_row, .game_area_purchase_game, .home_area_spotlight, .wishlist_row { background: #0E1015 !important; box-shadow: inset 0 0 0 1px rgba(236,232,222,.07) !important; border: none !important; transition: background-color .2s, transform .35s cubic-bezier(.34,1.36,.5,1) !important; }
+.tab_item:hover, .search_result_row:hover, .wishlist_row:hover { background: #141720 !important; }
+.store_capsule:hover, .tab_item:hover, .search_result_row:hover { transform: translateY(-2px); }
+.home_tabs_row .tab, .home_tabs_row .tab.active { border-radius: 99px 99px 0 0 !important; }
+.home_tabs_row .tab.active, .home_tabs_row .tab.active .tab_content { background: #141720 !important; color: #FFCB7A !important; }
+.app_tag { border-radius: 99px !important; background: rgba(255,255,255,.07) !important; color: #C9C6BE !important; box-shadow: none !important; }
+.app_tag:hover { background: rgba(240,162,59,.18) !important; color: #fff !important; }
+
+/* prices and buttons */
+.discount_pct, .bundle_base_discount { background: linear-gradient(180deg, #FFCB7A, #F0A23B) !important; color: #1A1004 !important; border-radius: 99px !important; font-weight: 700 !important; }
+.discount_block .discount_prices, .discount_prices { background: rgba(255,255,255,.06) !important; border-radius: 0 99px 99px 0 !important; }
+.discount_final_price, .game_purchase_price { color: #FFCB7A !important; }
+.discount_original_price { color: #6F727D !important; }
+.btn_green_steamui, .btn_green_white_innerfade, .btnv6_green_white_innerfade, .btn_addtocart > a { background: linear-gradient(180deg, #FFCB7A, #F0A23B) !important; border-radius: 99px !important; box-shadow: 0 10px 26px -12px #F0A23B !important; border: none !important; }
+.btn_green_steamui > span, .btn_green_white_innerfade > span, .btnv6_green_white_innerfade > span { background: transparent !important; color: #1A1004 !important; font-weight: 650 !important; text-shadow: none !important; }
+.btn_blue_steamui, .btnv6_blue_hoverfade, .btnv6_blue_blue_innerfade, .btn_darkblue_white_innerfade, .btnv6_lightblue_blue { background: #1C202B !important; border-radius: 99px !important; color: #F2EFE8 !important; border: none !important; }
+.btn_blue_steamui > span, .btnv6_blue_hoverfade > span, .btnv6_blue_blue_innerfade > span, .btn_darkblue_white_innerfade > span, .btnv6_lightblue_blue > span { background: transparent !important; color: #F2EFE8 !important; }
+.btn_blue_steamui:hover, .btnv6_blue_hoverfade:hover, .btnv6_blue_blue_innerfade:hover, .btn_darkblue_white_innerfade:hover { background: #262B38 !important; }
+a:not([class]) { color: #FFCB7A; }
+.btnv6_white_transparent, .btn_white_transparent, .home_section_btn, .btn_medium_tall.btnv6_white_transparent { background: #1C202B !important; border-radius: 99px !important; border: none !important; }
+.btnv6_white_transparent > span, .btn_white_transparent > span { background: transparent !important; color: #F2EFE8 !important; }
+.btnv6_white_transparent:hover, .btn_white_transparent:hover { background: #262B38 !important; }
+
+/* leftover Valve blues on the store front */
+#wishlist_tier, #dlc_tier, .home_discounts_ctn .four_pack_block > div { background: #0E1015 !important; border-radius: 16px !important; box-shadow: inset 0 0 0 1px rgba(236,232,222,.07) !important; }
+.tab_preview, .tab_preview.focus, .tab_row_item.focus, .home_tab_content .tab_item.focus { background: #141720 !important; }
+[class*="WidgetHeaderCtn"], :has(> [class*="WidgetHeaderCtn"]) { background: linear-gradient(77deg, #1C202B 0%, #141720 60%, rgba(240,162,59,.18) 100%) !important; border-radius: 16px; }
+.capsule_row_ctn > div, .deep_dive_key_tags { background: #141720 !important; }
+.home_tab_button.active { border-bottom-color: #F0A23B !important; }
+.home_tab_button.active .tab_content { color: #FFCB7A !important; }
+:has(> [class*="WidgetHeaderCtn"]) > div:not([class*="WidgetHeaderCtn"]) { background: #141720 !important; }
+.carousel_items .gradient { background: linear-gradient(155deg, transparent 15%, rgba(240,162,59,.32)) !important; }
+.ds_flag.ds_owned_flag, .ds_flag.ds_wishlist_flag, .ds_flag { background: linear-gradient(180deg, #FFCB7A, #F0A23B) !important; color: #1A1004 !important; border-radius: 99px 0 0 99px !important; }
+
+/* community */
+.apphub_HomeHeaderContent, .apphub_HeaderTop, .profile_header_bg, .profile_header_bg_texture { background: transparent !important; }
+.profile_content, .profile_leftcol, .profile_rightcol .profile_count_link_preview, .showcase_content_bg, .profile_customization { background: #0E1015 !important; border-radius: 16px !important; }
+.apphub_CardContentMain, .apphub_CardContentAuthorBlock { background: #0E1015 !important; }
+.commentthread_area, .commentthread_comment { background: #0E1015 !important; border-radius: 12px !important; }
+.playerAvatar, .playerAvatar img, .profile_avatar_frame img { border-radius: 50% !important; }
+.apphub_background .left > div, .apphub_background .right > div, .community_home_search, .apphub_HomeSearchCtn { background: #141720 !important; border-radius: 12px !important; box-shadow: none !important; }
+.apphub_background input[type="text"], .community_home_search input, input.apphub_SearchInput, .searchbox input { background: #141720 !important; border: none !important; border-radius: 99px !important; box-shadow: inset 0 0 0 1px rgba(236,232,222,.1) !important; color: #F2EFE8 !important; }
+.apphub_sectionTab, .apphub_sectionTabs a, .inner_bevel, .btn_small.btn_uppercase { background: #1C202B !important; border: none !important; border-radius: 99px !important; color: #C9C6BE !important; text-transform: none !important; letter-spacing: 0 !important; }
+.apphub_sectionTab.active, .apphub_sectionTabs a.active, .apphub_sectionTab:hover { background: rgba(240,162,59,.18) !important; color: #FFCB7A !important; }
+.community_home_recent_game a, .community_home_recent_game_stats, .community_home_recent_hub a span, .apphub_background a > span { color: #E9C48A !important; }

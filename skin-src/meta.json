@@ -1,0 +1,25 @@
+{
+  "folder": "Kestrel",
+  "name": "Kestrel",
+  "description": "Companion skin for the Kestrel plugin. Dresses Steam's own pages, dialogs, menus, notifications, friends and chat, sign-in, and the Store and Community in Kestrel's ink and amber.",
+  "tags": [
+    "Kestrel",
+    "Companion",
+    "Dark"
+  ],
+  "hudLabel": "Not used by Kestrel.",
+  "bootLabel": "Not used by Kestrel.",
+  "conditions": {},
+  "drop": [
+    "Layout",
+    "Navigator",
+    "Dock labels",
+    "Readout",
+    "Startup screen",
+    "Cover hover",
+    "Cursor light",
+    "What's New shelf",
+    "Game list density",
+    "Privacy"
+  ]
+}

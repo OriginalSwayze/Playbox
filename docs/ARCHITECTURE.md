@@ -21,8 +21,11 @@ Kestrel is a new interface for the Steam desktop client, built on Millennium (3.
   - `frontend/styles/` — design tokens, shell and view CSS, injected into the main window as one `<style>`.
   - `frontend/ui/` — the original icon set, the Kestrel mark and the loader.
   - `webview/` — script for Steam's browser views (Store, Community); phase 6.
-- **skin/** — a Millennium theme (linked into Steam's themes folder) for windows Kestrel restyles rather than
-  rebuilds: menus, notifications, friends and chat, settings, sign-in. Phase 6.
+- **skin-src/** — the skin's source: a spec for the Steam Theme Builder (`node skin-src/gen.js && node <builder>/kit/build.js skin-src`)
+  that writes into skin/ through the themes junction, on top of the builder's audited base.
+- **skin/** — the built Millennium theme (linked into Steam's themes folder) for windows Kestrel restyles rather than
+  rebuilds: Steam's own pages in the window, menus, notifications, friends and chat, settings, sign-in, and the
+  Store and Community (`webkit.css`).
 
 ## Steam's chrome
 Steam's top bar and bottom bar stay in the DOM but are hidden; Kestrel reaches native behaviour by calling Steam's
