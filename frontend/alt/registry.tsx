@@ -1,6 +1,7 @@
 // Components and styles for every alternative interface. Adding one = its file + an entry here + one in catalog.ts.
 import type { ComponentType } from 'react';
 import { kitCss } from './kit';
+import { lkCss } from './lk';
 import { Gazette } from './Gazette';
 import { Shelf } from './Shelf';
 import { Terminal } from './Terminal';
@@ -124,6 +125,24 @@ import { Novel, novelCss } from './Novel';
 import { Versus, versusCss } from './Versus';
 import { Techtree, techtreeCss } from './Techtree';
 import { Inventory, inventoryCss } from './Inventory';
+import { Dashboard, dashboardCss } from './Dashboard';
+import { Billboard, billboardCss } from './Billboard';
+import { Coverflow, coverflowCss } from './Coverflow';
+import { Spotlight, spotlightCss } from './Spotlight';
+import { Couch, couchCss } from './Couch';
+import { Hub, hubCss } from './Hub';
+import { Mosaic, mosaicCss } from './Mosaic';
+import { Posters, postersCss } from './Posters';
+import { Orbit, orbitCss } from './Orbit';
+import { Radial, radialCss } from './Radial';
+import { Dock, dockCss } from './Dock';
+import { Blades, bladesCss } from './Blades';
+import { Neon, neonCss } from './Neon';
+import { Hud, hudCss } from './HUD';
+import { Holo, holoCss } from './Holo';
+import { Codex, codexCss } from './Codex';
+import { Loadout, loadoutCss } from './Loadout';
+import { Pitlane, pitlaneCss } from './Pitlane';
 
 export const INTERFACES: Record<string, ComponentType> = {
 	gazette: Gazette,
@@ -249,7 +268,25 @@ export const INTERFACES: Record<string, ComponentType> = {
 	versus: Versus,
 	techtree: Techtree,
 	inventory: Inventory,
+	dashboard: Dashboard,
+	billboard: Billboard,
+	coverflow: Coverflow,
+	spotlight: Spotlight,
+	couch: Couch,
+	hub: Hub,
+	mosaic: Mosaic,
+	posters: Posters,
+	orbit: Orbit,
+	radial: Radial,
+	dock: Dock,
+	blades: Blades,
+	neon: Neon,
+	hud: Hud,
+	holo: Holo,
+	codex: Codex,
+	loadout: Loadout,
+	pitlane: Pitlane,
 };
 
 /** Styles contributed by interfaces that carry their own (the first three live in styles/alt.ts and styles/gazette.ts). */
-export const INTERFACE_CSS: string[] = [kitCss, vinylCss, arcadeCss, deckCss, museumCss, corkboardCss, chronicleCss, missionCss, springboardCss, channelsCss, comicCss, backlogCss, cinemaCss, vendingCss, inboxCss, ledgerCss, gardenCss, journalCss, transitCss, retroCss, indexCss, weatherCss, streamCss, chatCss, calendarCss, photosCss, notesCss, codeCss, filesCss, tubeCss, feedCss, swipeCss, tickerCss, shopCss, readerCss, boardingCss, homeCss, driveCss, watchCss, wikiCss, forumCss, slidesCss, canvasCss, studioCss, cutCss, paintCss, clocksCss, deliveryCss, analyticsCss, ganttCss, mindmapCss, flashcardsCss, quizCss, habitsCss, envelopesCss, ereaderCss, radioCss, cameraCss, cctvCss, tilesCss, phoneCss, crossbarCss, kioskCss, registerCss, receiptCss, typewriterCss, teletextCss, biosCss, wizardCss, homepageCss, searchCss, ircCss, meetingCss, listingsCss, jobsCss, flightsCss, lineupCss, leagueCss, starsCss, elementsCss, scopeCss, synthCss, wheelCss, adventCss, blueprintCss, circuitCss, familyCss, orgchartCss, bracketCss, menuboardCss, stampsCss, passportCss, contactCss, magazineCss, whiteboardCss, aquariumCss, petCss, widgetsCss, launcherCss, assistantCss, notificationsCss, walletCss, contactsCss, appshopCss, preferencesCss, commitsCss, sqlCss, logsCss, graphCss, treemapCss, heatmapCss, zineCss, brutalistCss, softCss, glassCss, papercraftCss, questCss, novelCss, versusCss, techtreeCss, inventoryCss];
+export const INTERFACE_CSS: string[] = [kitCss, lkCss, vinylCss, arcadeCss, deckCss, museumCss, corkboardCss, chronicleCss, missionCss, springboardCss, channelsCss, comicCss, backlogCss, cinemaCss, vendingCss, inboxCss, ledgerCss, gardenCss, journalCss, transitCss, retroCss, indexCss, weatherCss, streamCss, chatCss, calendarCss, photosCss, notesCss, codeCss, filesCss, tubeCss, feedCss, swipeCss, tickerCss, shopCss, readerCss, boardingCss, homeCss, driveCss, watchCss, wikiCss, forumCss, slidesCss, canvasCss, studioCss, cutCss, paintCss, clocksCss, deliveryCss, analyticsCss, ganttCss, mindmapCss, flashcardsCss, quizCss, habitsCss, envelopesCss, ereaderCss, radioCss, cameraCss, cctvCss, tilesCss, phoneCss, crossbarCss, kioskCss, registerCss, receiptCss, typewriterCss, teletextCss, biosCss, wizardCss, homepageCss, searchCss, ircCss, meetingCss, listingsCss, jobsCss, flightsCss, lineupCss, leagueCss, starsCss, elementsCss, scopeCss, synthCss, wheelCss, adventCss, blueprintCss, circuitCss, familyCss, orgchartCss, bracketCss, menuboardCss, stampsCss, passportCss, contactCss, magazineCss, whiteboardCss, aquariumCss, petCss, widgetsCss, launcherCss, assistantCss, notificationsCss, walletCss, contactsCss, appshopCss, preferencesCss, commitsCss, sqlCss, logsCss, graphCss, treemapCss, heatmapCss, zineCss, brutalistCss, softCss, glassCss, papercraftCss, questCss, novelCss, versusCss, techtreeCss, inventoryCss, dashboardCss, billboardCss, coverflowCss, spotlightCss, couchCss, hubCss, mosaicCss, postersCss, orbitCss, radialCss, dockCss, bladesCss, neonCss, hudCss, holoCss, codexCss, loadoutCss, pitlaneCss];
