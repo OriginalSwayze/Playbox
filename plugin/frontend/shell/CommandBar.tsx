@@ -2,7 +2,7 @@
 import { useEffect, useMemo, useRef, useState, type KeyboardEvent as ReactKeyboardEvent } from 'react';
 import { Icon } from '../ui/icons';
 import { getState, setState, useKestrel } from '../state/store';
-import { go, goNative, goSpace, openGame } from '../state/nav';
+import { go, goNative, goSpace, openCollection, openGame } from '../state/nav';
 import { byRecent, formatAgo, playOrInstall, type Game } from '../steam/library';
 import { openAddGame, openFriendsList } from '../steam/activity';
 import { client } from '../steam/env';
@@ -68,6 +68,7 @@ function gameItem(g: Game, group: string): Item {
 export function CommandBar() {
 	const open = useKestrel((s) => s.commandOpen);
 	const library = useKestrel((s) => s.library);
+	const collections = useKestrel((s) => s.collections);
 	const [q, setQ] = useState('');
 	const [sel, setSel] = useState(0);
 	const input = useRef<HTMLInputElement>(null);
@@ -80,14 +81,15 @@ export function CommandBar() {
 		if (!query) return [...byRecent(library).slice(0, 5).map((g) => gameItem(g, 'Recent games')), ...ACTIONS];
 		const gs = library.map((g) => ({ g, s: score(query, g.name) + (g.installed ? 3 : 0) })).filter((x) => x.s > 0)
 			.sort((a, b) => b.s - a.s || b.g.lastPlayed - a.g.lastPlayed).slice(0, 8);
-		const as = ACTIONS.map((a) => ({ a, s: Math.max(score(query, a.label), score(query, a.sub ?? '') / 2) })).filter((x) => x.s > 0).sort((a, b) => b.s - a.s);
+		const colItems: Item[] = collections.filter((c) => c.appids.length).map((c) => ({ id: 'c-' + c.id, group: 'Collections', label: c.name, sub: c.appids.length + ' games', icon: 'library', run: () => openCollection(c.id) }));
+		const as = [...ACTIONS, ...colItems].map((a) => ({ a, s: Math.max(score(query, a.label), score(query, a.sub ?? '') / 2) })).filter((x) => x.s > 0).sort((a, b) => b.s - a.s);
 		const games = gs.map((x) => gameItem(x.g, 'Games'));
 		const acts = as.map((x) => x.a);
 		const store: Item = { id: 'store-q', group: 'Store', label: `Search the store for "${q.trim()}"`, icon: 'discover', act: 'Search',
 			run: () => goNative(`https://store.steampowered.com/search/?term=${encodeURIComponent(q.trim())}`, 'discover') };
 		// whichever kind matches best comes first
 		return (as[0]?.s ?? 0) > (gs[0]?.s ?? 0) ? [...acts, ...games, store] : [...games, ...acts, store];
-	}, [q, library]);
+	}, [q, library, collections]);
 
 	useEffect(() => { setSel(0); }, [q]);
 	useEffect(() => { list.current?.querySelector('.sel')?.scrollIntoView({ block: 'nearest' }); }, [sel]);

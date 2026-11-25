@@ -2,7 +2,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Icon } from '../ui/icons';
 import { setState, useKestrel } from '../state/store';
-import { go, openGame } from '../state/nav';
+import { go, openCollection, openGame } from '../state/nav';
 import { artFor, byRecent, formatAgo, formatPlaytime, playOrInstall, type Game } from '../steam/library';
 import { Cover, WideCard } from './cards';
 import { Rail } from './Rail';
@@ -68,6 +68,11 @@ export function Home() {
 		return library.filter((g) => g.installed && !seen.has(g.appid)).sort((a, b) => b.lastPlayed - a.lastPlayed || a.sortName.localeCompare(b.sortName)).slice(0, 18);
 	}, [library, recent]);
 	const added = useMemo(() => [...library].sort((a, b) => b.added - a.added).slice(0, 12), [library]);
+	const collections = useKestrel((s) => s.collections);
+	const cols = useMemo(() => {
+		const byId = new Map(library.map((g) => [g.appid, g]));
+		return collections.filter((c) => c.id !== 'uncategorized').map((c) => ({ ...c, games: c.appids.map((id) => byId.get(id)).filter(Boolean) as Game[] })).filter((c) => c.games.length > 0);
+	}, [collections, library]);
 	const rotate = useKestrel((s) => s.settings.rotate);
 	// Optional: move through the recent games every 12 s, pausing while the pointer is over the spotlight
 	useEffect(() => {
@@ -93,6 +98,20 @@ export function Home() {
 				<section className="k-section">
 					<div className="k-section-head"><h2>Ready to play</h2><span>Installed</span></div>
 					<div className="k-grid">{ready.map((g) => <Cover key={g.appid} g={g} />)}</div>
+				</section>
+			)}
+			{cols.length > 0 && (
+				<section className="k-section">
+					<div className="k-section-head"><h2>Your collections</h2><span>{cols.length}</span>
+						<button onClick={() => openCollection(null)}>All games <Icon name="forward" size={14} /></button></div>
+					<Rail>
+						{cols.map((c) => (
+							<button key={c.id} className="k-coltile" onClick={() => openCollection(c.id)}>
+								<div className="mosaic">{[...c.games].sort((a, b) => b.lastPlayed - a.lastPlayed).slice(0, 4).map((g) => <img key={g.appid} src={g.capsule} alt="" loading="lazy" />)}</div>
+								<div className="cap"><b>{c.name}</b><span>{c.games.length} games</span></div>
+							</button>
+						))}
+					</Rail>
 				</section>
 			)}
 			<section className="k-section">

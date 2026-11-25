@@ -89,6 +89,40 @@ export const views = `
 	font: 700 10.5px var(--k-small); letter-spacing: .04em; text-transform: uppercase; background: rgba(8,9,12,.78); color: var(--k-fg); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
 .k-cover .badge.busy { color: var(--k-accent-2); }
 
+/* ---- Library with collections ---- */
+.k-lib { display: grid; grid-template-columns: 260px minmax(0, 1fr); align-items: start; }
+.k-lib-side { position: sticky; top: 0; height: calc(100vh - var(--k-top)); overflow-y: auto; padding: 24px 10px 32px 22px; border-right: 1px solid var(--k-line); scrollbar-width: thin; }
+.k-lib-side-head { padding: 4px 12px 10px; font: 600 11px var(--k-small); letter-spacing: .06em; text-transform: uppercase; color: var(--k-fg-3); }
+.k-col { width: 100%; display: flex; align-items: center; gap: 10px; padding: 9px 12px; border-radius: 12px; text-align: left; color: var(--k-fg-2) !important; font: 600 13px var(--k-text) !important; transition: background-color var(--k-t1), color var(--k-t1); }
+.k-col span { flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.k-col em { font: 600 11.5px var(--k-small); font-style: normal; color: var(--k-fg-3); }
+.k-col svg { color: var(--k-fg-3); flex: none; }
+.k-col:hover { background: var(--k-s2); color: var(--k-fg) !important; }
+.k-col.on { background: var(--k-a10); color: var(--k-accent-2) !important; box-shadow: inset 2px 0 0 var(--k-accent); }
+.k-col.on svg, .k-col.on em { color: var(--k-accent); }
+.k-lib .k-lib-head { padding-left: 32px; padding-right: 32px; flex-wrap: wrap; }
+.k-lib .k-lib-body { padding-left: 32px; padding-right: 32px; }
+.k-toggle { height: 38px; padding: 0 14px; border-radius: 99px; display: inline-flex; align-items: center; gap: 8px; background: var(--k-s1); box-shadow: var(--k-edge); font: 600 12.5px var(--k-text) !important; color: var(--k-fg-2) !important; transition: background-color var(--k-t2), color var(--k-t2); }
+.k-toggle.on { background: var(--k-a20); color: var(--k-accent-2) !important; box-shadow: inset 0 0 0 1px var(--k-a40); }
+.k-colsec { margin-bottom: 10px; }
+.k-colsec-head { width: 100%; display: flex; align-items: center; gap: 10px; padding: 12px 4px; text-align: left; border-bottom: 1px solid var(--k-line); }
+.k-colsec-head b { font: 650 17px var(--k-display); color: var(--k-fg); }
+.k-colsec-head span { font: 600 12px var(--k-small); color: var(--k-fg-3); padding: 2px 8px; border-radius: 99px; background: var(--k-s2); }
+.k-colsec-head .chev { color: var(--k-fg-3); transform: rotate(-90deg); transition: transform var(--k-t3) var(--k-spring); }
+.k-colsec.open .k-colsec-head .chev { transform: none; color: var(--k-accent); }
+.k-colsec-head:hover b { color: var(--k-accent-2); }
+.k-colsec .k-grid { padding: 18px 0 14px; animation: k-rise var(--k-t3) var(--k-out) both; }
+
+/* collection tiles on Home */
+.k-coltile { position: relative; scroll-snap-align: start; text-align: left; border-radius: var(--k-r); overflow: hidden; background: var(--k-s1); box-shadow: var(--k-edge), var(--k-lift); transition: transform var(--k-t3) var(--k-spring), box-shadow var(--k-t3); }
+.k-coltile:hover { transform: translateY(-5px); box-shadow: inset 0 0 0 1px var(--k-a40), 0 24px 50px -20px #000; }
+.k-coltile .mosaic { display: grid; grid-template-columns: repeat(4, 1fr); aspect-ratio: 460/215; overflow: hidden; }
+.k-coltile .mosaic img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--k-t4) var(--k-out); }
+.k-coltile:hover .mosaic img { transform: scale(1.06); }
+.k-coltile .cap { display: flex; align-items: baseline; gap: 8px; padding: 12px 14px; }
+.k-coltile .cap b { flex: 1; font: 650 14px var(--k-text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.k-coltile .cap span { font-size: 12px; color: var(--k-fg-3); }
+
 /* ---- Library ---- */
 .k-lib-head { position: sticky; top: 0; z-index: 3; display: flex; align-items: center; gap: 12px; padding: 22px var(--k-7) 16px; background: linear-gradient(180deg, var(--k-ink) 70%, rgba(8,9,12,0)); }
 .k-lib-head h1 { margin: 0 8px 0 0; font: 700 30px var(--k-display); letter-spacing: -.02em; }

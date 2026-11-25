@@ -67,4 +67,10 @@ export function openGame(appid: number, from?: Element | null) {
 	} else setState({ morph: null });
 	go({ kind: 'game', appid });
 }
+/** Show one of the user's collections in the Library. */
+export function openCollection(id: string | null) {
+	setState({ libCollection: id });
+	go({ kind: 'library' });
+}
+
 export const openClassicGamePage = (appid: number) => goNative(`/library/app/${appid}`, 'play');

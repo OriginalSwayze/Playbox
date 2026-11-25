@@ -12,6 +12,7 @@ import { mainWindow, whenMainWindow } from './steam/env';
 import { snapshotLibrary } from './steam/library';
 import { snapshotDownloads, snapshotFriends } from './steam/activity';
 import { runningApps } from './steam/details';
+import { snapshotCollections } from './steam/collections';
 import { tokens } from './styles/tokens';
 import { shell } from './styles/shell';
 import { views } from './styles/views';
@@ -126,12 +127,16 @@ function syncRoute() {
 let libSig = '';
 let dlSig = '';
 let frSig = '';
+let colSig = '';
 function refresh(full: boolean) {
 	try {
 		if (full) {
 			const lib = snapshotLibrary();
 			const sig = lib.map((g) => `${g.appid}:${g.installed ? 1 : 0}:${g.lastPlayed}:${g.status}:${Math.round(g.progress)}`).join('|');
 			if (sig !== libSig) { libSig = sig; setState({ library: lib }); }
+			const cols = snapshotCollections();
+			const csig = cols.map((c) => c.id + ':' + c.name + ':' + c.appids.length).join('|');
+			if (csig !== colSig) { colSig = csig; setState({ collections: cols }); }
 			const fr = snapshotFriends();
 			const fsig = fr.map((f) => f.id + f.state + f.game).join('|');
 			if (fsig !== frSig) { frSig = fsig; setState({ friends: fr }); }

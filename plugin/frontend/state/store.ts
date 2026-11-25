@@ -2,6 +2,7 @@
 import { useSyncExternalStore } from 'react';
 import type { Game } from '../steam/library';
 import type { DownloadState, Friend } from '../steam/activity';
+import type { Collection } from '../steam/collections';
 
 export type Space = 'play' | 'discover' | 'social' | 'you';
 export type View = { kind: 'home' } | { kind: 'library' } | { kind: 'game'; appid: number } | { kind: 'native' };
@@ -31,6 +32,8 @@ export type State = {
 	settingsOpen: boolean;
 	dir: 'forward' | 'back'; // direction of the last move, for page transitions
 	running: number[]; // appids Steam reports as running
+	collections: Collection[]; // the user's Steam collections
+	libCollection: string | null; // collection the Library is showing (null = all games)
 };
 export type Morph = { appid: number; src: string; x: number; y: number; w: number; h: number; radius: number };
 
@@ -50,6 +53,8 @@ let state: State = {
 	settingsOpen: false,
 	dir: 'forward',
 	running: [],
+	collections: [],
+	libCollection: null,
 };
 const subs = new Set<() => void>();
 
