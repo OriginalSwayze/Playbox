@@ -9,6 +9,11 @@ import { Arcade, arcadeCss } from './Arcade';
 import { Deck, deckCss } from './Deck';
 import { Museum, museumCss } from './Museum';
 import { Corkboard, corkboardCss } from './Corkboard';
+import { Chronicle, chronicleCss } from './Chronicle';
+import { Mission, missionCss } from './Mission';
+import { Springboard, springboardCss } from './Springboard';
+import { Channels, channelsCss } from './Channels';
+import { Comic, comicCss } from './Comic';
 
 export const INTERFACES: Record<string, ComponentType> = {
 	gazette: Gazette,
@@ -19,7 +24,12 @@ export const INTERFACES: Record<string, ComponentType> = {
 	deck: Deck,
 	museum: Museum,
 	corkboard: Corkboard,
+	chronicle: Chronicle,
+	mission: Mission,
+	springboard: Springboard,
+	channels: Channels,
+	comic: Comic,
 };
 
 /** Styles contributed by interfaces that carry their own (the first three live in styles/alt.ts and styles/gazette.ts). */
-export const INTERFACE_CSS: string[] = [kitCss, vinylCss, arcadeCss, deckCss, museumCss, corkboardCss];
+export const INTERFACE_CSS: string[] = [kitCss, vinylCss, arcadeCss, deckCss, museumCss, corkboardCss, chronicleCss, missionCss, springboardCss, channelsCss, comicCss];
