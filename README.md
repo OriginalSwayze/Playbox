@@ -29,6 +29,26 @@ Kestrel settings → Interface (or the command bar: "Interface: …") switches t
   it turns to show its cover, with the game's record and a Play sticker on an insert card.
 - **Terminal** — Steam as a command line on a phosphor monitor: `ls`, `find`, `info`, `play`, `install`,
   `store`, `dl`, `online`, `menu`, `ui` and more, with Tab completion, history and clickable output.
+- **Vinyl** — crates of records; a game slides out of its sleeve onto a turntable.
+- **Arcade** — a neon hall of game cabinets with marquees and coin-slot Play.
+- **Deck** — collectible cards with rarity from playtime and foil for your most-played.
+- **Museum** — framed works in gallery rooms, with wall labels and a plaque.
+- **Corkboard** — polaroids pinned to cork, with string between games that share a collection.
+- **Chronicle** — your gaming life as a timeline by year and month.
+- **Mission Control** — your library as live telemetry: hours, disk, activity and a launch button.
+- **Springboard** — a phone home screen: app icons, collection folders, a dock and widgets.
+- **Channels** — a cable TV guide where collections are channels and games are programmes.
+- **Comic** — inked panels with halftone art and speech balloons, and a POW! to play.
+- **Backlog** — a kanban board (never started, playing, on hold, deep dives) with ticket details.
+- **Cinema** — a picture palace with a bulb-lit marquee, posters and a ticket stub that starts the show.
+- **Vending** — a vending machine: key a code like B2 (on screen or keyboard) and the game drops into the tray.
+- **Inbox** — a mail client: folders and labels, games as messages, unread until first played.
+- **Ledger** — a spreadsheet with real columns, sheet tabs, sorting, a formula bar and SUM/AVERAGE.
+- **Garden** — games grow from seed to tree with your hours; collections are garden beds.
+- **Journal** — a handwritten notebook of diary entries with taped-in pictures and page turns.
+- **Transit** — collections as metro lines; games in several collections are interchanges.
+- **Retro Desktop** — an original 90s-style desktop with draggable windows, a taskbar and a menu.
+- **Index** — Swiss typography: an A–Z index of the whole library and a poster for each game.
 All of them use the same Steam integration as Kestrel, keep Ctrl+K, and open Steam's own pages for the Store.
 
 ## Safety
