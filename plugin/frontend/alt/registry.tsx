@@ -74,6 +74,16 @@ import { Bios, biosCss } from './Bios';
 import { Wizard, wizardCss } from './Wizard';
 import { Homepage, homepageCss } from './Homepage';
 import { Search, searchCss } from './Search';
+import { Irc, ircCss } from './Irc';
+import { Meeting, meetingCss } from './Meeting';
+import { Listings, listingsCss } from './Listings';
+import { Jobs, jobsCss } from './Jobs';
+import { Flights, flightsCss } from './Flights';
+import { Lineup, lineupCss } from './Lineup';
+import { League, leagueCss } from './League';
+import { Stars, starsCss } from './Stars';
+import { Elements, elementsCss } from './Elements';
+import { Scope, scopeCss } from './Scope';
 
 export const INTERFACES: Record<string, ComponentType> = {
 	gazette: Gazette,
@@ -149,7 +159,17 @@ export const INTERFACES: Record<string, ComponentType> = {
 	wizard: Wizard,
 	homepage: Homepage,
 	search: Search,
+	irc: Irc,
+	meeting: Meeting,
+	listings: Listings,
+	jobs: Jobs,
+	flights: Flights,
+	lineup: Lineup,
+	league: League,
+	stars: Stars,
+	elements: Elements,
+	scope: Scope,
 };
 
 /** Styles contributed by interfaces that carry their own (the first three live in styles/alt.ts and styles/gazette.ts). */
-export const INTERFACE_CSS: string[] = [kitCss, vinylCss, arcadeCss, deckCss, museumCss, corkboardCss, chronicleCss, missionCss, springboardCss, channelsCss, comicCss, backlogCss, cinemaCss, vendingCss, inboxCss, ledgerCss, gardenCss, journalCss, transitCss, retroCss, indexCss, weatherCss, streamCss, chatCss, calendarCss, photosCss, notesCss, codeCss, filesCss, tubeCss, feedCss, swipeCss, tickerCss, shopCss, readerCss, boardingCss, homeCss, driveCss, watchCss, wikiCss, forumCss, slidesCss, canvasCss, studioCss, cutCss, paintCss, clocksCss, deliveryCss, analyticsCss, ganttCss, mindmapCss, flashcardsCss, quizCss, habitsCss, envelopesCss, ereaderCss, radioCss, cameraCss, cctvCss, tilesCss, phoneCss, crossbarCss, kioskCss, registerCss, receiptCss, typewriterCss, teletextCss, biosCss, wizardCss, homepageCss, searchCss];
+export const INTERFACE_CSS: string[] = [kitCss, vinylCss, arcadeCss, deckCss, museumCss, corkboardCss, chronicleCss, missionCss, springboardCss, channelsCss, comicCss, backlogCss, cinemaCss, vendingCss, inboxCss, ledgerCss, gardenCss, journalCss, transitCss, retroCss, indexCss, weatherCss, streamCss, chatCss, calendarCss, photosCss, notesCss, codeCss, filesCss, tubeCss, feedCss, swipeCss, tickerCss, shopCss, readerCss, boardingCss, homeCss, driveCss, watchCss, wikiCss, forumCss, slidesCss, canvasCss, studioCss, cutCss, paintCss, clocksCss, deliveryCss, analyticsCss, ganttCss, mindmapCss, flashcardsCss, quizCss, habitsCss, envelopesCss, ereaderCss, radioCss, cameraCss, cctvCss, tilesCss, phoneCss, crossbarCss, kioskCss, registerCss, receiptCss, typewriterCss, teletextCss, biosCss, wizardCss, homepageCss, searchCss, ircCss, meetingCss, listingsCss, jobsCss, flightsCss, lineupCss, leagueCss, starsCss, elementsCss, scopeCss];

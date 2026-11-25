@@ -77,6 +77,16 @@ export const CATALOG: InterfaceInfo[] = [
 	{ id: 'wizard', name: 'Wizard', blurb: 'A classic setup wizard: Next, Next, Finish', swatch: ['#0000FF', '#D4D0C8'] },
 	{ id: 'homepage', name: 'Homepage', blurb: 'A personal web page from 1997', swatch: ['#000066', '#FFFF00'] },
 	{ id: 'search', name: 'Search', blurb: 'A search engine with a knowledge panel', swatch: ['#FFFFFF', '#6D3FD8'] },
+	{ id: 'irc', name: 'IRC', blurb: 'A 90s chat client: channels, nicks and /play', swatch: ['#ECE9D8', '#000080'] },
+	{ id: 'meeting', name: 'Meeting', blurb: 'A video call with your games as participants', swatch: ['#202124', '#8AB4F8'] },
+	{ id: 'listings', name: 'Listings', blurb: 'A property site: every game is a listing', swatch: ['#FFFFFF', '#D92228'] },
+	{ id: 'jobs', name: 'Jobs', blurb: 'A job board where Easy apply plays', swatch: ['#F4F2EE', '#0B66C2'] },
+	{ id: 'flights', name: 'Flights', blurb: 'A flight-booking site with a seat map', swatch: ['#05203C', '#0062E3'] },
+	{ id: 'lineup', name: 'Lineup', blurb: 'A festival poster headlined by your top games', swatch: ['#7A1F5C', '#FFB347'] },
+	{ id: 'league', name: 'League', blurb: 'A sports league table of your games', swatch: ['#0B2545', '#F2C14E'] },
+	{ id: 'stars', name: 'Stars', blurb: 'A planetarium: games are stars, collections constellations', swatch: ['#030712', '#9EC1FF'] },
+	{ id: 'elements', name: 'Elements', blurb: 'A periodic table of your 118 most-played games', swatch: ['#FAFAF7', '#82B1FF'] },
+	{ id: 'scope', name: 'Scope', blurb: 'An oscilloscope tracing your games as signals', swatch: ['#26292C', '#FFE14D'] },
 ];
 
 export const uiIds = () => CATALOG.map((c) => c.id);
