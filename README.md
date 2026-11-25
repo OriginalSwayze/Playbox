@@ -21,7 +21,7 @@ overlay); Kestrel replaces how you move around it.
   Auto), opening animation, cover tilt, spotlight rotation, start view.
 
 ## Other interfaces
-Kestrel settings → Interface (or the command bar: "Interface: …") switches the whole window to one of:
+Kestrel settings → Interface (searchable), the command bar ("Interface: …") or Terminal's `ui <id>` switches the whole window to one of 123 alternatives:
 - **Gazette** — your library as a printed newspaper: the game you're most likely to play is the front-page
   story, collections are the paper's sections, unplayed games run as classifieds, and a game opens as a full
   article set from its store description, with an honours list of achievements and a Play stamp.
@@ -49,6 +49,108 @@ Kestrel settings → Interface (or the command bar: "Interface: …") switches t
 - **Transit** — collections as metro lines; games in several collections are interchanges.
 - **Retro Desktop** — an original 90s-style desktop with draggable windows, a taskbar and a menu.
 - **Index** — Swiss typography: an A–Z index of the whole library and a poster for each game.
+
+And 100 more, each shaped like a different kind of app or object:
+- **Forecast** — a weather app: games are cities, hours are degrees.
+- **Stream** — a music streaming app with playlists and a now-playing bar.
+- **Chat** — a messenger where every game is a conversation.
+- **Calendar** — a calendar of your last sessions and new arrivals.
+- **Photos** — a photo library with albums and a lightbox.
+- **Notes** — a notes app; write your own notes per game.
+- **Code** — a code editor: your library as a source tree.
+- **Files** — a file manager with details view and preview.
+- **Tube** — a video site with a watch page and up next.
+- **Feed** — a social timeline where your library posts.
+- **Swipe** — a swipe-to-match app for your backlog.
+- **Ticker** — a trading terminal priced in hours played.
+- **Shop** — an online store where everything is already yours.
+- **Reader** — a feed reader with long-form articles.
+- **Boarding** — an airline app with a boarding pass per game.
+- **Home** — a smart-home controller: games are devices.
+- **Drive** — a car infotainment screen with gauges.
+- **Watch** — a smartwatch honeycomb with activity rings.
+- **Wiki** — an encyclopedia with an article per game.
+- **Forum** — an old-school message board.
+- **Slides** — presentation software: each collection is a deck.
+- **Canvas** — a design tool with artboards on an infinite canvas.
+- **Studio** — a music workstation: tracks, clips and a mixer.
+- **Cut** — a video editor with a scrubbable timeline.
+- **Paint** — a paint program: draw on your covers.
+- **Clocks** — a clock app set to your last sessions.
+- **Delivery** — a food-delivery app: collections are restaurants.
+- **Analytics** — a product-analytics dashboard of your library.
+- **Gantt** — a project planner with a bar per game.
+- **Mind Map** — a mind map branching from your library.
+- **Flashcards** — a study app: flip cards and rate what you know.
+- **Quiz Night** — a game show about your own library.
+- **Habits** — a habit tracker with fortnightly goals.
+- **Envelopes** — a time budget in envelopes per collection.
+- **E-reader** — an e-ink reader with page turns.
+- **Radio** — a valve radio: tune the dial to a game.
+- **Camera** — a camera app: the shutter plays.
+- **CCTV** — a security-monitor wall of feeds.
+- **Tiles** — a tiling window manager with workspaces.
+- **Phone** — an early-2000s mobile phone with a keypad.
+- **Crossbar** — a console media bar: categories across, games down.
+- **Kiosk** — a self-service touchscreen in three big taps.
+- **Register** — a point-of-sale till that rings up games.
+- **Receipt** — your library printed on one long till roll.
+- **Typewriter** — a typewriter that types a letter per game.
+- **Teletext** — a broadcast text service with page numbers.
+- **BIOS** — a firmware setup utility with a boot order.
+- **Wizard** — a classic setup wizard: Next, Next, Finish.
+- **Homepage** — a personal web page from 1997.
+- **Search** — a search engine with a knowledge panel.
+- **IRC** — a 90s chat client: channels, nicks and /play.
+- **Meeting** — a video call with your games as participants.
+- **Listings** — a property site: every game is a listing.
+- **Jobs** — a job board where Easy apply plays.
+- **Flights** — a flight-booking site with a seat map.
+- **Lineup** — a festival poster headlined by your top games.
+- **League** — a sports league table of your games.
+- **Stars** — a planetarium: games are stars, collections constellations.
+- **Elements** — a periodic table of your 118 most-played games.
+- **Scope** — an oscilloscope tracing your games as signals.
+- **Synth** — a modular synth: patch a game to the output.
+- **Wheel** — a decision wheel: spin to pick what to play.
+- **Advent** — an advent calendar with a game behind each door.
+- **Blueprint** — a floor plan: collections are rooms.
+- **Circuit** — a circuit board: collections are chips.
+- **Family Tree** — a family tree of collections and games.
+- **Org Chart** — a company directory with departments.
+- **Bracket** — a knockout tournament of sixteen games.
+- **Menu Board** — a café chalkboard menu.
+- **Stamps** — a stamp album with postmarks.
+- **Passport** — a passport with an entry stamp per game.
+- **Contact Sheet** — a darkroom contact sheet of film strips.
+- **Magazine** — a glossy monthly with cover and features.
+- **Whiteboard** — a whiteboard of draggable sticky notes.
+- **Aquarium** — a fish tank: games swim, hours make them grow.
+- **Pet** — a pocket virtual pet for every game.
+- **Widgets** — a bento board of desktop widgets.
+- **Launcher** — a keyboard launcher: type, Enter, play.
+- **Assistant** — ask questions about your library.
+- **Notifications** — a lock screen of game notifications.
+- **Wallet** — a phone wallet of passes, one per game.
+- **Contacts** — an address book of your games.
+- **Appshop** — a mobile app store with Today stories.
+- **Preferences** — a system-settings app with a pane per game.
+- **Commits** — a version-control client: sessions as commits.
+- **SQL** — a database console that runs real queries.
+- **Logs** — an observability log explorer.
+- **Graph** — a force-directed network of collections and games.
+- **Treemap** — a disk-usage treemap by size or hours.
+- **Heatmap** — a calendar heatmap of your activity.
+- **Zine** — a photocopied punk fanzine with ransom-note type.
+- **Brutalist** — raw web brutalism: one blunt table.
+- **Soft** — soft neumorphic UI pressed from one surface.
+- **Glass** — frosted glass panes over drifting colour.
+- **Papercraft** — a paper-cut diorama with hanging tags.
+- **Quest** — a classic RPG menu: party, items, status.
+- **Novel** — a visual novel where your games talk to you.
+- **Versus** — a fighting-game character select.
+- **Tech Tree** — a strategy-game research tree by era.
+- **Inventory** — an adventure backpack with item rarities.
 All of them use the same Steam integration as Kestrel, keep Ctrl+K, and open Steam's own pages for the Store.
 
 ## Safety

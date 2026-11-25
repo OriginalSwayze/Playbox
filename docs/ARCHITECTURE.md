@@ -19,12 +19,16 @@ Kestrel is a new interface for the Steam desktop client, built on Millennium (3.
     Screenshots / News / DLC tabs, screenshot viewer), shared cards. `steam/details.ts` feeds the game page from
     `appDetailsStore.RegisterForAppData` and Steam's public news API; `shell/Morph.tsx` flies a card's art into the hero.
   - `frontend/styles/` — design tokens, shell and view CSS, injected into the main window as one `<style>`.
-  - `frontend/alt/` — the alternative interfaces, one file each (Gazette, Shelf, Terminal and 20 more), and what
-    they share (`common.tsx`: window strip, game commands, collections as islands; `kit.ts`: shared styles).
+  - `frontend/alt/` — the alternative interfaces, one file each (Gazette, Shelf, Terminal and 120 more), and what
+    they share (`common.tsx`: window strip, game commands, collections as islands, `useBrowse` for collection-or-search,
+    `PlayBtn`, `hrs`, `dateOf`; `kit.ts`: shared styles and `tok()`, which turns a small palette into the full token set
+    and the top strip).
     `catalog.ts` lists names and swatches without components; `registry.tsx` maps ids to components and CSS. Adding
     one = its file + an entry in each. Key handlers listen on Steam's main window (`mainWindow().BrowserWindow`, not
     the shared context's `window`) and claim their keys, or the hidden native library type-ahead navigates. The interface is a Kestrel setting, exposed as
-    `<html data-ui>` so each one recolours the shared tokens (`styles/alt.ts`).
+    `<html data-ui>` so each one recolours the shared tokens (`styles/alt.ts`). AltPage gives the page the classes
+    `<prefix>-top`, `<prefix>-stage` and `<prefix>-brand`, so an interface must not reuse those names for its own
+    elements (a reused `-stage` collapses the page). DOM lookups also go through `mainWindow()`, never `document`.
   - `frontend/ui/` — the original icon set, the Kestrel mark and the loader.
   - `webview/` — script for Steam's browser views (Store, Community); phase 6.
 - **skin-src/** — the skin's source: a spec for the Steam Theme Builder (`node skin-src/gen.js && node <builder>/kit/build.js skin-src`)

@@ -117,6 +117,16 @@ export const CATALOG: InterfaceInfo[] = [
 	{ id: 'graph', name: 'Graph', blurb: 'A force-directed network of collections and games', swatch: ['#0F1020', '#8B7BFF'] },
 	{ id: 'treemap', name: 'Treemap', blurb: 'A disk-usage treemap by size or hours', swatch: ['#12161C', '#4DA3FF'] },
 	{ id: 'heatmap', name: 'Heatmap', blurb: 'A calendar heatmap of your activity', swatch: ['#FFFFFF', '#E65100'] },
+	{ id: 'zine', name: 'Zine', blurb: 'A photocopied punk fanzine with ransom-note type', swatch: ['#EDEAE3', '#FF2E88'] },
+	{ id: 'brutalist', name: 'Brutalist', blurb: 'Raw web brutalism: one blunt table', swatch: ['#FFFFFF', '#0000FF'] },
+	{ id: 'soft', name: 'Soft', blurb: 'Soft neumorphic UI pressed from one surface', swatch: ['#E4E9F0', '#6C7CF0'] },
+	{ id: 'glass', name: 'Glass', blurb: 'Frosted glass panes over drifting colour', swatch: ['#14122B', '#FF5FA2'] },
+	{ id: 'papercraft', name: 'Papercraft', blurb: 'A paper-cut diorama with hanging tags', swatch: ['#9FD3EC', '#E85D4A'] },
+	{ id: 'quest', name: 'Quest', blurb: 'A classic RPG menu: party, items, status', swatch: ['#0B1660', '#FFFFFF'] },
+	{ id: 'novel', name: 'Novel', blurb: 'A visual novel where your games talk to you', swatch: ['#2A2036', '#FF8FC7'] },
+	{ id: 'versus', name: 'Versus', blurb: 'A fighting-game character select', swatch: ['#0A0410', '#FFD23B'] },
+	{ id: 'techtree', name: 'Tech Tree', blurb: 'A strategy-game research tree by era', swatch: ['#0B1A24', '#3FD0C9'] },
+	{ id: 'inventory', name: 'Inventory', blurb: 'An adventure backpack with item rarities', swatch: ['#2A2018', '#FF9F1A'] },
 ];
 
 export const uiIds = () => CATALOG.map((c) => c.id);
