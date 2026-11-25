@@ -138,11 +138,17 @@ import { Radial, radialCss } from './Radial';
 import { Dock, dockCss } from './Dock';
 import { Blades, bladesCss } from './Blades';
 import { Neon, neonCss } from './Neon';
-import { Hud, hudCss } from './HUD';
+import { Hud, hudCss } from './Hud';
 import { Holo, holoCss } from './Holo';
 import { Codex, codexCss } from './Codex';
 import { Loadout, loadoutCss } from './Loadout';
 import { Pitlane, pitlaneCss } from './Pitlane';
+import { Overworld, overworldCss } from './Overworld';
+import { Saves, savesCss } from './Saves';
+import { Pause, pauseCss } from './Pause';
+import { Lobby, lobbyCss } from './Lobby';
+import { Season, seasonCss } from './Season';
+import { Trophy, trophyCss } from './Trophy';
 
 export const INTERFACES: Record<string, ComponentType> = {
 	gazette: Gazette,
@@ -286,7 +292,13 @@ export const INTERFACES: Record<string, ComponentType> = {
 	codex: Codex,
 	loadout: Loadout,
 	pitlane: Pitlane,
+	overworld: Overworld,
+	saves: Saves,
+	pause: Pause,
+	lobby: Lobby,
+	season: Season,
+	trophy: Trophy,
 };
 
 /** Styles contributed by interfaces that carry their own (the first three live in styles/alt.ts and styles/gazette.ts). */
-export const INTERFACE_CSS: string[] = [kitCss, lkCss, vinylCss, arcadeCss, deckCss, museumCss, corkboardCss, chronicleCss, missionCss, springboardCss, channelsCss, comicCss, backlogCss, cinemaCss, vendingCss, inboxCss, ledgerCss, gardenCss, journalCss, transitCss, retroCss, indexCss, weatherCss, streamCss, chatCss, calendarCss, photosCss, notesCss, codeCss, filesCss, tubeCss, feedCss, swipeCss, tickerCss, shopCss, readerCss, boardingCss, homeCss, driveCss, watchCss, wikiCss, forumCss, slidesCss, canvasCss, studioCss, cutCss, paintCss, clocksCss, deliveryCss, analyticsCss, ganttCss, mindmapCss, flashcardsCss, quizCss, habitsCss, envelopesCss, ereaderCss, radioCss, cameraCss, cctvCss, tilesCss, phoneCss, crossbarCss, kioskCss, registerCss, receiptCss, typewriterCss, teletextCss, biosCss, wizardCss, homepageCss, searchCss, ircCss, meetingCss, listingsCss, jobsCss, flightsCss, lineupCss, leagueCss, starsCss, elementsCss, scopeCss, synthCss, wheelCss, adventCss, blueprintCss, circuitCss, familyCss, orgchartCss, bracketCss, menuboardCss, stampsCss, passportCss, contactCss, magazineCss, whiteboardCss, aquariumCss, petCss, widgetsCss, launcherCss, assistantCss, notificationsCss, walletCss, contactsCss, appshopCss, preferencesCss, commitsCss, sqlCss, logsCss, graphCss, treemapCss, heatmapCss, zineCss, brutalistCss, softCss, glassCss, papercraftCss, questCss, novelCss, versusCss, techtreeCss, inventoryCss, dashboardCss, billboardCss, coverflowCss, spotlightCss, couchCss, hubCss, mosaicCss, postersCss, orbitCss, radialCss, dockCss, bladesCss, neonCss, hudCss, holoCss, codexCss, loadoutCss, pitlaneCss];
+export const INTERFACE_CSS: string[] = [kitCss, lkCss, vinylCss, arcadeCss, deckCss, museumCss, corkboardCss, chronicleCss, missionCss, springboardCss, channelsCss, comicCss, backlogCss, cinemaCss, vendingCss, inboxCss, ledgerCss, gardenCss, journalCss, transitCss, retroCss, indexCss, weatherCss, streamCss, chatCss, calendarCss, photosCss, notesCss, codeCss, filesCss, tubeCss, feedCss, swipeCss, tickerCss, shopCss, readerCss, boardingCss, homeCss, driveCss, watchCss, wikiCss, forumCss, slidesCss, canvasCss, studioCss, cutCss, paintCss, clocksCss, deliveryCss, analyticsCss, ganttCss, mindmapCss, flashcardsCss, quizCss, habitsCss, envelopesCss, ereaderCss, radioCss, cameraCss, cctvCss, tilesCss, phoneCss, crossbarCss, kioskCss, registerCss, receiptCss, typewriterCss, teletextCss, biosCss, wizardCss, homepageCss, searchCss, ircCss, meetingCss, listingsCss, jobsCss, flightsCss, lineupCss, leagueCss, starsCss, elementsCss, scopeCss, synthCss, wheelCss, adventCss, blueprintCss, circuitCss, familyCss, orgchartCss, bracketCss, menuboardCss, stampsCss, passportCss, contactCss, magazineCss, whiteboardCss, aquariumCss, petCss, widgetsCss, launcherCss, assistantCss, notificationsCss, walletCss, contactsCss, appshopCss, preferencesCss, commitsCss, sqlCss, logsCss, graphCss, treemapCss, heatmapCss, zineCss, brutalistCss, softCss, glassCss, papercraftCss, questCss, novelCss, versusCss, techtreeCss, inventoryCss, dashboardCss, billboardCss, coverflowCss, spotlightCss, couchCss, hubCss, mosaicCss, postersCss, orbitCss, radialCss, dockCss, bladesCss, neonCss, hudCss, holoCss, codexCss, loadoutCss, pitlaneCss, overworldCss, savesCss, pauseCss, lobbyCss, seasonCss, trophyCss];

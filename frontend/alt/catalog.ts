@@ -140,11 +140,17 @@ export const CATALOG: InterfaceInfo[] = [
 	{ id: 'dock', name: 'Dock', blurb: 'A desktop with key-art wallpaper and a magnifying dock', swatch: ['#1A1530', '#7C9CFF'] },
 	{ id: 'blades', name: 'Blades', blurb: 'Collections as sliding coloured blades', swatch: ['#2F7D1E', '#FFFFFF'] },
 	{ id: 'neon', name: 'Neon', blurb: 'A cyberpunk launcher: cut corners, glitch and signal meters', swatch: ['#07040E', '#FF2E97'] },
-	{ id: 'hud', name: 'Hud', blurb: 'A sci-fi heads-up display with a targeting reticle', swatch: ['#020806', '#50FFAA'] },
+	{ id: 'hud', name: 'HUD', blurb: 'A sci-fi heads-up display with a targeting reticle', swatch: ['#020806', '#50FFAA'] },
 	{ id: 'holo', name: 'Holo', blurb: 'A hologram projector with a control deck', swatch: ['#01060C', '#5AC8FF'] },
 	{ id: 'codex', name: 'Codex', blurb: 'A fantasy grimoire with gilded plates and a wax seal', swatch: ['#1A120C', '#C9A24A'] },
 	{ id: 'loadout', name: 'Loadout', blurb: 'A shooter loadout: slots, stat bars and an armory', swatch: ['#0D0F0C', '#FF7A1A'] },
 	{ id: 'pitlane', name: 'Pitlane', blurb: 'A racing garage with a rev counter and a car grid', swatch: ['#0B0B0D', '#E10600'] },
+	{ id: 'overworld', name: 'Overworld', blurb: 'A level-select map: worlds, levels and stars', swatch: ['#5DBB63', '#FF5A36'] },
+	{ id: 'saves', name: 'Saves', blurb: 'A save-file select screen with play times', swatch: ['#0A0E2A', '#FFD23F'] },
+	{ id: 'pause', name: 'Pause', blurb: 'A pause menu over your last game', swatch: ['#08090B', '#FFFFFF'] },
+	{ id: 'lobby', name: 'Lobby', blurb: 'A matchmaking lobby with your squad and Find match', swatch: ['#0B1020', '#FFC531'] },
+	{ id: 'season', name: 'Season', blurb: 'A battle-pass track: played games are unlocked tiers', swatch: ['#120B2E', '#FFE14A'] },
+	{ id: 'trophy', name: 'Trophy Room', blurb: 'Graded trophies on lit shelves and a pedestal', swatch: ['#160F0A', '#E8B64A'] },
 ];
 
 export const uiIds = () => CATALOG.map((c) => c.id);
