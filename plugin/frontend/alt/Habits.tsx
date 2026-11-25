@@ -29,7 +29,7 @@ export function Habits() {
 					<header><h1>Your habits</h1><p>{kept} of {mine.length} goals met this fortnight</p></header>
 					<div className="hab-grid">{mine.map((g) => { const goal = habits[g.appid]; const p = g.minutes2w / 60 / goal; const d = since(g); return (
 						<div key={g.appid} className={'hab-card' + (p >= 1 ? ' done' : '') + (sel?.appid === g.appid ? ' on' : '')}>
-							<button data-appid={g.appid} className="hab-top" onClick={() => select(g.appid)}><span className="hab-rw"><Ring p={p} /><Art g={g} kind="capsule" /></span><span><b>{g.name}</b><em>{(g.minutes2w / 60).toFixed(1)} of {goal} h · 2 weeks</em></span></button>
+							<button data-appid={g.appid} className="hab-row1" onClick={() => select(g.appid)}><span className="hab-rw"><Ring p={p} /><Art g={g} kind="capsule" /></span><span><b>{g.name}</b><em>{(g.minutes2w / 60).toFixed(1)} of {goal} h · 2 weeks</em></span></button>
 							<div className="hab-row"><span className={'hab-streak' + (d !== null && d <= 1 ? ' hot' : '')}>{d === null ? 'never kept' : d === 0 ? 'kept today' : `${d} day${d === 1 ? '' : 's'} ago`}</span>
 								<span className="hab-goal"><button onClick={() => set({ ...habits, [g.appid]: Math.max(1, goal - 1) })}>−</button>{goal} h<button onClick={() => set({ ...habits, [g.appid]: goal + 1 })}>+</button></span></div>
 						</div>); })}
@@ -56,9 +56,9 @@ export const habitsCss = tok('habits', { bg: '#F7F5F0', s1: '#FFFFFF', s2: '#EFE
 .hab-main { overflow-y: auto; padding: 26px 34px 60px; } .hab-main h1 { margin: 0; font: 800 32px var(--k-text); } .hab-main header p { margin: 4px 0 22px; color: #8F897C; font: 15px var(--k-text); }
 .hab-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 14px; }
 .hab-card { padding: 16px; border-radius: 20px; background: #fff; box-shadow: 0 1px 2px rgba(0,0,0,.05), 0 0 0 1px #EFECE4; animation: k-rise .4s var(--k-out) both; } .hab-card.done { background: #EAF8F1; } .hab-card.on { box-shadow: 0 0 0 2px #2FB67C; }
-.hab-top { display: flex; gap: 14px; align-items: center; width: 100%; text-align: left; } .hab-rw { position: relative; width: 84px; height: 84px; flex: none; } .hab-rw img, .hab-rw .alt-noart { position: absolute; left: 17px; top: 17px; width: 50px; height: 50px; border-radius: 50%; object-fit: cover; font-size: 6px; }
+.hab-row1 { display: flex; gap: 14px; align-items: center; width: 100%; text-align: left; } .hab-rw { position: relative; width: 84px; height: 84px; flex: none; } .hab-rw img, .hab-rw .alt-noart { position: absolute; left: 17px; top: 17px; width: 50px; height: 50px; border-radius: 50%; object-fit: cover; font-size: 6px; }
 .hab-ring .t { fill: none; stroke: #EFECE4; stroke-width: 7; } .hab-ring .v { fill: none; stroke: #2FB67C; stroke-width: 7; stroke-linecap: round; transition: stroke-dasharray .8s var(--k-out); }
-.hab-top b { display: block; font: 700 16px var(--k-text); color: #23211C; } .hab-top em { font: 13px var(--k-text); font-style: normal; color: #8F897C; }
+.hab-row1 b { display: block; font: 700 16px var(--k-text); color: #23211C; } .hab-row1 em { font: 13px var(--k-text); font-style: normal; color: #8F897C; }
 .hab-row { display: flex; justify-content: space-between; align-items: center; margin-top: 12px; } .hab-streak { padding: 4px 10px; border-radius: 99px; background: #EFECE4; font: 600 12px var(--k-text); color: #4F4B42; } .hab-streak.hot { background: #FFE8CC; color: #C25E00; } .hab-streak.hot::before { content: "🔥 "; }
 .hab-goal { display: flex; gap: 8px; align-items: center; font: 600 13px var(--k-text); } .hab-goal button { width: 26px; height: 26px; border-radius: 50%; background: #EFECE4; font: 700 15px var(--k-text); color: #23211C; }
 .hab-empty { color: #8F897C; }

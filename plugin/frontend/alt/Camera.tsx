@@ -16,7 +16,7 @@ export function Camera() {
 	return (
 		<AltPage className="cam" brand={<><span className="cam-lens" />Camera</>}>
 			<div className="cam-app">
-				<div className="cam-top"><span>⚡ Auto</span><span>HDR</span><span>ISO {g?.metacritic || 100}</span><span>1/{g ? Math.max(1, Math.round(g.minutes / 60)) : 60}s</span><span>ƒ/1.8</span><button onClick={() => setInfo(!info)}>{info ? 'Hide info' : 'ⓘ Info'}</button></div>
+				<div className="cam-hud"><span>⚡ Auto</span><span>HDR</span><span>ISO {g?.metacritic || 100}</span><span>1/{g ? Math.max(1, Math.round(g.minutes / 60)) : 60}s</span><span>ƒ/1.8</span><button onClick={() => setInfo(!info)}>{info ? 'Hide info' : 'ⓘ Info'}</button></div>
 				<section className="cam-vf" onClick={(e) => { const r = e.currentTarget.getBoundingClientRect(); setFocus({ x: ((e.clientX - r.left) / r.width) * 100, y: ((e.clientY - r.top) / r.height) * 100 }); }}>
 					{g && <Art g={g} kind="hero" key={g.appid} className="cam-img" />}
 					<div className="cam-grid" />
@@ -40,7 +40,7 @@ export function Camera() {
 export const cameraCss = tok('camera', { bg: '#000000', s1: '#161616', s2: '#222', s3: '#333', fg: '#FFFFFF', fg2: '#CCCCCC', fg3: '#888', acc: '#FFD60A', on: '#000', font: '"Segoe UI", system-ui, sans-serif' }) + `
 .cam-brand { display: flex; gap: 8px; align-items: center; font: 600 17px var(--k-text); color: #fff; } .cam-lens { width: 20px; height: 20px; border-radius: 50%; background: radial-gradient(circle, #3A6EA5 25%, #111 30% 55%, #555 60%); }
 .cam-app { position: absolute; inset: 0; display: grid; grid-template-rows: 40px minmax(0, 1fr) 74px 34px 100px; background: #000; color: #fff; }
-.cam-top { display: flex; gap: 26px; justify-content: center; align-items: center; font: 600 13px var(--k-text); color: #FFD60A; } .cam-top button { color: #fff; font: 600 13px var(--k-text); }
+.cam-hud { display: flex; gap: 26px; justify-content: center; align-items: center; font: 600 13px var(--k-text); color: #FFD60A; } .cam-hud button { color: #fff; font: 600 13px var(--k-text); }
 .cam-vf { position: relative; overflow: hidden; margin: 0 12%; border-radius: 6px; cursor: crosshair; background: #111; } .cam-img { width: 100%; height: 100%; object-fit: cover; animation: cam-in .6s var(--k-out) both; } @keyframes cam-in { from { filter: blur(14px); transform: scale(1.06); } }
 .cam-grid { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(90deg, transparent 33%, rgba(255,255,255,.25) 33% calc(33% + 1px), transparent calc(33% + 1px) 66%, rgba(255,255,255,.25) 66% calc(66% + 1px), transparent calc(66% + 1px)), linear-gradient(transparent 33%, rgba(255,255,255,.25) 33% calc(33% + 1px), transparent calc(33% + 1px) 66%, rgba(255,255,255,.25) 66% calc(66% + 1px), transparent calc(66% + 1px)); }
 .cam-focus { position: absolute; width: 80px; height: 80px; margin: -40px; border: 1.5px solid #FFD60A; pointer-events: none; animation: cam-f .5s var(--k-out) both; } @keyframes cam-f { from { transform: scale(1.5); opacity: 0; } 60% { transform: scale(.92); } }

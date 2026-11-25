@@ -97,6 +97,16 @@ export const CATALOG: InterfaceInfo[] = [
 	{ id: 'bracket', name: 'Bracket', blurb: 'A knockout tournament of sixteen games', swatch: ['#0E1726', '#FFC531'] },
 	{ id: 'menuboard', name: 'Menu Board', blurb: 'A café chalkboard menu', swatch: ['#2A3631', '#F4D35E'] },
 	{ id: 'stamps', name: 'Stamps', blurb: 'A stamp album with postmarks', swatch: ['#F3EEDC', '#B23A48'] },
+	{ id: 'passport', name: 'Passport', blurb: 'A passport with an entry stamp per game', swatch: ['#5B1A22', '#C9A44C'] },
+	{ id: 'contact', name: 'Contact Sheet', blurb: 'A darkroom contact sheet of film strips', swatch: ['#1A0806', '#FF3B2F'] },
+	{ id: 'magazine', name: 'Magazine', blurb: 'A glossy monthly with cover and features', swatch: ['#EDEAE4', '#E4002B'] },
+	{ id: 'whiteboard', name: 'Whiteboard', blurb: 'A whiteboard of draggable sticky notes', swatch: ['#FDFDFB', '#FFF176'] },
+	{ id: 'aquarium', name: 'Aquarium', blurb: 'A fish tank: games swim, hours make them grow', swatch: ['#0D5E85', '#FFB347'] },
+	{ id: 'pet', name: 'Pet', blurb: 'A pocket virtual pet for every game', swatch: ['#E2457E', '#B7C9A5'] },
+	{ id: 'widgets', name: 'Widgets', blurb: 'A bento board of desktop widgets', swatch: ['#1B1D29', '#7AA2FF'] },
+	{ id: 'launcher', name: 'Launcher', blurb: 'A keyboard launcher: type, Enter, play', swatch: ['#101014', '#FF6363'] },
+	{ id: 'assistant', name: 'Assistant', blurb: 'Ask questions about your library', swatch: ['#FAF9F6', '#7C5CFA'] },
+	{ id: 'notifications', name: 'Notifications', blurb: 'A lock screen of game notifications', swatch: ['#0D0F1A', '#4F8BFF'] },
 ];
 
 export const uiIds = () => CATALOG.map((c) => c.id);

@@ -26,7 +26,7 @@ export function Teletext() {
 			<div className="ttx-app">
 				<div className="ttx-tv">
 					<div className="ttx-screen">
-						<div className="ttx-top"><span>P{entry.padEnd(3, '-')}</span><span>KESTREL</span><span>{now.toLocaleDateString(undefined, { weekday: 'short', day: '2-digit', month: 'short' })}</span><span className="y">{now.toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit', second: '2-digit' })}</span></div>
+						<div className="ttx-hdr"><span>P{entry.padEnd(3, '-')}</span><span>KESTREL</span><span>{now.toLocaleDateString(undefined, { weekday: 'short', day: '2-digit', month: 'short' })}</span><span className="y">{now.toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit', second: '2-digit' })}</span></div>
 						<div className="ttx-banner"><b>{sel ? 'GAME' : isl ? isl.name.toUpperCase().slice(0, 18) : 'LIBRARY'}</b><span>{shown}</span></div>
 						<div className="ttx-body">
 							{sel ? (<>
@@ -58,7 +58,7 @@ export const teletextCss = tok('teletext', { bg: '#111111', s1: '#1C1C1C', s2: '
 .ttx-tv { justify-self: center; height: 100%; max-height: 760px; aspect-ratio: 4/3; padding: 26px; border-radius: 40px; background: linear-gradient(#3A3A3A, #1A1A1A); box-shadow: 0 30px 50px -20px #000, inset 0 2px 0 #555; }
 .ttx-screen { position: relative; height: 100%; display: grid; grid-template-rows: auto auto minmax(0, 1fr) auto; padding: 18px 22px; border-radius: 30px / 24px; background: #000; overflow: hidden; font: 700 clamp(14px, 2.2vh, 22px)/1.25 "Lucida Console", Consolas, monospace; color: #fff; box-shadow: inset 0 0 60px rgba(255,255,255,.08); }
 .ttx-screen::after { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(transparent 0 2px, rgba(0,0,0,.3) 2px 3px); pointer-events: none; }
-.ttx-top { display: flex; justify-content: space-between; } .y { color: #FFFF00 !important; } .c { color: #00FFFF !important; } .m { color: #FF00FF !important; } .g { color: #00FF00 !important; } .w { color: #fff; }
+.ttx-hdr { display: flex; justify-content: space-between; } .y { color: #FFFF00 !important; } .c { color: #00FFFF !important; } .m { color: #FF00FF !important; } .g { color: #00FF00 !important; } .w { color: #fff; }
 .ttx-banner { display: flex; justify-content: space-between; align-items: center; margin: 6px 0 10px; padding: 4px 10px; background: #0000FF; } .ttx-banner b { font-size: 2em; line-height: 1.1; color: #FFFF00; transform: scaleY(1.4); transform-origin: left; letter-spacing: .04em; } .ttx-banner span { color: #fff; font-size: 1.4em; }
 .ttx-body { overflow: hidden; } .ttx-body p { margin: 0; }
 .ttx-row { display: flex; justify-content: space-between; width: 100%; padding: 0; font: inherit; text-align: left; } .ttx-row span { white-space: nowrap; overflow: hidden; } .ttx-row b { color: #FFFF00; padding-left: 12px; } .ttx-row:hover { background: #fff; color: #000 !important; } .ttx-row:hover b { color: #000; }
