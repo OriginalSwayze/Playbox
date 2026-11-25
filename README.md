@@ -17,6 +17,8 @@ switches between them. The default interface, **Kestrel**, is described first; t
    Steam restart.
 
 The theme is optional: it dresses Steam's own pages, dialogs and menus to match. The plugin is the interfaces.
+The theme is also published on its own as [Playbox-Theme](https://github.com/OriginalSwayze/Playbox-Theme), so it can be
+installed from Millennium's theme browser once listed.
 
 ## Changing the design
 Every interface has a **button in its top strip** showing the current design's name. Click it (or press **Ctrl+I**
