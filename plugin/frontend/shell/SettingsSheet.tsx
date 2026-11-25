@@ -1,5 +1,5 @@
 // Kestrel settings: a sheet that rises from the bottom of the window. Changes apply immediately.
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Icon, Mark } from '../ui/icons';
 import { setState, useKestrel, type Settings } from '../state/store';
 import { updateSettings } from '../state/settings';
@@ -19,6 +19,7 @@ const ROWS: (Opt<'motion'> | Opt<'intro'> | Opt<'tilt'> | Opt<'rotate'> | Opt<'s
 export function SettingsSheet() {
 	const open = useKestrel((s) => s.settingsOpen);
 	const settings = useKestrel((s) => s.settings);
+	const [find, setFind] = useState('');
 	useEffect(() => {
 		if (!open) return;
 		const doc = mainWindow()?.BrowserWindow.document;
@@ -37,9 +38,9 @@ export function SettingsSheet() {
 					<div><h2>Kestrel</h2><span>Settings for this interface. Steam's own settings are in the command bar.</span></div>
 					<button className="k-icon-btn" aria-label="Close" onClick={close}><Icon name="close" size={18} /></button>
 				</header>
-				<div className="k-gallery-head">Interface</div>
+				<div className="k-gallery-head">Interface<span>{CATALOG.length}</span><input className="k-gallery-find" value={find} onChange={(e) => setFind(e.target.value)} onKeyDown={(e) => e.stopPropagation()} placeholder="Find an interface" spellCheck={false} /></div>
 				<div className="k-gallery">
-					{CATALOG.map((c) => (
+					{CATALOG.filter((c) => !find.trim() || (c.name + ' ' + c.blurb).toLowerCase().includes(find.trim().toLowerCase())).map((c) => (
 						<button key={c.id} className={'k-gal' + (settings.ui === c.id ? ' on' : '')} onClick={() => updateSettings({ ui: c.id })}>
 							<span className="sw" style={{ background: `linear-gradient(135deg, ${c.swatch[0]} 55%, ${c.swatch[1]} 55%)` }} />
 							<b>{c.name}</b><span className="bl">{c.blurb}</span>

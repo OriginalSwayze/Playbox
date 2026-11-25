@@ -27,6 +27,16 @@ export const CATALOG: InterfaceInfo[] = [
 	{ id: 'transit', name: 'Transit', blurb: 'Collections as metro lines', swatch: ['#F4F3EE', '#E5484D'] },
 	{ id: 'retro', name: 'Retro Desktop', blurb: 'A 90s desktop with draggable windows', swatch: ['#2E4A62', '#D4D0C8'] },
 	{ id: 'index', name: 'Index', blurb: 'A Swiss typographic A–Z index', swatch: ['#F2F0EB', '#E30613'] },
+	{ id: 'weather', name: 'Forecast', blurb: 'A weather app: games are cities, hours are degrees', swatch: ['#3D8BE0', '#FFD45C'] },
+	{ id: 'stream', name: 'Stream', blurb: 'A music streaming app with playlists and a now-playing bar', swatch: ['#121212', '#B38CFF'] },
+	{ id: 'chat', name: 'Chat', blurb: 'A messenger where every game is a conversation', swatch: ['#2F7CF6', '#FFFFFF'] },
+	{ id: 'calendar', name: 'Calendar', blurb: 'A calendar of your last sessions and new arrivals', swatch: ['#FFFFFF', '#1A73E8'] },
+	{ id: 'photos', name: 'Photos', blurb: 'A photo library with albums and a lightbox', swatch: ['#F7F7F9', '#FF7A1A'] },
+	{ id: 'notes', name: 'Notes', blurb: 'A notes app; write your own notes per game', swatch: ['#F6F5F2', '#E0A800'] },
+	{ id: 'code', name: 'Code', blurb: 'A code editor: your library as a source tree', swatch: ['#1E1F22', '#3D8EF2'] },
+	{ id: 'files', name: 'Files', blurb: 'A file manager with details view and preview', swatch: ['#F3F3F3', '#0F6CBD'] },
+	{ id: 'tube', name: 'Tube', blurb: 'A video site with a watch page and up next', swatch: ['#0F0F0F', '#7B5CFF'] },
+	{ id: 'feed', name: 'Feed', blurb: 'A social timeline where your library posts', swatch: ['#FFFFFF', '#F0457A'] },
 ];
 
 export const uiIds = () => CATALOG.map((c) => c.id);

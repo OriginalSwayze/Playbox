@@ -145,3 +145,25 @@ export function useSearch(q: string): Game[] | null {
 export function Actions({ g, className }: { g: Game; className?: string }) {
 	return <div className={'alt-actions ' + (className ?? '')}>{gameCommands(g).slice(1).map((c) => <button key={c.id} onClick={c.run}><Icon name={c.icon} size={15} />{c.label}</button>)}</div>;
 }
+
+/** Hours played to one decimal. */
+export const hrs = (g: Game) => Math.round(g.minutes / 6) / 10;
+/** A unix date as "3 Mar 2024", or a dash. */
+export const dateOf = (unix: number, o: Intl.DateTimeFormatOptions = { day: 'numeric', month: 'short', year: 'numeric' }) => (unix ? new Date(unix * 1000).toLocaleDateString(undefined, o) : '—');
+/** The Play / Install button, styled by the interface. */
+export function PlayBtn({ g, className, label, children }: { g: Game; className?: string; label?: [string, string]; children?: ReactNode }) {
+	const c = gameCommands(g)[0];
+	return <button className={className} onClick={c.run}>{children}{label ? (g.installed ? label[0] : label[1]) : c.label}</button>;
+}
+/** Search plus the island picker most interfaces share: the chosen collection, or search results while searching. */
+export function useBrowse(first = 'recent') {
+	const base = useIslands();
+	const library = useKestrel((s) => s.library);
+	const islands = useMemo(() => [...base, { id: 'all', name: 'All games', games: [...library].sort((a, b) => a.sortName.localeCompare(b.sortName)) }], [base, library]);
+	const [q, setQ] = useState('');
+	const found = useSearch(q);
+	const [cur, setCur] = useState(first);
+	const isle = islands.find((i) => i.id === cur) ?? islands[0];
+	const games = found ?? isle?.games ?? [];
+	return { islands, q, setQ, found, cur: isle?.id ?? '', setCur, isle, games };
+}

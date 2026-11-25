@@ -40,8 +40,10 @@ export const motion = `
 .k-sheet-row .tx { flex: 1; }
 .k-sheet-row .tx b { display: block; font: 600 14px var(--k-text); }
 .k-sheet-row .tx span { font-size: 12.5px; color: var(--k-fg-3); }
-.k-gallery-head { padding: 6px 24px 8px; font: 600 11px var(--k-small); letter-spacing: .06em; text-transform: uppercase; color: var(--k-fg-3); }
-.k-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; padding: 0 24px 10px; max-height: 280px; overflow-y: auto; }
+.k-gallery-head { display: flex; gap: 8px; align-items: center; padding: 6px 24px 8px; font: 600 11px var(--k-small); letter-spacing: .06em; text-transform: uppercase; color: var(--k-fg-3); }
+.k-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; padding: 0 24px 10px; max-height: 340px; overflow-y: auto; }
+.k-gallery-head > span { opacity: .6; }
+.k-gallery-find { margin-left: auto; width: 220px; height: 28px; padding: 0 12px; border-radius: 99px; border: 0; outline: none; background: var(--k-s2); color: var(--k-fg); font: 500 12.5px var(--k-text); text-transform: none; letter-spacing: 0; }
 .k-gal { display: flex; flex-direction: column; gap: 3px; padding: 8px; border-radius: 12px; text-align: left; background: var(--k-s2); box-shadow: inset 0 0 0 1px var(--k-line); transition: box-shadow var(--k-t2), transform var(--k-t2) var(--k-spring); }
 .k-gal:hover { transform: translateY(-2px); box-shadow: inset 0 0 0 1px var(--k-line-2); }
 .k-gal.on { box-shadow: inset 0 0 0 2px var(--k-accent); }
