@@ -11,10 +11,10 @@ type Opt<K extends keyof Settings> = { key: K; label: string; hint: string; opti
 
 const ROWS: (Opt<'motion'> | Opt<'intro'> | Opt<'tilt'> | Opt<'rotate'> | Opt<'start'>)[] = [
 	{ key: 'motion', label: 'Motion', hint: 'Auto follows Windows. Reduced keeps only quick fades.', options: [{ value: 'auto', label: 'Auto' }, { value: 'full', label: 'Full' }, { value: 'reduced', label: 'Reduced' }] },
-	{ key: 'intro', label: 'Opening animation', hint: 'The Kestrel mark when Steam starts.', options: [{ value: true, label: 'On' }, { value: false, label: 'Off' }] },
+	{ key: 'intro', label: 'Opening animation', hint: 'The Playbox mark when Steam starts.', options: [{ value: true, label: 'On' }, { value: false, label: 'Off' }] },
 	{ key: 'tilt', label: 'Cover tilt', hint: 'Covers lean towards the pointer and catch the light.', options: [{ value: true, label: 'On' }, { value: false, label: 'Off' }] },
 	{ key: 'rotate', label: 'Spotlight rotation', hint: 'The home spotlight moves through your recent games on its own.', options: [{ value: false, label: 'Off' }, { value: true, label: 'Every 12 s' }] },
-	{ key: 'start', label: 'Open Kestrel on', hint: 'Where Kestrel starts when Steam opens.', options: [{ value: 'home', label: 'Home' }, { value: 'library', label: 'Library' }] },
+	{ key: 'start', label: 'Open Playbox on', hint: 'Where Playbox starts when Steam opens.', options: [{ value: 'home', label: 'Home' }, { value: 'library', label: 'Library' }] },
 ];
 
 export function SettingsSheet() {
@@ -33,10 +33,10 @@ export function SettingsSheet() {
 	return (
 		<>
 			<div className="k-scrim" onMouseDown={close} />
-			<section className="k-sheet" role="dialog" aria-label="Kestrel settings">
+			<section className="k-sheet" role="dialog" aria-label="Playbox settings">
 				<header>
 					<Mark size={30} />
-					<div><h2>Kestrel</h2><span>Settings for this interface. Steam's own settings are in the command bar.</span></div>
+					<div><h2>Playbox</h2><span>Settings for this interface. Steam's own settings are in the command bar.</span></div>
 					<button className="k-icon-btn" aria-label="Close" onClick={close}><Icon name="close" size={18} /></button>
 				</header>
 				<div className="k-gallery-head">Interface<span>{CATALOG.length}</span><input className="k-gallery-find" value={find} onChange={(e) => setFind(e.target.value)} onKeyDown={(e) => e.stopPropagation()} placeholder="Find an interface" spellCheck={false} /></div>
@@ -60,7 +60,7 @@ export function SettingsSheet() {
 						</div>
 					))}
 				</div>
-				<footer>Kestrel 1.0 · A Millennium plugin. Ctrl+Shift+K switches to Steam's own interface and back. Turn it off in Millennium's plugin list to return to Steam's normal interface.</footer>
+				<footer>Playbox 1.0 · A Millennium plugin. Ctrl+Shift+K switches to Steam's own interface and back. Turn it off in Millennium's plugin list to return to Steam's normal interface.</footer>
 			</section>
 		</>
 	);

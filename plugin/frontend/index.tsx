@@ -179,8 +179,8 @@ export default definePlugin(() => {
 	(window as any).__kestrel = { getState, setState }; // for inspection from devtools
 	start();
 	return {
-		title: 'Kestrel',
+		title: 'Playbox',
 		icon: <span />,
-		content: <Field label="Kestrel" description="A new interface for Steam. Ctrl+K opens the command bar; Ctrl+Shift+K switches between Kestrel and Steam's own interface." />,
+		content: <Field label="Playbox" description="124 interfaces for Steam. The interface button (or Ctrl+I) switches between them, Ctrl+K opens the command bar, Ctrl+Shift+K switches to Steam's own interface and back." />,
 	};
 });

@@ -75,7 +75,7 @@ export function InterfacePicker() {
 			<div className="k-pk-scrim" onMouseDown={close} />
 			<section className="k-pk" role="dialog" aria-label="Choose interface">
 				<header className="k-pk-head">
-					<div><h2>Interfaces</h2><span>Now using <b>{cur?.name ?? 'Kestrel'}</b> · {CATALOG.length} to choose from</span></div>
+					<div><h2>Playbox</h2><span>Now using <b>{cur?.name ?? 'Kestrel'}</b> · {CATALOG.length} to choose from</span></div>
 					<label className="k-pk-find"><Icon name="search" size={15} /><input ref={input} value={q} onChange={(e) => setQ(e.target.value)} onKeyDown={(e) => { if (!['ArrowUp', 'ArrowDown', 'Enter', 'Escape'].includes(e.key)) e.stopPropagation(); }} placeholder="Find an interface: “music”, “retro”, “map”…" spellCheck={false} /></label>
 					<button className="k-pk-rand" onClick={() => { const others = CATALOG.filter((c) => c.id !== ui); pick(others[Math.floor(Math.random() * others.length)].id); }}><Icon name="spark" size={15} />Surprise me</button>
 					<button className="k-pk-x" aria-label="Close" onClick={close}><Icon name="close" size={18} /></button>

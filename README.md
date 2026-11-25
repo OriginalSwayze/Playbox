@@ -1,8 +1,10 @@
-# Kestrel
+# Playbox
 
-A new interface for the Steam desktop client, built as a [Millennium](https://steambrew.app) plugin with a
-companion theme. Steam keeps doing all the work (library, launching, installs, downloads, friends, store,
-overlay); Kestrel replaces how you move around it.
+124 complete interfaces for the Steam desktop client in one box, built as a [Millennium](https://steambrew.app)
+plugin with a companion theme. Steam keeps doing all the work (library, launching, installs, downloads, friends,
+store, overlay); Playbox replaces how you move around it, and the interface button in every top strip (or Ctrl+I)
+switches between them. The default interface, **Kestrel**, is described first; the rest follow under
+"Other interfaces".
 
 ## What it does
 - **Spaces instead of Steam's top bar:** Play, Discover, Social and You, with a gliding switcher (Alt+1–4).

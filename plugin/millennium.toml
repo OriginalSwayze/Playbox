@@ -1,9 +1,9 @@
 [plugin]
 id = "com.originalswayze.kestrel"
-name = "Kestrel"
+name = "Playbox"
 version = "1.0.0"
 author = "OriginalSwayze"
-description = "A new interface for the Steam client: spaces, a command bar, a cinematic dashboard and redesigned game pages, built on Steam's own library, downloads and friends data."
+description = "124 complete interfaces for the Steam client in one box, from a cinematic dashboard to a newspaper, a record shop and a 90s desktop, switchable from a button in every top strip. Built on Steam's own library, downloads and friends data."
 
 [assets]
 resources = ["resources/**/*"]

@@ -24,7 +24,7 @@ const ACTIONS: Item[] = [
 	{ id: 'a-wish', group: 'Go to', label: 'Wishlist', sub: 'Store', icon: 'spark', run: () => goNative('https://store.steampowered.com/wishlist/', 'discover') },
 	{ id: 'a-friends', group: 'Steam', label: 'Friends and chat', sub: 'Opens the friends list', icon: 'chat', run: () => { setState({ commandOpen: false }); openFriendsList() || steamUrl('steam://open/friends'); } },
 	...CATALOG.map((c): Item => ({ id: 'ui-' + c.id, group: 'Interfaces', label: 'Interface: ' + c.name, sub: c.blurb, icon: 'grid', run: () => switchInterface(c.id) })),
-	{ id: 'a-kestrel', group: 'Kestrel', label: 'Kestrel settings', sub: 'Motion, opening, cover tilt, spotlight', icon: 'spark', run: () => setState({ commandOpen: false, settingsOpen: true }) },
+	{ id: 'a-kestrel', group: 'Playbox', label: 'Playbox settings', sub: 'Motion, opening, cover tilt, spotlight', icon: 'spark', run: () => setState({ commandOpen: false, settingsOpen: true }) },
 	{ id: 'a-settings', group: 'Steam', label: 'Steam settings', sub: 'Steam settings', icon: 'settings', run: () => { setState({ commandOpen: false }); steamUrl('steam://open/settings'); } },
 	{ id: 'a-add', group: 'Steam', label: 'Add a game', sub: 'Non-Steam game, activate a product', icon: 'plus', run: () => { setState({ commandOpen: false }); openAddGame(); } },
 	{ id: 'a-notif', group: 'Steam', label: 'Notifications', sub: 'Gifts, comments, invites', icon: 'bell', run: () => { setState({ commandOpen: false }); openNotifications(); } },

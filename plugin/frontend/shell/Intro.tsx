@@ -27,7 +27,7 @@ export function Intro() {
 				<path className="wing" d="M4 20.5C9 11 16.5 6 28 5.5c-5.8 3.1-9.2 7.4-10.6 13.2C13.8 16.4 9.4 17.3 4 20.5z" fill="url(#kintro)" />
 				<path className="line" d="M4 25.6h24" stroke="#6F727D" strokeWidth="1.6" strokeLinecap="round" fill="none" />
 			</svg>
-			<div className="k-intro-name">Kestrel</div>
+			<div className="k-intro-name">Playbox</div>
 		</div>
 	);
 }

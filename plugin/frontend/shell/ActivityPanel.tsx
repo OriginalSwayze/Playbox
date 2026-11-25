@@ -60,7 +60,7 @@ export function ActivityPanel() {
 							<button onClick={() => { close(); try { client().URL.ExecuteSteamURL('steam://open/settings'); } catch { /* ignore */ } }}><Icon name="settings" size={18} />Steam settings</button>
 							<button onClick={() => { close(); goNative('/media', 'play'); }}><Icon name="spark" size={18} />Screenshots</button>
 							<button onClick={() => { close(); goNative('https://store.steampowered.com/wishlist/', 'discover'); }}><Icon name="discover" size={18} />Wishlist</button>
-							<button onClick={() => setState({ panelOpen: false, settingsOpen: true })}><Icon name="spark" size={18} />Kestrel settings</button>
+							<button onClick={() => setState({ panelOpen: false, settingsOpen: true })}><Icon name="spark" size={18} />Playbox settings</button>
 						</div>
 					</section>
 				</div>
