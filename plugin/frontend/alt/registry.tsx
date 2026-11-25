@@ -19,6 +19,11 @@ import { Cinema, cinemaCss } from './Cinema';
 import { Vending, vendingCss } from './Vending';
 import { Inbox, inboxCss } from './Inbox';
 import { Ledger, ledgerCss } from './Ledger';
+import { Garden, gardenCss } from './Garden';
+import { Journal, journalCss } from './Journal';
+import { Transit, transitCss } from './Transit';
+import { Retro, retroCss } from './Retro';
+import { Index, indexCss } from './Index';
 
 export const INTERFACES: Record<string, ComponentType> = {
 	gazette: Gazette,
@@ -39,7 +44,12 @@ export const INTERFACES: Record<string, ComponentType> = {
 	vending: Vending,
 	inbox: Inbox,
 	ledger: Ledger,
+	garden: Garden,
+	journal: Journal,
+	transit: Transit,
+	retro: Retro,
+	index: Index,
 };
 
 /** Styles contributed by interfaces that carry their own (the first three live in styles/alt.ts and styles/gazette.ts). */
-export const INTERFACE_CSS: string[] = [kitCss, vinylCss, arcadeCss, deckCss, museumCss, corkboardCss, chronicleCss, missionCss, springboardCss, channelsCss, comicCss, backlogCss, cinemaCss, vendingCss, inboxCss, ledgerCss];
+export const INTERFACE_CSS: string[] = [kitCss, vinylCss, arcadeCss, deckCss, museumCss, corkboardCss, chronicleCss, missionCss, springboardCss, channelsCss, comicCss, backlogCss, cinemaCss, vendingCss, inboxCss, ledgerCss, gardenCss, journalCss, transitCss, retroCss, indexCss];

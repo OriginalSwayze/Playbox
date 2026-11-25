@@ -22,6 +22,11 @@ export const CATALOG: InterfaceInfo[] = [
 	{ id: 'vending', name: 'Vending', blurb: 'A vending machine with a keypad', swatch: ['#C81E1E', '#6CFF8F'] },
 	{ id: 'inbox', name: 'Inbox', blurb: 'Your library as a mail client', swatch: ['#F6F8FC', '#1A73E8'] },
 	{ id: 'ledger', name: 'Ledger', blurb: 'Your library as a spreadsheet', swatch: ['#FFFFFF', '#107C41'] },
+	{ id: 'garden', name: 'Garden', blurb: 'Games grow into plants as you play', swatch: ['#EAF2DC', '#5E9E3A'] },
+	{ id: 'journal', name: 'Journal', blurb: 'A handwritten notebook of your play', swatch: ['#FFFDF6', '#1F3F8A'] },
+	{ id: 'transit', name: 'Transit', blurb: 'Collections as metro lines', swatch: ['#F4F3EE', '#E5484D'] },
+	{ id: 'retro', name: 'Retro Desktop', blurb: 'A 90s desktop with draggable windows', swatch: ['#2E4A62', '#D4D0C8'] },
+	{ id: 'index', name: 'Index', blurb: 'A Swiss typographic A–Z index', swatch: ['#F2F0EB', '#E30613'] },
 ];
 
 export const uiIds = () => CATALOG.map((c) => c.id);
