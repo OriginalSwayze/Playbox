@@ -2,7 +2,8 @@
   "scripts": {
     "dev": "./node_modules/.bin/starlight watch",
     "build": "./node_modules/.bin/starlight pack",
-    "prepare": "./node_modules/.bin/starlight lsp"
+    "prepare": "./node_modules/.bin/starlight lsp",
+    "release": "./node_modules/.bin/starlight pack --release"
   },
   "devDependencies": {
     "@types/react": "19.1.1",

@@ -2,6 +2,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { definePlugin, Field } from 'millennium';
 import { Shell } from './shell/Shell';
+import { Failsafe } from './shell/Failsafe';
 import { bindKeys } from './shell/CommandBar';
 import { getState, setState, subscribeState } from './state/store';
 import { loadSettings } from './state/settings';
@@ -10,6 +11,7 @@ import { bindGameMenu } from './shell/GameMenu';
 import { mainWindow, whenMainWindow } from './steam/env';
 import { snapshotLibrary } from './steam/library';
 import { snapshotDownloads, snapshotFriends } from './steam/activity';
+import { runningApps } from './steam/details';
 import { tokens } from './styles/tokens';
 import { shell } from './styles/shell';
 import { views } from './styles/views';
@@ -20,6 +22,23 @@ const ROOT_ID = 'kestrel-root';
 const CSS_ID = 'kestrel-css';
 let mounted: { doc: Document; root: any; unbind: () => void } | null = null;
 let firstMount = true;
+// Off switch: Ctrl+Shift+K hides Kestrel and shows Steam's own interface (and back). Also set after a crash.
+let disabled = false;
+let keyDoc: Document | null = null;
+const onToggleKey = (e: KeyboardEvent) => {
+	if (!(e.ctrlKey && e.shiftKey && (e.key === 'K' || e.key === 'k'))) return;
+	e.preventDefault();
+	e.stopPropagation();
+	disabled = !disabled;
+	if (disabled) unmount();
+	console.log('[Kestrel]', disabled ? "off: showing Steam's own interface" : 'on');
+};
+function bindToggle(doc: Document | null) {
+	if (doc === keyDoc) return;
+	keyDoc?.removeEventListener('keydown', onToggleKey, true);
+	keyDoc = doc;
+	keyDoc?.addEventListener('keydown', onToggleKey, true);
+}
 
 function mount(doc: Document) {
 	const RD = (window as any).SP_REACTDOM;
@@ -45,7 +64,7 @@ function mount(doc: Document) {
 	applyCalm();
 
 	const root = RD.createRoot(host);
-	root.render(R.createElement(Shell));
+	root.render(R.createElement(Failsafe, { onCrash: () => { disabled = true; unmount(); } }, R.createElement(Shell)));
 	const unKeys = bindKeys(doc);
 	const unTilt = bindTilt(doc);
 	const unMenu = bindGameMenu(doc);
@@ -63,6 +82,8 @@ function mount(doc: Document) {
 
 function unmount() {
 	if (!mounted) return;
+	// never leave Steam's store view hidden behind us
+	if (browserHidden) { try { (window as any).MainWindowBrowserManager?.m_browser?.SetVisible?.(true); } catch { /* ignore */ } browserHidden = false; }
 	try { mounted.root.unmount(); } catch { /* window already gone */ }
 	mounted.unbind();
 	mounted.doc.getElementById(ROOT_ID)?.remove();
@@ -115,6 +136,8 @@ function refresh(full: boolean) {
 			const fsig = fr.map((f) => f.id + f.state + f.game).join('|');
 			if (fsig !== frSig) { frSig = fsig; setState({ friends: fr }); }
 		}
+		const run = runningApps();
+		if (run.join() !== getState().running.join()) setState({ running: run });
 		const dl = snapshotDownloads();
 		const dsig = JSON.stringify([dl.active?.appid, dl.active ? Math.round(dl.active.percent * 10) : 0, Math.round(dl.rate / 1e5), dl.queue.map((q) => q.appid)]);
 		if (dsig !== dlSig) { dlSig = dsig; setState({ downloads: dl }); }
@@ -130,8 +153,9 @@ async function start() {
 	setInterval(() => {
 		// Steam can destroy and recreate its main window (closing to the tray, for example); follow it
 		const doc = mainWindow()?.BrowserWindow.document ?? null;
+		bindToggle(doc);
 		if (mounted && (mounted.doc !== doc || !doc?.getElementById(ROOT_ID))) unmount();
-		if (!mounted && doc?.body) { mount(doc); refresh(true); }
+		if (!mounted && !disabled && doc?.body) { mount(doc); refresh(true); }
 		if (!mounted) return;
 		syncRoute();
 		// Work less while the window is hidden
@@ -147,6 +171,6 @@ export default definePlugin(() => {
 	return {
 		title: 'Kestrel',
 		icon: <span />,
-		content: <Field label="Kestrel" description="A new interface for Steam. Press Ctrl+K anywhere in the main window to open the command bar." />,
+		content: <Field label="Kestrel" description="A new interface for Steam. Ctrl+K opens the command bar; Ctrl+Shift+K switches between Kestrel and Steam's own interface." />,
 	};
 });

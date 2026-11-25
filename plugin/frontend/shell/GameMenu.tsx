@@ -4,7 +4,7 @@ import { Icon } from '../ui/icons';
 import { getState, setState, useKestrel } from '../state/store';
 import { goNative, openGame } from '../state/nav';
 import { playOrInstall } from '../steam/library';
-import { gameActions, isRunning } from '../steam/details';
+import { gameActions } from '../steam/details';
 import { mainWindow } from '../steam/env';
 
 export type GameMenuState = { appid: number; x: number; y: number } | null;
@@ -39,7 +39,7 @@ export function GameMenu() {
 	if (!m) return null;
 	const g = library.find((x) => x.appid === m.appid);
 	if (!g) return null;
-	const running = isRunning(g.appid);
+	const running = getState().running.includes(g.appid);
 	const run = (f: () => void) => () => { closeMenu(); try { f(); } catch (e) { console.error('[Kestrel]', e); } };
 	return (
 		<div className="k-menu k-ctx" ref={ref} role="menu" style={{ left: pos.x, top: pos.y }} onContextMenu={(e) => e.preventDefault()}>

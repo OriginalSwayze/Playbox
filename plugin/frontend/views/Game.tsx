@@ -4,7 +4,7 @@ import { Icon, Loader } from '../ui/icons';
 import { useKestrel } from '../state/store';
 import { goNative } from '../state/nav';
 import { artFor, formatAgo, formatBytes, formatPlaytime, playOrInstall, type Game as GameT } from '../steam/library';
-import { gameActions, isRunning, useGameDetails, useNews, type Achievement, type Details, type Shot } from '../steam/details';
+import { gameActions, useGameDetails, useNews, type Achievement, type Details, type Shot } from '../steam/details';
 import { mainWindow } from '../steam/env';
 
 type Tab = 'overview' | 'achievements' | 'media' | 'news' | 'dlc';
@@ -170,7 +170,6 @@ export function GamePage({ appid }: { appid: number }) {
 	const d = useGameDetails(appid);
 	const [tab, setTab] = useState<Tab>('overview');
 	const [box, setBox] = useState(-1);
-	const [, tick] = useState(0);
 	const view = useRef<HTMLDivElement>(null);
 	const tabs = useRef<HTMLDivElement>(null);
 	const [ink, setInk] = useState({ x: 0, w: 0 });
@@ -178,7 +177,6 @@ export function GamePage({ appid }: { appid: number }) {
 	const [heroFailed, setHeroFailed] = useState(false);
 
 	// re-check running state and late-arriving art
-	useEffect(() => { const t = setInterval(() => tick((n) => n + 1), 1500); return () => clearInterval(t); }, []);
 	useLayoutEffect(() => {
 		const el = tabs.current?.querySelector<HTMLElement>(`button[data-tab="${tab}"]`);
 		if (el) setInk({ x: el.offsetLeft, w: el.offsetWidth });
@@ -194,7 +192,7 @@ export function GamePage({ appid }: { appid: number }) {
 
 	if (!g) return <div className="k-view"><div className="k-empty"><b>Game not found</b>It may have been removed from your library.</div></div>;
 	const art = artFor(appid);
-	const running = isRunning(appid);
+	const running = useKestrel((s) => s.running.includes(appid));
 	const ach = d.achievements;
 	const TABS: { id: Tab; label: string; n?: number }[] = [
 		{ id: 'overview', label: 'Overview' },

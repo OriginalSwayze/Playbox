@@ -45,7 +45,17 @@ APIs or clicking those hidden controls (friends list, add a game). Nothing in St
 - The in-game overlay, friends/chat, settings and properties are separate windows: restyled by the skin only.
 - Steam can change its internal stores in any update; every adapter degrades to native Steam instead of failing.
 
+## Performance and safety
+- One 750 ms loop refreshes downloads and running games, and the library and friends every 3 s (about 2 ms);
+  it publishes only when something changed, and slows to every 7.5 s while the window is hidden.
+- Animations are compositor-only (transform, opacity); Kestrel's pause while a Steam page is showing, and
+  animations inside Steam's hidden chrome are switched off. Covers use lazy images and content-visibility.
+- Reduced motion: the setting, or Windows' preference on Auto, shortens every transition to a fade.
+- `shell/Failsafe.tsx` catches render errors and unmounts Kestrel, leaving Steam's own interface;
+  Ctrl+Shift+K switches Kestrel off and on.
+
 ## Develop
     cd plugin
     bun install
-    bun run build      # compiles, installs into Millennium and reloads Steam's UI
+    bun run build      # debug build: compiles, installs into Millennium and reloads Steam's UI
+    bun run release    # release build

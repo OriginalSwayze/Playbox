@@ -138,7 +138,7 @@ export function CommandBar() {
 /** Global keys on Steam's main window: Ctrl+K opens the command bar, Alt+1..4 switch spaces. */
 export function bindKeys(doc: Document): () => void {
 	const onKey = (e: KeyboardEvent) => {
-		if ((e.ctrlKey || e.metaKey) && (e.key === 'k' || e.key === 'K')) { e.preventDefault(); e.stopPropagation(); setState((s) => ({ commandOpen: !s.commandOpen, panelOpen: false })); return; }
+		if ((e.ctrlKey || e.metaKey) && !e.shiftKey && (e.key === 'k' || e.key === 'K')) { e.preventDefault(); e.stopPropagation(); setState((s) => ({ commandOpen: !s.commandOpen, panelOpen: false })); return; }
 		if (e.altKey && /^[1-4]$/.test(e.key)) { e.preventDefault(); goSpace((['play', 'discover', 'social', 'you'] as const)[Number(e.key) - 1]); return; }
 		if (e.key === 'Escape' && getState().panelOpen) setState({ panelOpen: false });
 	};

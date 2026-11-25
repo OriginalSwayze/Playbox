@@ -116,8 +116,8 @@ export function useNews(appid: number, count = 6): News[] | null {
 	return news;
 }
 
-export function isRunning(appid: number): boolean {
-	try { return (stores.ui?.RunningApps ?? []).some((r: any) => r.appid === appid); } catch { return false; }
+export function runningApps(): number[] {
+	try { return (stores.ui?.RunningApps ?? []).map((r: any) => r.appid as number); } catch { return []; }
 }
 
 /** Steam's own management actions for a game. Each one opens Steam's native dialog or does the native thing. */

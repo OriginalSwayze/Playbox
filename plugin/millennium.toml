@@ -1,7 +1,7 @@
 [plugin]
 id = "com.originalswayze.kestrel"
 name = "Kestrel"
-version = "0.1.0"
+version = "1.0.0"
 author = "OriginalSwayze"
 description = "A new interface for the Steam client: spaces, a command bar, a cinematic dashboard and redesigned game pages, built on Steam's own library, downloads and friends data."
 

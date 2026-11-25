@@ -5,6 +5,10 @@ html.kestrel .OuterFrame > .TopBar { visibility: hidden !important; height: 0 !i
 html.kestrel .OuterFrame { padding-top: var(--k-top) !important; box-sizing: border-box !important; background: var(--k-ink) !important; }
 html.kestrel :is(.BottomBarContainer, .BottomBar) { visibility: hidden !important; height: 0 !important; min-height: 0 !important; overflow: hidden !important; }
 html.kestrel body, html.kestrel { background: var(--k-ink) !important; }
+/* nothing animates inside Steam's hidden chrome */
+html.kestrel :is(.OuterFrame > .TopBar, .BottomBarContainer) *, html.kestrel :is(.OuterFrame > .TopBar, .BottomBarContainer) *::before, html.kestrel :is(.OuterFrame > .TopBar, .BottomBarContainer) *::after { animation: none !important; transition: none !important; }
+/* Kestrel's own layer pauses its motion while a Steam page is showing */
+.k-stage.is-hidden *, .k-stage.is-hidden *::before, .k-stage.is-hidden *::after { animation-play-state: paused !important; }
 
 /* ---- Root ---- */
 #kestrel-root { position: fixed; inset: 0; z-index: 900; pointer-events: none; font-family: var(--k-text); color: var(--k-fg); -webkit-font-smoothing: antialiased; }

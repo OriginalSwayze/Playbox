@@ -30,6 +30,7 @@ export type State = {
 	settings: Settings;
 	settingsOpen: boolean;
 	dir: 'forward' | 'back'; // direction of the last move, for page transitions
+	running: number[]; // appids Steam reports as running
 };
 export type Morph = { appid: number; src: string; x: number; y: number; w: number; h: number; radius: number };
 
@@ -48,6 +49,7 @@ let state: State = {
 	settings: DEFAULT_SETTINGS,
 	settingsOpen: false,
 	dir: 'forward',
+	running: [],
 };
 const subs = new Set<() => void>();
 
