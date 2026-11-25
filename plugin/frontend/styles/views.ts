@@ -55,7 +55,7 @@ export const views = `
 
 /* landscape card */
 .k-card { position: relative; scroll-snap-align: start; border-radius: var(--k-r); text-align: left; transition: transform var(--k-t3) var(--k-spring); }
-.k-card .art { position: relative; aspect-ratio: 460/215; border-radius: var(--k-r); overflow: hidden; background: var(--k-s2); box-shadow: 0 0 0 1px rgba(255,255,255,.05), var(--k-lift); transition: box-shadow var(--k-t3); }
+.k-card .art { position: relative; transform-style: preserve-3d; aspect-ratio: 460/215; border-radius: var(--k-r); overflow: hidden; background: var(--k-s2); box-shadow: 0 0 0 1px rgba(255,255,255,.05), var(--k-lift); transition: box-shadow var(--k-t3); }
 .k-card .art img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--k-t4) var(--k-out); }
 .k-card .art::after { content: ""; position: absolute; inset: 0; background: linear-gradient(115deg, transparent 30%, rgba(255,255,255,.16) 48%, transparent 62%);
 	transform: translateX(-120%); transition: transform 900ms var(--k-out); }

@@ -6,6 +6,15 @@ import type { DownloadState, Friend } from '../steam/activity';
 export type Space = 'play' | 'discover' | 'social' | 'you';
 export type View = { kind: 'home' } | { kind: 'library' } | { kind: 'game'; appid: number } | { kind: 'native' };
 
+export type Settings = {
+	motion: 'auto' | 'full' | 'reduced'; // auto follows the system setting
+	intro: boolean; // the opening animation when Steam starts
+	tilt: boolean; // covers lean towards the pointer
+	rotate: boolean; // the home spotlight moves through recent games on its own
+	start: 'home' | 'library'; // where Kestrel opens
+};
+export const DEFAULT_SETTINGS: Settings = { motion: 'auto', intro: true, tilt: true, rotate: false, start: 'home' };
+
 export type State = {
 	space: Space;
 	view: View;
@@ -18,6 +27,9 @@ export type State = {
 	spotlight: number; // appid shown in the home spotlight (0 = most recent)
 	calm: boolean; // reduced motion
 	morph: Morph | null; // artwork to carry from a card into the game page
+	settings: Settings;
+	settingsOpen: boolean;
+	dir: 'forward' | 'back'; // direction of the last move, for page transitions
 };
 export type Morph = { appid: number; src: string; x: number; y: number; w: number; h: number; radius: number };
 
@@ -33,6 +45,9 @@ let state: State = {
 	spotlight: 0,
 	calm: false,
 	morph: null,
+	settings: DEFAULT_SETTINGS,
+	settingsOpen: false,
+	dir: 'forward',
 };
 const subs = new Set<() => void>();
 
@@ -43,6 +58,7 @@ export function setState(patch: Partial<State> | ((s: State) => Partial<State>))
 	subs.forEach((f) => f());
 }
 const subscribe = (f: () => void) => { subs.add(f); return () => { subs.delete(f); }; };
+export const subscribeState = subscribe;
 
 export function useKestrel<T>(sel: (s: State) => T): T {
 	return useSyncExternalStore(subscribe, () => sel(state));

@@ -7,13 +7,16 @@ import { Home } from '../views/Home';
 import { Library } from '../views/Library';
 import { GamePage } from '../views/Game';
 import { Morph } from './Morph';
+import { Intro } from './Intro';
+import { SettingsSheet } from './SettingsSheet';
 import { useKestrel } from '../state/store';
 
 function Stage() {
 	const view = useKestrel((s) => s.view);
+	const dir = useKestrel((s) => s.dir);
 	const hidden = view.kind === 'native';
 	return (
-		<main className={'k-stage' + (hidden ? ' is-hidden' : '')} aria-hidden={hidden}>
+		<main className={'k-stage' + (hidden ? ' is-hidden' : '')} data-dir={dir} aria-hidden={hidden}>
 			{view.kind === 'home' && <Home key="home" />}
 			{view.kind === 'library' && <Library key="library" />}
 			{view.kind === 'game' && <GamePage key={'g' + view.appid} appid={view.appid} />}
@@ -30,6 +33,8 @@ export function Shell({ onMount }: { onMount?: () => void }) {
 			<Morph />
 			<ActivityPanel />
 			<CommandBar />
+			<SettingsSheet />
+			<Intro />
 		</>
 	);
 }

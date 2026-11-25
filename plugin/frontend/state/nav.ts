@@ -20,7 +20,7 @@ export function go(view: View) {
 		if (mw && !/^\/library\/home/.test(mw.LocationPathName || '')) mw.Navigate('/library/home');
 	}
 	if (same(s.view, view)) return;
-	setState({ view, history: [...s.history, s.view].slice(-30), space: view.kind === 'native' ? s.space : 'play', commandOpen: false });
+	setState({ view, history: [...s.history, s.view].slice(-30), space: view.kind === 'native' ? s.space : 'play', commandOpen: false, dir: 'forward' });
 }
 
 /** Hand over to a Steam-owned page inside the window. */
@@ -52,7 +52,7 @@ export function back() {
 	if (prev.kind === 'native') { mainWindow()?.NavigateBack(); setState({ view: prev, history: s.history.slice(0, -1) }); return; }
 	const mw = mainWindow();
 	if (mw && !/^\/library\/home/.test(mw.LocationPathName || '')) mw.Navigate('/library/home');
-	setState({ view: prev, history: s.history.slice(0, -1), space: 'play' });
+	setState({ view: prev, history: s.history.slice(0, -1), space: 'play', dir: 'back' });
 }
 
 export const canGoBack = (s = getState()) => s.history.length > 0 || s.view.kind === 'native';

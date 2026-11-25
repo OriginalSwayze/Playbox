@@ -17,6 +17,7 @@ export type Game = {
 	sizeOnDisk: number;
 	metacritic: number;
 	capsule: string; // vertical cover
+	capsules: string[]; // the cover plus fallbacks, tried in order
 	header: string; // landscape header
 	icon: string;
 };
@@ -31,6 +32,8 @@ function toGame(a: any): Game | null {
 	let icon = '';
 	try { capsule = app.GetVerticalCapsuleURLForApp(a) || ''; } catch { /* fall through */ }
 	try { icon = app.GetIconURLForApp(a) || ''; } catch { /* fall through */ }
+	let cached = '';
+	try { cached = app.GetCachedVerticalCapsuleURL?.(a)?.[0] || ''; } catch { /* fall through */ }
 	const header = a.header_filename ? `${CDN}/${a.appid}/${a.header_filename}` : `${CDN}/${a.appid}/header.jpg`;
 	return {
 		appid: a.appid,
@@ -47,6 +50,7 @@ function toGame(a: any): Game | null {
 		sizeOnDisk: Number(a.size_on_disk) || 0,
 		metacritic: a.metacritic_score || 0,
 		capsule: capsule || `${CDN}/${a.appid}/library_600x900.jpg`,
+		capsules: [capsule, cached, `${CDN}/${a.appid}/library_600x900.jpg`, `${CDN}/${a.appid}/library_600x900_2x.jpg`].filter((u, i, arr) => u && arr.indexOf(u) === i),
 		header,
 		icon,
 	};

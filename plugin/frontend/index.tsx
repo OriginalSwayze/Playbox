@@ -3,7 +3,9 @@
 import { definePlugin, Field } from 'millennium';
 import { Shell } from './shell/Shell';
 import { bindKeys } from './shell/CommandBar';
-import { getState, setState } from './state/store';
+import { getState, setState, subscribeState } from './state/store';
+import { loadSettings } from './state/settings';
+import { bindTilt } from './ui/motion';
 import { mainWindow, whenMainWindow } from './steam/env';
 import { snapshotLibrary } from './steam/library';
 import { snapshotDownloads, snapshotFriends } from './steam/activity';
@@ -11,10 +13,12 @@ import { tokens } from './styles/tokens';
 import { shell } from './styles/shell';
 import { views } from './styles/views';
 import { game } from './styles/game';
+import { motion } from './styles/motion';
 
 const ROOT_ID = 'kestrel-root';
 const CSS_ID = 'kestrel-css';
 let mounted: { doc: Document; root: any; unbind: () => void } | null = null;
+let firstMount = true;
 
 function mount(doc: Document) {
 	const RD = (window as any).SP_REACTDOM;
@@ -22,25 +26,36 @@ function mount(doc: Document) {
 	if (!RD?.createRoot || !R) { console.error('[Kestrel] Steam React not available; staying out of the way'); return; }
 	let style = doc.getElementById(CSS_ID) as HTMLStyleElement | null;
 	if (!style) { style = doc.createElement('style'); style.id = CSS_ID; doc.head.appendChild(style); }
-	style.textContent = tokens + shell + views + game;
+	style.textContent = tokens + shell + views + game + motion;
 	let host = doc.getElementById(ROOT_ID);
 	if (!host) { host = doc.createElement('div'); host.id = ROOT_ID; doc.body.appendChild(host); }
 	doc.documentElement.classList.add('kestrel');
 
-	// Reduced motion follows the system preference (a Kestrel setting is added in phase 7)
+	// Reduced motion: Kestrel's setting, or Windows' preference when it is on Auto
 	const mq = doc.defaultView?.matchMedia?.('(prefers-reduced-motion: reduce)');
-	const applyCalm = () => { const calm = !!mq?.matches; doc.documentElement.classList.toggle('k-calm', calm); setState({ calm }); };
+	const applyCalm = () => {
+		const m = getState().settings.motion;
+		const calm = m === 'reduced' || (m === 'auto' && !!mq?.matches);
+		doc.documentElement.classList.toggle('k-calm', calm);
+		if (calm !== getState().calm) setState({ calm });
+	};
 	mq?.addEventListener?.('change', applyCalm);
+	const unsub = subscribeState(applyCalm);
 	applyCalm();
 
 	const root = RD.createRoot(host);
 	root.render(R.createElement(Shell));
-	mounted = { doc, root, unbind: bindKeys(doc) };
+	const unKeys = bindKeys(doc);
+	const unTilt = bindTilt(doc);
+	mounted = { doc, root, unbind: () => { unKeys(); unTilt(); unsub(); mq?.removeEventListener?.('change', applyCalm); } };
 
 	// Start on the dashboard, with Steam parked on its light library route underneath
 	const mw = mainWindow();
 	if (mw && !/^\/library\/home/.test(mw.LocationPathName || '')) mw.Navigate('/library/home');
-	setState({ view: { kind: 'home' }, space: 'play', history: [] });
+	// Open where the user asked on the first start; after a window rebuild, return to Home
+	const start = firstMount && getState().settings.start === 'library' ? 'library' : 'home';
+	firstMount = false;
+	setState({ view: { kind: start }, space: 'play', history: [] });
 	console.log('[Kestrel] shell mounted');
 }
 
@@ -89,6 +104,7 @@ function refresh(full: boolean) {
 }
 
 async function start() {
+	loadSettings();
 	await whenMainWindow();
 	let n = 0;
 	setInterval(() => {

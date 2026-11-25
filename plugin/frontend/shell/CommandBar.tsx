@@ -20,7 +20,8 @@ const ACTIONS: Item[] = [
 	{ id: 'a-dl', group: 'Go to', label: 'Downloads', sub: 'Queue and history', icon: 'download', run: () => goNative('/library/downloads', 'play') },
 	{ id: 'a-wish', group: 'Go to', label: 'Wishlist', sub: 'Store', icon: 'spark', run: () => goNative('https://store.steampowered.com/wishlist/', 'discover') },
 	{ id: 'a-friends', group: 'Steam', label: 'Friends and chat', sub: 'Opens the friends list', icon: 'chat', run: () => { setState({ commandOpen: false }); openFriendsList() || steamUrl('steam://open/friends'); } },
-	{ id: 'a-settings', group: 'Steam', label: 'Settings', sub: 'Steam settings', icon: 'settings', run: () => { setState({ commandOpen: false }); steamUrl('steam://open/settings'); } },
+	{ id: 'a-kestrel', group: 'Kestrel', label: 'Kestrel settings', sub: 'Motion, opening, cover tilt, spotlight', icon: 'spark', run: () => setState({ commandOpen: false, settingsOpen: true }) },
+	{ id: 'a-settings', group: 'Steam', label: 'Steam settings', sub: 'Steam settings', icon: 'settings', run: () => { setState({ commandOpen: false }); steamUrl('steam://open/settings'); } },
 	{ id: 'a-add', group: 'Steam', label: 'Add a game', sub: 'Non-Steam game, activate a product', icon: 'plus', run: () => { setState({ commandOpen: false }); openAddGame(); } },
 	{ id: 'a-shots', group: 'Steam', label: 'Screenshots and recordings', sub: 'Media manager', icon: 'spark', run: () => goNative('/media', 'play') },
 ];
@@ -64,12 +65,15 @@ export function CommandBar() {
 	const items = useMemo<Item[]>(() => {
 		const query = q.trim().toLowerCase();
 		if (!query) return [...byRecent(library).slice(0, 5).map((g) => gameItem(g, 'Recent games')), ...ACTIONS];
-		const games = library.map((g) => ({ g, s: score(query, g.name) + (g.installed ? 3 : 0) })).filter((x) => x.s > 0)
-			.sort((a, b) => b.s - a.s || b.g.lastPlayed - a.g.lastPlayed).slice(0, 8).map((x) => gameItem(x.g, 'Games'));
-		const acts = ACTIONS.map((a) => ({ a, s: Math.max(score(query, a.label), score(query, a.sub ?? '') / 2) })).filter((x) => x.s > 0).sort((a, b) => b.s - a.s).map((x) => x.a);
+		const gs = library.map((g) => ({ g, s: score(query, g.name) + (g.installed ? 3 : 0) })).filter((x) => x.s > 0)
+			.sort((a, b) => b.s - a.s || b.g.lastPlayed - a.g.lastPlayed).slice(0, 8);
+		const as = ACTIONS.map((a) => ({ a, s: Math.max(score(query, a.label), score(query, a.sub ?? '') / 2) })).filter((x) => x.s > 0).sort((a, b) => b.s - a.s);
+		const games = gs.map((x) => gameItem(x.g, 'Games'));
+		const acts = as.map((x) => x.a);
 		const store: Item = { id: 'store-q', group: 'Store', label: `Search the store for "${q.trim()}"`, icon: 'discover', act: 'Search',
 			run: () => goNative(`https://store.steampowered.com/search/?term=${encodeURIComponent(q.trim())}`, 'discover') };
-		return [...games, ...acts, store];
+		// whichever kind matches best comes first
+		return (as[0]?.s ?? 0) > (gs[0]?.s ?? 0) ? [...acts, ...games, store] : [...games, ...acts, store];
 	}, [q, library]);
 
 	useEffect(() => { setSel(0); }, [q]);

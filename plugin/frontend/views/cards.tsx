@@ -24,12 +24,14 @@ export function WideCard({ g }: { g: Game }) {
 
 /** Vertical cover for the library wall. Uninstalled games are greyed until hovered. */
 export function Cover({ g }: { g: Game }) {
-	const [broken, setBroken] = useState(false);
+	const [n, setN] = useState(0); // which of the cover fallbacks is showing
+	const src = g.capsules[n];
+	const broken = !src;
 	const busy = g.status && /download|updat|install|queue|pause/i.test(g.status);
 	return (
 		<button className={'k-cover' + (g.installed || busy ? '' : ' dim')} onClick={(e) => openGame(g.appid, e.currentTarget)} title={g.name}>
 			<div className="art">
-				{broken ? <div className="fallback">{g.name}</div> : <img src={g.capsule} alt="" loading="lazy" onError={() => setBroken(true)} />}
+				{broken ? <div className="fallback">{g.name}</div> : <img src={src} alt="" loading="lazy" onError={() => setN(n + 1)} />}
 				{busy && <span className="badge busy">{g.progress ? `${Math.round(g.progress)}%` : g.status}</span>}
 			</div>
 			<div className="name">{g.name}</div>

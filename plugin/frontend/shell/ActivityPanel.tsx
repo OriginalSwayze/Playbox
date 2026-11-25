@@ -57,9 +57,10 @@ export function ActivityPanel() {
 						<h4>Quick actions</h4>
 						<div className="k-quick">
 							<button onClick={() => { close(); openAddGame(); }}><Icon name="plus" size={18} />Add a game</button>
-							<button onClick={() => { close(); try { client().URL.ExecuteSteamURL('steam://open/settings'); } catch { /* ignore */ } }}><Icon name="settings" size={18} />Settings</button>
+							<button onClick={() => { close(); try { client().URL.ExecuteSteamURL('steam://open/settings'); } catch { /* ignore */ } }}><Icon name="settings" size={18} />Steam settings</button>
 							<button onClick={() => { close(); goNative('/media', 'play'); }}><Icon name="spark" size={18} />Screenshots</button>
 							<button onClick={() => { close(); goNative('https://store.steampowered.com/wishlist/', 'discover'); }}><Icon name="discover" size={18} />Wishlist</button>
+							<button onClick={() => setState({ panelOpen: false, settingsOpen: true })}><Icon name="spark" size={18} />Kestrel settings</button>
 						</div>
 					</section>
 				</div>
