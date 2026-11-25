@@ -7,6 +7,7 @@ import { back, canGoBack, goNative, goSpace } from '../state/nav';
 import { ActivityButton, AccountCluster, WindowControls } from '../shell/TopBar';
 import { artFor, playOrInstall, type Game } from '../steam/library';
 import { gameActions } from '../steam/details';
+import { InterfaceButton } from '../shell/InterfacePicker';
 
 /** The 56px strip every interface keeps at the top: its own content, then activity, account and window buttons. */
 export function AltChrome({ children, className = '' }: { children: ReactNode; className?: string }) {
@@ -16,6 +17,7 @@ export function AltChrome({ children, className = '' }: { children: ReactNode; c
 			<button className="k-icon-btn" aria-label="Back" disabled={!canBack} onClick={back}><Icon name="back" size={18} /></button>
 			{children}
 			<div className="k-drag" />
+			<InterfaceButton />
 			<ActivityButton />
 			<AccountCluster />
 			<WindowControls />

@@ -21,7 +21,10 @@ overlay); Kestrel replaces how you move around it.
   Auto), opening animation, cover tilt, spotlight rotation, start view.
 
 ## Other interfaces
-Kestrel settings → Interface (searchable), the command bar ("Interface: …") or Terminal's `ui <id>` switches the whole window to one of 123 alternatives:
+The **interface button** in the top strip (it shows the current interface's name) or **Ctrl+I** opens the interface picker:
+search, groups (Originals, Everyday apps, Work tools, Retro machines, Objects and places, Styles and games),
+recently used and "Surprise me"; arrow keys and Enter switch. Kestrel settings, the command bar ("Interface: …") and
+Terminal's `ui <id>` still work too. There are 123 alternatives:
 - **Gazette** — your library as a printed newspaper: the game you're most likely to play is the front-page
   story, collections are the paper's sections, unplayed games run as classifieds, and a game opens as a full
   article set from its store description, with an honours list of achievements and a Play stamp.

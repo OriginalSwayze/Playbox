@@ -32,6 +32,7 @@ export type State = {
 	morph: Morph | null; // artwork to carry from a card into the game page
 	settings: Settings;
 	settingsOpen: boolean;
+	pickerOpen: boolean; // the interface picker
 	dir: 'forward' | 'back'; // direction of the last move, for page transitions
 	running: number[]; // appids Steam reports as running
 	collections: Collection[]; // the user's Steam collections
@@ -53,6 +54,7 @@ let state: State = {
 	morph: null,
 	settings: DEFAULT_SETTINGS,
 	settingsOpen: false,
+	pickerOpen: false,
 	dir: 'forward',
 	running: [],
 	collections: [],

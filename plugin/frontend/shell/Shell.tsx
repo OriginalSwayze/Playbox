@@ -9,6 +9,7 @@ import { GamePage } from '../views/Game';
 import { Morph } from './Morph';
 import { Intro } from './Intro';
 import { SettingsSheet } from './SettingsSheet';
+import { InterfacePicker } from './InterfacePicker';
 import { GameMenu } from './GameMenu';
 import { useKestrel } from '../state/store';
 import { INTERFACES } from '../alt/registry';
@@ -37,6 +38,7 @@ export function Shell({ onMount }: { onMount?: () => void }) {
 			<CommandBar />
 			<GameMenu />
 			<SettingsSheet />
+			<InterfacePicker />
 			{ui === 'kestrel' && <Intro />}
 		</>
 	);

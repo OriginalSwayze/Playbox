@@ -1,4 +1,5 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { InterfaceButton } from './InterfacePicker';
 import { Icon, Mark } from '../ui/icons';
 import { setState, useKestrel, type Space } from '../state/store';
 import { back, canGoBack, goSpace } from '../state/nav';
@@ -97,6 +98,7 @@ export function TopBar() {
 				<kbd>Ctrl K</kbd>
 			</button>
 			<div className="k-drag" />
+			<InterfaceButton />
 			<ActivityButton />
 			<AccountCluster />
 			<WindowControls />

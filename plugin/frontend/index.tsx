@@ -21,6 +21,7 @@ import { motion } from './styles/motion';
 import { alt } from './styles/alt';
 import { gazette } from './styles/gazette';
 import { INTERFACE_CSS } from './alt/registry';
+import { pickerCss } from './shell/InterfacePicker';
 
 const ROOT_ID = 'kestrel-root';
 const CSS_ID = 'kestrel-css';
@@ -50,7 +51,7 @@ function mount(doc: Document) {
 	if (!RD?.createRoot || !R) { console.error('[Kestrel] Steam React not available; staying out of the way'); return; }
 	let style = doc.getElementById(CSS_ID) as HTMLStyleElement | null;
 	if (!style) { style = doc.createElement('style'); style.id = CSS_ID; doc.head.appendChild(style); }
-	style.textContent = tokens + shell + views + game + motion + alt + gazette + INTERFACE_CSS.join('\n');
+	style.textContent = tokens + shell + views + game + motion + alt + gazette + pickerCss + INTERFACE_CSS.join('\n');
 	let host = doc.getElementById(ROOT_ID);
 	if (!host) { host = doc.createElement('div'); host.id = ROOT_ID; doc.body.appendChild(host); }
 	doc.documentElement.classList.add('kestrel');
@@ -102,7 +103,7 @@ function unmount() {
 let browserHidden = false;
 function syncBrowserView() {
 	const s = getState();
-	const overlay = s.commandOpen || s.panelOpen || s.settingsOpen;
+	const overlay = s.commandOpen || s.panelOpen || s.settingsOpen || s.pickerOpen;
 	const onBrowser = /^\/browser/.test(mainWindow()?.LocationPathName || '');
 	const want = overlay && s.view.kind === 'native' && onBrowser;
 	if (want === browserHidden) return;
