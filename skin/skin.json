@@ -1,0 +1,13 @@
+{
+    "name": "Kestrel",
+    "author": "OriginalSwayze",
+    "description": "Companion skin for the Kestrel plugin: styles the Steam windows Kestrel restyles rather than rebuilds (menus, notifications, friends and chat, settings, sign-in).",
+    "version": "0.1.0",
+    "tags": ["Kestrel"],
+    "Patches": [
+        { "MatchRegexString": "^Steam$", "TargetCss": "main.css" },
+        { "MatchRegexString": ".ModalDialogPopup", "TargetCss": "main.css" },
+        { "MatchRegexString": ".FullModalOverlay", "TargetCss": "main.css" },
+        { "MatchRegexString": ".ContextMenuPopup", "TargetCss": "popup.css" }
+    ]
+}

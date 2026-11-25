@@ -1,0 +1,4 @@
+/* Kestrel skin: Steam's main window and dialogs. The plugin draws its own shell; this keeps the
+   native pages underneath (store frame, classic game page, downloads) in Kestrel's colours. */
+:root { --k-ink: #08090C; }
+html, body { background: var(--k-ink) !important; }

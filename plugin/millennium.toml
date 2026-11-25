@@ -19,7 +19,7 @@ output_path = "auto"
 
 [dev]
 auto_restart = true
-reload_steamui_when = "never"
+reload_steamui_when = "frontend"
 
 [logger]
 padding = 0
