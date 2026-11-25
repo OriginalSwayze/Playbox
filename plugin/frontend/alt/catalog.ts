@@ -67,6 +67,16 @@ export const CATALOG: InterfaceInfo[] = [
 	{ id: 'cctv', name: 'CCTV', blurb: 'A security-monitor wall of feeds', swatch: ['#050806', '#39FF7A'] },
 	{ id: 'tiles', name: 'Tiles', blurb: 'A tiling window manager with workspaces', swatch: ['#1D2021', '#FABD2F'] },
 	{ id: 'phone', name: 'Phone', blurb: 'An early-2000s mobile phone with a keypad', swatch: ['#9ED36A', '#7D868F'] },
+	{ id: 'crossbar', name: 'Crossbar', blurb: 'A console media bar: categories across, games down', swatch: ['#1B4F9C', '#FFFFFF'] },
+	{ id: 'kiosk', name: 'Kiosk', blurb: 'A self-service touchscreen in three big taps', swatch: ['#000000', '#FFD400'] },
+	{ id: 'register', name: 'Register', blurb: 'A point-of-sale till that rings up games', swatch: ['#2E3338', '#2ECC71'] },
+	{ id: 'receipt', name: 'Receipt', blurb: 'Your library printed on one long till roll', swatch: ['#FBFAF5', '#2B2B2B'] },
+	{ id: 'typewriter', name: 'Typewriter', blurb: 'A typewriter that types a letter per game', swatch: ['#4B3524', '#C0392B'] },
+	{ id: 'teletext', name: 'Teletext', blurb: 'A broadcast text service with page numbers', swatch: ['#000000', '#FFFF00'] },
+	{ id: 'bios', name: 'BIOS', blurb: 'A firmware setup utility with a boot order', swatch: ['#0000AA', '#00AAAA'] },
+	{ id: 'wizard', name: 'Wizard', blurb: 'A classic setup wizard: Next, Next, Finish', swatch: ['#0000FF', '#D4D0C8'] },
+	{ id: 'homepage', name: 'Homepage', blurb: 'A personal web page from 1997', swatch: ['#000066', '#FFFF00'] },
+	{ id: 'search', name: 'Search', blurb: 'A search engine with a knowledge panel', swatch: ['#FFFFFF', '#6D3FD8'] },
 ];
 
 export const uiIds = () => CATALOG.map((c) => c.id);
