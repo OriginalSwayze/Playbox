@@ -151,6 +151,12 @@ export const CATALOG: InterfaceInfo[] = [
 	{ id: 'lobby', name: 'Lobby', blurb: 'A matchmaking lobby with your squad and Find match', swatch: ['#0B1020', '#FFC531'] },
 	{ id: 'season', name: 'Season', blurb: 'A battle-pass track: played games are unlocked tiers', swatch: ['#120B2E', '#FFE14A'] },
 	{ id: 'trophy', name: 'Trophy Room', blurb: 'Graded trophies on lit shelves and a pedestal', swatch: ['#160F0A', '#E8B64A'] },
+	{ id: 'rhythm', name: 'Rhythm', blurb: 'A rhythm-game song select with a curved wheel', swatch: ['#0D0618', '#FF3FA4'] },
+	{ id: 'dread', name: 'Dread', blurb: 'Survival horror: find your games by flashlight', swatch: ['#050404', '#9E1B1B'] },
+	{ id: 'hexmap', name: 'Hexmap', blurb: 'A strategy campaign map: collections are provinces', swatch: ['#14202B', '#D9A441'] },
+	{ id: 'gacha', name: 'Summon', blurb: 'Pull from a banner to decide what to play', swatch: ['#0E1230', '#FFD86B'] },
+	{ id: 'compact', name: 'Compact', blurb: 'A dense sortable table for big libraries', swatch: ['#15171A', '#5B9CFF'] },
+	{ id: 'zen', name: 'Zen', blurb: 'A quiet minimal launcher: type to filter', swatch: ['#F6F4EF', '#2B2A27'] },
 ];
 
 export const uiIds = () => CATALOG.map((c) => c.id);
