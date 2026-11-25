@@ -34,6 +34,16 @@ import { Code, codeCss } from './Code';
 import { Files, filesCss } from './Files';
 import { Tube, tubeCss } from './Tube';
 import { Feed, feedCss } from './Feed';
+import { Swipe, swipeCss } from './Swipe';
+import { Ticker, tickerCss } from './Ticker';
+import { Shop, shopCss } from './Shop';
+import { Reader, readerCss } from './Reader';
+import { Boarding, boardingCss } from './Boarding';
+import { Home, homeCss } from './Home';
+import { Drive, driveCss } from './Drive';
+import { Watch, watchCss } from './Watch';
+import { Wiki, wikiCss } from './Wiki';
+import { Forum, forumCss } from './Forum';
 
 export const INTERFACES: Record<string, ComponentType> = {
 	gazette: Gazette,
@@ -69,7 +79,17 @@ export const INTERFACES: Record<string, ComponentType> = {
 	files: Files,
 	tube: Tube,
 	feed: Feed,
+	swipe: Swipe,
+	ticker: Ticker,
+	shop: Shop,
+	reader: Reader,
+	boarding: Boarding,
+	home: Home,
+	drive: Drive,
+	watch: Watch,
+	wiki: Wiki,
+	forum: Forum,
 };
 
 /** Styles contributed by interfaces that carry their own (the first three live in styles/alt.ts and styles/gazette.ts). */
-export const INTERFACE_CSS: string[] = [kitCss, vinylCss, arcadeCss, deckCss, museumCss, corkboardCss, chronicleCss, missionCss, springboardCss, channelsCss, comicCss, backlogCss, cinemaCss, vendingCss, inboxCss, ledgerCss, gardenCss, journalCss, transitCss, retroCss, indexCss, weatherCss, streamCss, chatCss, calendarCss, photosCss, notesCss, codeCss, filesCss, tubeCss, feedCss];
+export const INTERFACE_CSS: string[] = [kitCss, vinylCss, arcadeCss, deckCss, museumCss, corkboardCss, chronicleCss, missionCss, springboardCss, channelsCss, comicCss, backlogCss, cinemaCss, vendingCss, inboxCss, ledgerCss, gardenCss, journalCss, transitCss, retroCss, indexCss, weatherCss, streamCss, chatCss, calendarCss, photosCss, notesCss, codeCss, filesCss, tubeCss, feedCss, swipeCss, tickerCss, shopCss, readerCss, boardingCss, homeCss, driveCss, watchCss, wikiCss, forumCss];

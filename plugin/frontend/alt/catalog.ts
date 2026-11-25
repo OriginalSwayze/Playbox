@@ -37,6 +37,16 @@ export const CATALOG: InterfaceInfo[] = [
 	{ id: 'files', name: 'Files', blurb: 'A file manager with details view and preview', swatch: ['#F3F3F3', '#0F6CBD'] },
 	{ id: 'tube', name: 'Tube', blurb: 'A video site with a watch page and up next', swatch: ['#0F0F0F', '#7B5CFF'] },
 	{ id: 'feed', name: 'Feed', blurb: 'A social timeline where your library posts', swatch: ['#FFFFFF', '#F0457A'] },
+	{ id: 'swipe', name: 'Swipe', blurb: 'A swipe-to-match app for your backlog', swatch: ['#FF4F6D', '#FF8A4F'] },
+	{ id: 'ticker', name: 'Ticker', blurb: 'A trading terminal priced in hours played', swatch: ['#0B0E11', '#21D07A'] },
+	{ id: 'shop', name: 'Shop', blurb: 'An online store where everything is already yours', swatch: ['#0E3B3F', '#FF7A59'] },
+	{ id: 'reader', name: 'Reader', blurb: 'A feed reader with long-form articles', swatch: ['#FBFAF7', '#2BA36B'] },
+	{ id: 'boarding', name: 'Boarding', blurb: 'An airline app with a boarding pass per game', swatch: ['#0B1F3A', '#E8423F'] },
+	{ id: 'home', name: 'Home', blurb: 'A smart-home controller: games are devices', swatch: ['#14161C', '#FFB547'] },
+	{ id: 'drive', name: 'Drive', blurb: 'A car infotainment screen with gauges', swatch: ['#05070A', '#2FD3FF'] },
+	{ id: 'watch', name: 'Watch', blurb: 'A smartwatch honeycomb with activity rings', swatch: ['#000000', '#A4FF3C'] },
+	{ id: 'wiki', name: 'Wiki', blurb: 'An encyclopedia with an article per game', swatch: ['#FFFFFF', '#3366CC'] },
+	{ id: 'forum', name: 'Forum', blurb: 'An old-school message board', swatch: ['#2B4A73', '#E67E22'] },
 ];
 
 export const uiIds = () => CATALOG.map((c) => c.id);
