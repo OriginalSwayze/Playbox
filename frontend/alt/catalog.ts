@@ -171,13 +171,18 @@ export const CATALOG: InterfaceInfo[] = [
 export const uiIds = () => CATALOG.map((c) => c.id);
 export const isUI = (id: string) => CATALOG.some((c) => c.id === id);
 
-/** The groups the interface picker shows; anything not listed falls into the last group. */
+/** The groups the interface picker shows, in order; the catalog is sorted to match. Anything not listed falls into the last group. */
 export const GROUPS: { name: string; ids: string[] }[] = [
-	{ name: 'Originals', ids: ['kestrel', 'gazette', 'shelf', 'terminal', 'vinyl', 'arcade', 'deck', 'museum', 'corkboard', 'chronicle', 'mission', 'springboard', 'channels', 'comic', 'backlog', 'cinema', 'vending', 'inbox', 'ledger', 'garden', 'journal', 'transit', 'retro', 'index'] },
-	{ name: 'Everyday apps', ids: ['weather', 'stream', 'chat', 'calendar', 'photos', 'notes', 'code', 'files', 'tube', 'feed', 'swipe', 'ticker', 'shop', 'reader', 'boarding', 'home', 'drive', 'watch', 'wiki', 'forum', 'wallet', 'contacts', 'appshop', 'preferences', 'meeting', 'listings', 'jobs', 'flights', 'delivery', 'notifications', 'launcher', 'assistant'] },
+	{ name: 'Game launchers', ids: ['kestrel', 'dashboard', 'billboard', 'hub', 'spotlight', 'couch', 'coverflow', 'mosaic', 'posters', 'compact', 'dock', 'blades', 'orbit', 'holo', 'zen', 'crossbar', 'springboard', 'launcher'] },
+	{ name: 'Game worlds', ids: ['lobby', 'pause', 'saves', 'loadout', 'pitlane', 'kickoff', 'realm', 'codex', 'overworld', 'ascent', 'hexmap', 'galaxy', 'skyline', 'season', 'trophy', 'rhythm', 'radial', 'hud', 'neon', 'dread', 'dossier', 'pixel', 'cartridge', 'board', 'gacha', 'quest', 'versus', 'techtree', 'inventory', 'novel', 'arcade'] },
+	{ name: 'Originals', ids: ['gazette', 'shelf', 'terminal', 'vinyl', 'deck', 'museum', 'corkboard', 'chronicle', 'mission', 'channels', 'comic', 'backlog', 'cinema', 'vending', 'inbox', 'ledger', 'garden', 'journal', 'transit', 'retro', 'index'] },
+	{ name: 'Styles', ids: ['glass', 'soft', 'papercraft', 'zine', 'brutalist'] },
+	{ name: 'Everyday apps', ids: ['weather', 'stream', 'chat', 'calendar', 'photos', 'notes', 'code', 'files', 'tube', 'feed', 'swipe', 'ticker', 'shop', 'reader', 'boarding', 'home', 'drive', 'watch', 'wiki', 'forum', 'wallet', 'contacts', 'appshop', 'preferences', 'meeting', 'listings', 'jobs', 'flights', 'delivery', 'notifications', 'assistant'] },
 	{ name: 'Work tools', ids: ['slides', 'canvas', 'studio', 'cut', 'paint', 'analytics', 'gantt', 'mindmap', 'commits', 'sql', 'logs', 'graph', 'treemap', 'heatmap', 'scope', 'tiles', 'whiteboard'] },
-	{ name: 'Retro machines', ids: ['phone', 'teletext', 'bios', 'wizard', 'homepage', 'search', 'irc', 'crossbar', 'kiosk', 'register', 'receipt', 'typewriter', 'radio', 'camera', 'cctv', 'ereader'] },
+	{ name: 'Retro machines', ids: ['phone', 'teletext', 'bios', 'wizard', 'homepage', 'search', 'irc', 'kiosk', 'register', 'receipt', 'typewriter', 'radio', 'camera', 'cctv', 'ereader'] },
 	{ name: 'Objects and places', ids: ['clocks', 'flashcards', 'quiz', 'habits', 'envelopes', 'lineup', 'league', 'stars', 'elements', 'synth', 'wheel', 'advent', 'blueprint', 'circuit', 'family', 'orgchart', 'bracket', 'menuboard', 'stamps', 'passport', 'contact', 'magazine', 'aquarium', 'pet', 'widgets'] },
-	{ name: 'Styles and games', ids: ['zine', 'brutalist', 'soft', 'glass', 'papercraft', 'quest', 'novel', 'versus', 'techtree', 'inventory'] },
 ];
+// the picker's All tab, the settings gallery and the command bar list interfaces in group order
+const rank = (id: string) => { for (let i = 0; i < GROUPS.length; i++) { const j = GROUPS[i].ids.indexOf(id); if (j >= 0) return i * 1000 + j; } return GROUPS.length * 1000; };
+CATALOG.sort((a, b) => rank(a.id) - rank(b.id));
 export const groupOf = (id: string) => GROUPS.find((g) => g.ids.includes(id))?.name ?? GROUPS[GROUPS.length - 1].name;
