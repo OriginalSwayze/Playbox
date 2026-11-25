@@ -6,6 +6,7 @@ import { bindKeys } from './shell/CommandBar';
 import { getState, setState, subscribeState } from './state/store';
 import { loadSettings } from './state/settings';
 import { bindTilt } from './ui/motion';
+import { bindGameMenu } from './shell/GameMenu';
 import { mainWindow, whenMainWindow } from './steam/env';
 import { snapshotLibrary } from './steam/library';
 import { snapshotDownloads, snapshotFriends } from './steam/activity';
@@ -40,14 +41,15 @@ function mount(doc: Document) {
 		if (calm !== getState().calm) setState({ calm });
 	};
 	mq?.addEventListener?.('change', applyCalm);
-	const unsub = subscribeState(applyCalm);
+	const unsub = subscribeState(() => { applyCalm(); syncBrowserView(); });
 	applyCalm();
 
 	const root = RD.createRoot(host);
 	root.render(R.createElement(Shell));
 	const unKeys = bindKeys(doc);
 	const unTilt = bindTilt(doc);
-	mounted = { doc, root, unbind: () => { unKeys(); unTilt(); unsub(); mq?.removeEventListener?.('change', applyCalm); } };
+	const unMenu = bindGameMenu(doc);
+	mounted = { doc, root, unbind: () => { unKeys(); unTilt(); unMenu(); unsub(); mq?.removeEventListener?.('change', applyCalm); } };
 
 	// Start on the dashboard, with Steam parked on its light library route underneath
 	const mw = mainWindow();
@@ -67,6 +69,24 @@ function unmount() {
 	mounted.doc.getElementById(CSS_ID)?.remove();
 	mounted.doc.documentElement.classList.remove('kestrel', 'k-calm');
 	mounted = null;
+}
+
+/** Steam draws its Store/Community browser above the page, so nothing of Kestrel's can sit over it.
+ *  While a Kestrel overlay is open on top of a Steam web page, hide that browser and bring it back after. */
+let browserHidden = false;
+function syncBrowserView() {
+	const s = getState();
+	const overlay = s.commandOpen || s.panelOpen || s.settingsOpen;
+	const onBrowser = /^\/browser/.test(mainWindow()?.LocationPathName || '');
+	const want = overlay && s.view.kind === 'native' && onBrowser;
+	if (want === browserHidden) return;
+	try {
+		const b = (window as any).MainWindowBrowserManager?.m_browser;
+		// hide while an overlay is up; show again only if Steam is still on its browser route
+		if (want) b?.SetVisible?.(false);
+		else if (onBrowser) b?.SetVisible?.(true);
+		browserHidden = want;
+	} catch (e) { console.error('[Kestrel] browser view', e); }
 }
 
 /** Keep Kestrel's idea of where we are in step with Steam's own navigation. */

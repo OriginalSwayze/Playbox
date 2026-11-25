@@ -23,7 +23,7 @@ function Spotlight({ g, picks }: { g: Game; picks: Game[] }) {
 	const shown = useRef<{ id: number; src: string }>({ id: g.appid, src: heroSrc });
 	if (shown.current.id !== g.appid) { prev.current = shown.current; }
 	shown.current = { id: g.appid, src: heroSrc };
-	const busy = g.status && /download|updat|install/i.test(g.status);
+	const busy = g.busy || g.needsUpdate;
 	return (
 		<section className="k-hero" onMouseEnter={() => (heroHover = true)} onMouseLeave={() => (heroHover = false)}>
 			<div className="k-hero-art">
@@ -47,7 +47,7 @@ function Spotlight({ g, picks }: { g: Game; picks: Game[] }) {
 			{picks.length > 1 && (
 				<div className="k-picks" role="tablist" aria-label="Spotlight">
 					{picks.map((p) => (
-						<button key={p.appid} role="tab" aria-selected={p.appid === g.appid} aria-label={p.name} className={'k-pick' + (p.appid === g.appid ? ' on' : '')} onClick={() => setState({ spotlight: p.appid })}>
+						<button key={p.appid} data-appid={p.appid} role="tab" aria-selected={p.appid === g.appid} aria-label={p.name} className={'k-pick' + (p.appid === g.appid ? ' on' : '')} onClick={() => setState({ spotlight: p.appid })}>
 							<img src={p.header} alt="" />
 						</button>
 					))}

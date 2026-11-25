@@ -124,7 +124,7 @@ export function isRunning(appid: number): boolean {
 export const gameActions = {
 	properties: (appid: number) => client().Apps.OpenAppSettingsDialog(appid, ''),
 	verify: (appid: number) => client().Apps.VerifyApp(appid),
-	uninstall: (appid: number) => client().Installs.OpenUninstallWizard([appid], false),
+	uninstall: (appid: number) => client().URL.ExecuteSteamURL(`steam://uninstall/${appid}`),
 	shortcut: (appid: number) => client().Apps.CreateDesktopShortcutForApp(appid),
 	stop: (gameid: string) => client().Apps.TerminateApp(gameid, false),
 	screenshots: (gameid: string) => client().Apps.BrowseScreenshotsForApp(gameid),

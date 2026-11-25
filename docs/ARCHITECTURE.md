@@ -27,13 +27,21 @@ Kestrel is a new interface for the Steam desktop client, built on Millennium (3.
   rebuilds: Steam's own pages in the window, menus, notifications, friends and chat, settings, sign-in, and the
   Store and Community (`webkit.css`).
 
+## Steam's actions
+Play, install and uninstall use Steam's own `steam://rungameid`, `steam://install` and `steam://uninstall` URLs
+(the `OpenInstallWizard` API did nothing when tested). Steam's Steam / View / Friends / Games / Help menus,
+notifications and account menu open by clicking Steam's hidden buttons, so Steam builds and places them itself;
+Kestrel exposes them through its brand button, bell, avatar and the command bar. Install state comes from Steam's
+numeric display status (see `STATUS` in `steam/library.ts`).
+
 ## Steam's chrome
 Steam's top bar and bottom bar stay in the DOM but are hidden; Kestrel reaches native behaviour by calling Steam's
 APIs or clicking those hidden controls (friends list, add a game). Nothing in Steam's installation is modified.
 
 ## Known limits
 - Store and Community are native browser views: they can be restyled and scripted, not rebuilt in React, and
-  nothing drawn by Kestrel can sit above them (the command bar is not visible over the Store yet; phase 8).
+  nothing drawn in the page can sit above them. While a Kestrel overlay (command bar, activity, settings) is open
+  over one, Kestrel hides that browser view (`MainWindowBrowserManager.m_browser.SetVisible`) and restores it after.
 - The in-game overlay, friends/chat, settings and properties are separate windows: restyled by the skin only.
 - Steam can change its internal stores in any update; every adapter degrades to native Steam instead of failing.
 

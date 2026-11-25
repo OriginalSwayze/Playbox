@@ -8,7 +8,9 @@ export type Game = {
 	name: string;
 	sortName: string;
 	installed: boolean;
-	status: string; // Steam's display status text for the local client ("" when idle)
+	status: string; // what Steam is doing with it, in words ("" when idle)
+	busy: boolean; // installing, updating, downloading, validating, launching…
+	needsUpdate: boolean;
 	progress: number; // 0..100 while installing/updating
 	minutes: number;
 	minutes2w: number;
@@ -23,6 +25,15 @@ export type Game = {
 };
 
 const CDN = 'https://shared.steamstatic.com/store_item_assets/steam/apps';
+
+// Steam's display status codes (per_client_data[].display_status). Idle states map to "".
+const STATUS: Record<number, [string, boolean]> = {
+	1: ['Launching', true], 2: ['Uninstalling', true], 3: ['Installing', true], 4: ['Running', false], 5: ['Verifying files', true],
+	6: ['Updating', true], 7: ['Downloading', true], 8: ['Syncing', true], 12: ['Not available in your region', false],
+	14: ['Not available on Windows', false], 17: ['Update paused', true], 18: ['Update queued', true], 19: ['Update required', false],
+	20: ['Updates disabled', false], 21: ['Download paused', true], 22: ['Download queued', true], 23: ['Download required', false],
+	33: ['Cloud sync error', false], 34: ['Cloud out of date', false], 35: ['Closing', true], 37: ['Download failed', false], 38: ['Update failed', false],
+};
 
 function toGame(a: any): Game | null {
 	if (!a || a.app_type !== 1 || a.visible_in_game_list === false) return null;
@@ -41,7 +52,9 @@ function toGame(a: any): Game | null {
 		name: a.display_name || String(a.appid),
 		sortName: (a.sort_as || a.display_name || '').toLowerCase(),
 		installed: !!pcd.installed,
-		status: pcd.display_status ? String(pcd.display_status) : '',
+		status: STATUS[pcd.display_status as number]?.[0] ?? '',
+		busy: !!STATUS[pcd.display_status as number]?.[1],
+		needsUpdate: pcd.display_status === 19 || pcd.display_status === 38,
 		progress: Number(pcd.status_percentage) || 0,
 		minutes: a.minutes_playtime_forever || 0,
 		minutes2w: a.minutes_playtime_last_two_weeks || 0,
@@ -91,8 +104,8 @@ export function artFor(appid: number): { hero: string; logo: string } {
 export function playOrInstall(g: Game) {
 	const sc = client();
 	try {
-		if (g.installed) sc.Apps.RunGame(g.gameid, '', -1, 100);
-		else sc.Installs.OpenInstallWizard([g.appid]);
+		// Steam's own URLs: the same path its library uses, and stable across client updates
+		sc.URL.ExecuteSteamURL(g.installed ? `steam://rungameid/${g.gameid}` : `steam://install/${g.appid}`);
 	} catch (e) {
 		console.error('[Kestrel] launch failed, opening the game page instead', e);
 		mainWindow()?.Navigate(`/library/app/${g.appid}`);

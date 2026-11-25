@@ -1,8 +1,9 @@
-import { useLayoutEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { Icon, Mark } from '../ui/icons';
 import { setState, useKestrel, type Space } from '../state/store';
 import { back, canGoBack, goSpace } from '../state/nav';
 import { mainWindow } from '../steam/env';
+import { accountInfo, openAccountMenu, openNotifications, openRootMenu, unreadNotifications } from '../steam/native';
 
 const SPACES: { id: Space; label: string; icon: string }[] = [
 	{ id: 'play', label: 'Play', icon: 'play' },
@@ -62,11 +63,31 @@ function WindowControls() {
 	);
 }
 
+/** Steam's notifications and account menus, kept one click away. */
+function AccountCluster() {
+	const [info, setInfo] = useState(() => ({ ...accountInfo(), unread: unreadNotifications() }));
+	useEffect(() => {
+		const t = setInterval(() => setInfo({ ...accountInfo(), unread: unreadNotifications() }), 3000);
+		return () => clearInterval(t);
+	}, []);
+	return (
+		<>
+			<button className="k-icon-btn k-bell" aria-label="Notifications" onClick={() => openNotifications()}>
+				<Icon name="bell" size={18} />
+				{info.unread > 0 && <span className="k-dot" />}
+			</button>
+			<button className="k-account" aria-label="Account menu" title={info.name} onClick={() => openAccountMenu()}>
+				{info.avatar ? <img src={info.avatar} alt="" /> : <Icon name="you" size={18} />}
+			</button>
+		</>
+	);
+}
+
 export function TopBar() {
 	const canBack = useKestrel((s) => canGoBack(s));
 	return (
 		<header className="k-top">
-			<div className="k-brand"><Mark /> Kestrel</div>
+			<button className="k-brand" title="Steam menu" onClick={() => openRootMenu('Steam')}><Mark /> Kestrel</button>
 			<button className="k-icon-btn" aria-label="Back" disabled={!canBack} onClick={back}><Icon name="back" size={18} /></button>
 			<Switcher />
 			<div className="k-drag" />
@@ -77,6 +98,7 @@ export function TopBar() {
 			</button>
 			<div className="k-drag" />
 			<ActivityButton />
+			<AccountCluster />
 			<WindowControls />
 		</header>
 	);

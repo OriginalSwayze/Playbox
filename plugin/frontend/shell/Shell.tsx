@@ -9,6 +9,7 @@ import { GamePage } from '../views/Game';
 import { Morph } from './Morph';
 import { Intro } from './Intro';
 import { SettingsSheet } from './SettingsSheet';
+import { GameMenu } from './GameMenu';
 import { useKestrel } from '../state/store';
 
 function Stage() {
@@ -33,6 +34,7 @@ export function Shell({ onMount }: { onMount?: () => void }) {
 			<Morph />
 			<ActivityPanel />
 			<CommandBar />
+			<GameMenu />
 			<SettingsSheet />
 			<Intro />
 		</>

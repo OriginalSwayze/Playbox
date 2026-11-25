@@ -42,6 +42,22 @@ export const motion = `
 .k-sheet-row .tx span { font-size: 12.5px; color: var(--k-fg-3); }
 .k-sheet footer { padding: 12px 24px 22px; font-size: 12px; color: var(--k-fg-3); border-top: 1px solid var(--k-line); }
 
+/* ---- Account cluster and brand button ---- */
+.k-brand { border-radius: 12px; padding: 6px 10px 6px 6px !important; margin-left: -6px; transition: background-color var(--k-t1); }
+.k-brand:hover { background: var(--k-s2); }
+.k-bell { position: relative; }
+.k-bell .k-dot { position: absolute; right: 8px; top: 7px; width: 8px; height: 8px; border-radius: 50%; background: var(--k-accent); box-shadow: 0 0 0 2px var(--k-ink); }
+.k-account { width: 34px; height: 34px; margin: 0 4px; border-radius: 50%; overflow: hidden; display: grid; place-items: center; background: var(--k-s2);
+	box-shadow: 0 0 0 2px var(--k-ink), 0 0 0 3px var(--k-line-2); transition: box-shadow var(--k-t2), transform var(--k-t2) var(--k-spring); }
+.k-account:hover { box-shadow: 0 0 0 2px var(--k-ink), 0 0 0 3.5px var(--k-accent); transform: scale(1.05); }
+.k-account img { width: 100%; height: 100%; object-fit: cover; }
+
+/* ---- Game context menu ---- */
+.k-ctx { position: absolute; top: auto; right: auto; z-index: 45; width: 240px; pointer-events: auto; transform-origin: top left; }
+.k-ctx-head { padding: 8px 12px 6px; font: 650 12px var(--k-small); color: var(--k-fg-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.k-ctx button.primary { background: linear-gradient(180deg, var(--k-accent-2), var(--k-accent)); color: var(--k-on-accent) !important; font-weight: 650 !important; margin-bottom: 4px; }
+.k-ctx button.primary svg { color: var(--k-on-accent); }
+
 /* ---- Intro ---- */
 .k-intro { position: absolute; inset: 0; z-index: 60; pointer-events: auto; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px;
 	background: radial-gradient(60% 50% at 50% 45%, #15110A, var(--k-ink) 70%); transition: opacity 600ms var(--k-out); }

@@ -10,7 +10,8 @@ import { mainWindow } from '../steam/env';
 type Tab = 'overview' | 'achievements' | 'media' | 'news' | 'dlc';
 
 function ActionButton({ g, running }: { g: GameT; running: boolean }) {
-	const busy = !!g.status && /download|updat|install|queue|pause|valid|verif/i.test(g.status);
+	const busy = g.busy;
+	if (g.needsUpdate && !running) return <button className="k-btn primary big" onClick={() => goNative('/library/downloads', 'play')}><Icon name="download" size={20} />Update</button>;
 	if (running) return <button className="k-btn primary stop" onClick={() => gameActions.stop(g.gameid)}><Icon name="close" size={18} />Stop</button>;
 	if (busy) {
 		return (

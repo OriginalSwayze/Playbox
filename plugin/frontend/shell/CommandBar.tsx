@@ -6,6 +6,7 @@ import { go, goNative, goSpace, openGame } from '../state/nav';
 import { byRecent, formatAgo, playOrInstall, type Game } from '../steam/library';
 import { openAddGame, openFriendsList } from '../steam/activity';
 import { client } from '../steam/env';
+import { openAccountMenu, openNotifications, openRootMenu, system } from '../steam/native';
 
 type Item = { id: string; group: string; label: string; sub?: string; icon?: string; img?: string; act?: string; run: () => void; alt?: () => void };
 
@@ -23,6 +24,18 @@ const ACTIONS: Item[] = [
 	{ id: 'a-kestrel', group: 'Kestrel', label: 'Kestrel settings', sub: 'Motion, opening, cover tilt, spotlight', icon: 'spark', run: () => setState({ commandOpen: false, settingsOpen: true }) },
 	{ id: 'a-settings', group: 'Steam', label: 'Steam settings', sub: 'Steam settings', icon: 'settings', run: () => { setState({ commandOpen: false }); steamUrl('steam://open/settings'); } },
 	{ id: 'a-add', group: 'Steam', label: 'Add a game', sub: 'Non-Steam game, activate a product', icon: 'plus', run: () => { setState({ commandOpen: false }); openAddGame(); } },
+	{ id: 'a-notif', group: 'Steam', label: 'Notifications', sub: 'Gifts, comments, invites', icon: 'bell', run: () => { setState({ commandOpen: false }); openNotifications(); } },
+	{ id: 'a-account', group: 'Steam', label: 'Account', sub: 'Profile, wallet, change account, sign out', icon: 'you', run: () => { setState({ commandOpen: false }); openAccountMenu(); } },
+	{ id: 'm-steam', group: 'Steam menus', label: 'Steam menu', sub: 'Backup, servers, settings, exit', icon: 'menu', run: () => { setState({ commandOpen: false }); openRootMenu('Steam'); } },
+	{ id: 'm-view', group: 'Steam menus', label: 'View menu', sub: 'Small mode, Big Picture, players', icon: 'menu', run: () => { setState({ commandOpen: false }); openRootMenu('View'); } },
+	{ id: 'm-friends', group: 'Steam menus', label: 'Friends menu', sub: 'Friends list, profile, status', icon: 'menu', run: () => { setState({ commandOpen: false }); openRootMenu('Friends'); } },
+	{ id: 'm-games', group: 'Steam menus', label: 'Games menu', sub: 'Activate a product, redeem a wallet code', icon: 'menu', run: () => { setState({ commandOpen: false }); openRootMenu('Games'); } },
+	{ id: 'm-help', group: 'Steam menus', label: 'Help menu', sub: 'Support, system information, about Steam', icon: 'menu', run: () => { setState({ commandOpen: false }); openRootMenu('Help'); } },
+	{ id: 's-update', group: 'System', label: 'Check for Steam updates', icon: 'download', run: () => { setState({ commandOpen: false }); system.checkForUpdates(); } },
+	{ id: 's-activate', group: 'System', label: 'Activate a product on Steam', sub: 'Enter a product key', icon: 'spark', run: () => { setState({ commandOpen: false }); system.activateProduct(); } },
+	{ id: 's-bp', group: 'System', label: 'Big Picture mode', icon: 'grid', run: () => { setState({ commandOpen: false }); system.bigPicture(); } },
+	{ id: 's-offline', group: 'System', label: 'Go offline', sub: 'Restarts Steam in offline mode', icon: 'close', run: () => { setState({ commandOpen: false }); system.goOffline(); } },
+	{ id: 's-exit', group: 'System', label: 'Exit Steam', sub: 'Closes Steam completely', icon: 'close', run: () => { setState({ commandOpen: false }); system.exit(); } },
 	{ id: 'a-shots', group: 'Steam', label: 'Screenshots and recordings', sub: 'Media manager', icon: 'spark', run: () => goNative('/media', 'play') },
 ];
 
