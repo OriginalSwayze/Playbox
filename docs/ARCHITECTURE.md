@@ -19,7 +19,7 @@ Kestrel is a new interface for the Steam desktop client, built on Millennium (3.
     Screenshots / News / DLC tabs, screenshot viewer), shared cards. `steam/details.ts` feeds the game page from
     `appDetailsStore.RegisterForAppData` and Steam's public news API; `shell/Morph.tsx` flies a card's art into the hero.
   - `frontend/styles/` — design tokens, shell and view CSS, injected into the main window as one `<style>`.
-  - `frontend/alt/` — the alternative interfaces (Atlas, Shelf, Terminal) and what they share (`common.tsx`: window
+  - `frontend/alt/` — the alternative interfaces (Gazette, Shelf, Terminal) and what they share (`common.tsx`: window
     strip, game commands, collections as islands). The interface is a Kestrel setting, exposed as
     `<html data-ui>` so each one recolours the shared tokens (`styles/alt.ts`).
   - `frontend/ui/` — the original icon set, the Kestrel mark and the loader.

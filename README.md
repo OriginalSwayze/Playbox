@@ -22,8 +22,9 @@ overlay); Kestrel replaces how you move around it.
 
 ## Other interfaces
 Kestrel settings → Interface (or the command bar: "Interface: …") switches the whole window to one of:
-- **Atlas** — your library as a map: each collection is an island of covers on a dark sea. Drag to pan, scroll
-  to zoom, search to fly to a game or collection; a minimap, and an inspector with Steam's actions.
+- **Gazette** — your library as a printed newspaper: the game you're most likely to play is the front-page
+  story, collections are the paper's sections, unplayed games run as classifieds, and a game opens as a full
+  article set from its store description, with an honours list of achievements and a Play stamp.
 - **Shelf** — a physical games shelf: collections are lamp-lit wooden shelves of box spines; pull a box out and
   it turns to show its cover, with the game's record and a Play sticker on an insert card.
 - **Terminal** — Steam as a command line on a phosphor monitor: `ls`, `find`, `info`, `play`, `install`,

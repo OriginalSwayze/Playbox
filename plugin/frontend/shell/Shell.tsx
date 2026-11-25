@@ -11,7 +11,7 @@ import { Intro } from './Intro';
 import { SettingsSheet } from './SettingsSheet';
 import { GameMenu } from './GameMenu';
 import { useKestrel } from '../state/store';
-import { Atlas } from '../alt/Atlas';
+import { Gazette } from '../alt/Gazette';
 import { Shelf } from '../alt/Shelf';
 import { Terminal } from '../alt/Terminal';
 
@@ -33,7 +33,7 @@ export function Shell({ onMount }: { onMount?: () => void }) {
 	const ui = useKestrel((s) => s.settings.ui);
 	return (
 		<>
-			{ui === 'atlas' ? <Atlas /> : ui === 'shelf' ? <Shelf /> : ui === 'terminal' ? <Terminal /> : <><TopBar /><Stage /><Morph /></>}
+			{ui === 'gazette' ? <Gazette /> : ui === 'shelf' ? <Shelf /> : ui === 'terminal' ? <Terminal /> : <><TopBar /><Stage /><Morph /></>}
 			<ActivityPanel />
 			<CommandBar />
 			<GameMenu />

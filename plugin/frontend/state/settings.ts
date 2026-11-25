@@ -6,7 +6,11 @@ const KEY = 'kestrel.settings.v1';
 export function loadSettings() {
 	try {
 		const raw = localStorage.getItem(KEY);
-		if (raw) setState({ settings: { ...DEFAULT_SETTINGS, ...JSON.parse(raw) } });
+		if (raw) {
+			const saved = { ...DEFAULT_SETTINGS, ...JSON.parse(raw) };
+			if (!['kestrel', 'gazette', 'shelf', 'terminal'].includes(saved.ui)) saved.ui = 'kestrel';
+			setState({ settings: saved });
+		}
 	} catch { /* storage unavailable: defaults */ }
 }
 

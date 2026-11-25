@@ -1,4 +1,4 @@
-// Shared pieces for the alternative interfaces (Atlas, Shelf, Terminal): their window strip, the game action
+// Shared pieces for the alternative interfaces (Gazette, Shelf, Terminal): their window strip, the game action
 // list, and the collection/game data they all read. Each interface supplies its own look around these.
 import { useMemo, type ReactNode } from 'react';
 import { Icon } from '../ui/icons';
