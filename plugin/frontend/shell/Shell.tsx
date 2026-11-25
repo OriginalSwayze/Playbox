@@ -5,6 +5,8 @@ import { CommandBar } from './CommandBar';
 import { ActivityPanel } from './ActivityPanel';
 import { Home } from '../views/Home';
 import { Library } from '../views/Library';
+import { GamePage } from '../views/Game';
+import { Morph } from './Morph';
 import { useKestrel } from '../state/store';
 
 function Stage() {
@@ -14,6 +16,7 @@ function Stage() {
 		<main className={'k-stage' + (hidden ? ' is-hidden' : '')} aria-hidden={hidden}>
 			{view.kind === 'home' && <Home key="home" />}
 			{view.kind === 'library' && <Library key="library" />}
+			{view.kind === 'game' && <GamePage key={'g' + view.appid} appid={view.appid} />}
 		</main>
 	);
 }
@@ -24,6 +27,7 @@ export function Shell({ onMount }: { onMount?: () => void }) {
 		<>
 			<TopBar />
 			<Stage />
+			<Morph />
 			<ActivityPanel />
 			<CommandBar />
 		</>

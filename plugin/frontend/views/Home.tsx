@@ -29,7 +29,7 @@ function Spotlight({ g, picks }: { g: Game; picks: Game[] }) {
 				</div>
 				<div className="k-actions">
 					<button className="k-btn primary" onClick={() => playOrInstall(g)}><Icon name={g.installed ? 'play' : 'install'} size={18} />{g.installed ? 'Play' : 'Install'}</button>
-					<button className="k-btn ghost" onClick={() => openGame(g.appid)}>Game details</button>
+					<button className="k-btn ghost" onClick={(e) => openGame(g.appid, e.currentTarget.closest('.k-hero'))}>Game details</button>
 				</div>
 			</div>
 			{picks.length > 1 && (

@@ -17,7 +17,9 @@ export type State = {
 	panelOpen: boolean;
 	spotlight: number; // appid shown in the home spotlight (0 = most recent)
 	calm: boolean; // reduced motion
+	morph: Morph | null; // artwork to carry from a card into the game page
 };
+export type Morph = { appid: number; src: string; x: number; y: number; w: number; h: number; radius: number };
 
 let state: State = {
 	space: 'play',
@@ -30,6 +32,7 @@ let state: State = {
 	panelOpen: false,
 	spotlight: 0,
 	calm: false,
+	morph: null,
 };
 const subs = new Set<() => void>();
 

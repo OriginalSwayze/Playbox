@@ -108,10 +108,11 @@ export function formatAgo(unix: number): string {
 	if (s < 3600) return 'Just now';
 	if (s < 86400) return 'Today';
 	if (s < 172800) return 'Yesterday';
-	if (s < 86400 * 7) return `${Math.floor(s / 86400)} days ago`;
-	if (s < 86400 * 30) return `${Math.floor(s / (86400 * 7))} weeks ago`;
-	if (s < 86400 * 365) return `${Math.floor(s / (86400 * 30))} months ago`;
-	return `${Math.floor(s / (86400 * 365))} years ago`;
+	const ago = (n: number, unit: string) => `${n} ${unit}${n === 1 ? '' : 's'} ago`;
+	if (s < 86400 * 7) return ago(Math.floor(s / 86400), 'day');
+	if (s < 86400 * 30) return ago(Math.floor(s / (86400 * 7)), 'week');
+	if (s < 86400 * 365) return ago(Math.max(1, Math.floor(s / (86400 * 30))), 'month');
+	return ago(Math.floor(s / (86400 * 365)), 'year');
 }
 
 export function formatBytes(n: number): string {

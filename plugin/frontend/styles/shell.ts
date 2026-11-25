@@ -53,7 +53,7 @@ html.kestrel body, html.kestrel { background: var(--k-ink) !important; }
 .k-stage { position: absolute; left: 0; right: 0; top: var(--k-top); bottom: 0; pointer-events: auto; background: var(--k-ink); overflow: hidden;
 	transition: opacity var(--k-t3) var(--k-out), visibility 0s linear 0s; }
 .k-stage.is-hidden { opacity: 0; visibility: hidden; pointer-events: none; transition: opacity var(--k-t2) var(--k-out), visibility 0s linear var(--k-t2); }
-.k-view { position: absolute; inset: 0; overflow-y: auto; overflow-x: hidden; scroll-behavior: smooth; animation: k-view-in var(--k-t4) var(--k-out) both; }
+.k-view { position: absolute; inset: 0; overflow-y: auto; overflow-x: hidden; scroll-behavior: smooth; animation: k-view-in var(--k-t4) var(--k-out) backwards; }
 @keyframes k-view-in { from { opacity: 0; transform: translateY(14px) scale(.992); } to { opacity: 1; transform: none; } }
 .k-view::-webkit-scrollbar { width: 10px; }
 .k-view::-webkit-scrollbar-thumb { background: rgba(255,255,255,.1); border: 3px solid transparent; border-radius: 99px; background-clip: padding-box; }

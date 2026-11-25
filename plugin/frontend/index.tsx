@@ -10,6 +10,7 @@ import { snapshotDownloads, snapshotFriends } from './steam/activity';
 import { tokens } from './styles/tokens';
 import { shell } from './styles/shell';
 import { views } from './styles/views';
+import { game } from './styles/game';
 
 const ROOT_ID = 'kestrel-root';
 const CSS_ID = 'kestrel-css';
@@ -21,7 +22,7 @@ function mount(doc: Document) {
 	if (!RD?.createRoot || !R) { console.error('[Kestrel] Steam React not available; staying out of the way'); return; }
 	let style = doc.getElementById(CSS_ID) as HTMLStyleElement | null;
 	if (!style) { style = doc.createElement('style'); style.id = CSS_ID; doc.head.appendChild(style); }
-	style.textContent = tokens + shell + views;
+	style.textContent = tokens + shell + views + game;
 	let host = doc.getElementById(ROOT_ID);
 	if (!host) { host = doc.createElement('div'); host.id = ROOT_ID; doc.body.appendChild(host); }
 	doc.documentElement.classList.add('kestrel');
@@ -105,6 +106,7 @@ async function start() {
 
 export default definePlugin(() => {
 	(window as any).__kestrelLoaded = Date.now();
+	(window as any).__kestrel = { getState, setState }; // for inspection from devtools
 	start();
 	return {
 		title: 'Kestrel',

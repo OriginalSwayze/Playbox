@@ -57,6 +57,14 @@ export function back() {
 
 export const canGoBack = (s = getState()) => s.history.length > 0 || s.view.kind === 'native';
 
-// Phase 5 replaces this with Kestrel's own game page; until then games open on Steam's page
-export const openGame = (appid: number) => goNative(`/library/app/${appid}`, 'play');
+/** Open Kestrel's game page. Pass the element that was clicked to carry its artwork into the page. */
+export function openGame(appid: number, from?: Element | null) {
+	const img = from?.querySelector?.('img') as HTMLImageElement | null;
+	if (img && img.complete && img.naturalWidth && !getState().calm) {
+		const r = img.getBoundingClientRect();
+		const radius = parseFloat(getComputedStyle(img.parentElement as Element).borderTopLeftRadius) || 12;
+		setState({ morph: { appid, src: img.currentSrc || img.src, x: r.left, y: r.top, w: r.width, h: r.height, radius } });
+	} else setState({ morph: null });
+	go({ kind: 'game', appid });
+}
 export const openClassicGamePage = (appid: number) => goNative(`/library/app/${appid}`, 'play');
