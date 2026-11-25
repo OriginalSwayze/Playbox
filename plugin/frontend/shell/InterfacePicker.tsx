@@ -43,7 +43,10 @@ export function InterfacePicker() {
 		return l;
 	}, [q, group, recent]);
 	useEffect(() => { const i = list.findIndex((c) => c.id === ui); setSel(i >= 0 ? i : 0); }, [list.length, group, q]);
-	useEffect(() => { grid.current?.querySelector('.k-pk-card.sel')?.scrollIntoView({ block: 'nearest' }); }, [sel]);
+	// scroll only for keyboard moves: scrolling on hover moves another card under the pointer, which would select it
+	// and scroll again, a loop that locks Steam up
+	const byKey = useRef(false);
+	useEffect(() => { if (!byKey.current) return; byKey.current = false; grid.current?.querySelector('.k-pk-card.sel')?.scrollIntoView({ block: 'nearest' }); }, [sel]);
 	const close = () => setState({ pickerOpen: false });
 	const pick = (id: string) => {
 		const r = [id, ...recent.filter((x) => x !== id)].slice(0, 8);
@@ -54,7 +57,7 @@ export function InterfacePicker() {
 		if (!open) return;
 		const doc = mainWindow()?.BrowserWindow.document;
 		const k = (e: KeyboardEvent) => {
-			const move = (d: number) => setSel((s) => Math.max(0, Math.min(list.length - 1, s + d)));
+			const move = (d: number) => { byKey.current = true; setSel((s) => Math.max(0, Math.min(list.length - 1, s + d))); };
 			if (e.key === 'Escape') close(); else if (e.key === 'Enter') { const c = list[sel]; if (c) pick(c.id); }
 			else if (e.key === 'ArrowRight') move(1); else if (e.key === 'ArrowLeft') move(-1); else if (e.key === 'ArrowDown') move(COLS); else if (e.key === 'ArrowUp') move(-COLS);
 			else return;
@@ -81,7 +84,7 @@ export function InterfacePicker() {
 					<nav className="k-pk-groups">{tabs.map((t) => <button key={t} className={!q && group === t ? 'on' : ''} onClick={() => { setQ(''); setGroup(t); }}>{t}<em>{count(t)}</em></button>)}</nav>
 					<div className="k-pk-grid" ref={grid}>
 						{list.map((c, i) => (
-							<button key={c.id} className={'k-pk-card' + (i === sel ? ' sel' : '') + (c.id === ui ? ' cur' : '')} onMouseMove={() => i !== sel && setSel(i)} onClick={() => pick(c.id)} title={c.blurb}>
+							<button key={c.id} className={'k-pk-card' + (i === sel ? ' sel' : '') + (c.id === ui ? ' cur' : '')} onMouseEnter={() => setSel(i)} onClick={() => pick(c.id)} title={c.blurb}>
 								<span className="k-pk-thumb" style={{ background: c.swatch[0] }}>
 									<i className="bar" style={{ background: `color-mix(in srgb, ${c.swatch[0]} 70%, ${c.swatch[1]})` }} />
 									<i className="a" style={{ background: c.swatch[1] }} /><i className="b" style={{ background: c.swatch[1] }} /><i className="c" style={{ background: c.swatch[1] }} />
@@ -104,8 +107,8 @@ export const pickerCss = `
 .k-ui-btn { height: 34px; display: flex; align-items: center; gap: 7px; padding: 0 12px 0 10px; border-radius: 99px; flex: none; max-width: 190px;
 	background: var(--k-s2); color: var(--k-fg) !important; font: 600 12.5px var(--k-text, "Segoe UI", sans-serif) !important; box-shadow: inset 0 0 0 1px var(--k-line-2); transition: background-color .15s; }
 .k-ui-btn span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; } .k-ui-btn:hover, .k-ui-btn[aria-expanded="true"] { background: var(--k-s3); }
-.k-pk-scrim { position: fixed; inset: 0; z-index: 60; background: rgba(6,7,10,.6); backdrop-filter: blur(6px); animation: k-fade .2s both; }
-.k-pk { position: fixed; left: 50%; top: 50%; z-index: 61; width: min(1180px, calc(100vw - 40px)); height: min(780px, calc(100vh - 60px)); transform: translate(-50%, -50%);
+.k-pk-scrim { position: fixed; inset: 0; z-index: 60; pointer-events: auto; background: rgba(6,7,10,.72); }
+.k-pk { position: fixed; left: 50%; top: 50%; z-index: 61; pointer-events: auto; -webkit-app-region: no-drag; width: min(1180px, calc(100vw - 40px)); height: min(780px, calc(100vh - 60px)); transform: translate(-50%, -50%);
 	display: grid; grid-template-rows: auto minmax(0, 1fr) auto; border-radius: 20px; background: #12141A; color: #ECEEF3; box-shadow: 0 0 0 1px rgba(255,255,255,.08), 0 40px 100px rgba(0,0,0,.6);
 	font: 14px "Segoe UI Variable Text", "Segoe UI", sans-serif; animation: k-pk-in .28s cubic-bezier(.2,.8,.2,1) both; overflow: hidden; }
 @keyframes k-pk-in { from { opacity: 0; transform: translate(-50%, -48%) scale(.97); } }
