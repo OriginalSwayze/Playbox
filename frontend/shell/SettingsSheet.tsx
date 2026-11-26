@@ -60,7 +60,9 @@ export function SettingsSheet() {
 						</div>
 					))}
 				</div>
-				<footer>Playbox 1.0 · A Millennium plugin. Ctrl+Shift+K switches to Steam's own interface and back. Turn it off in Millennium's plugin list to return to Steam's normal interface.</footer>
+				<footer>{(window as any).__BS
+					? "Playbox · running on Beyond Steam. Ctrl+Shift+K switches to Steam's own interface and back. Turn it off under Redesigns in Beyond Steam (Ctrl+Shift+B) to return to Steam's normal interface."
+					: "Playbox · a Millennium plugin. Ctrl+Shift+K switches to Steam's own interface and back. Turn it off in Millennium's plugin list to return to Steam's normal interface."}</footer>
 			</section>
 		</>
 	);
