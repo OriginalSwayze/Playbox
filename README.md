@@ -1,14 +1,23 @@
 # Playbox
 
-163 complete interfaces for the Steam desktop client in one box, built as a [Millennium](https://steambrew.app)
-plugin with a companion theme. Steam keeps doing all the work (library, launching, installs, downloads, friends,
+163 complete interfaces for the Steam desktop client in one box, with a companion theme. It runs on
+[Beyond Steam](https://github.com/OriginalSwayze/Beyond-Steam) or as a [Millennium](https://steambrew.app) plugin. Steam keeps doing all the work (library, launching, installs, downloads, friends,
 store, overlay); Playbox replaces how you move around it, and the interface button in every top strip (or Ctrl+I)
 switches between them. The default interface, **Kestrel**, is described first; the rest follow under
 "Other interfaces".
 
-## Install (all in one)
+## Install with Beyond Steam (easiest)
+1. Install [Beyond Steam](https://github.com/OriginalSwayze/Beyond-Steam/releases/latest): one small program, no other setup.
+2. In Steam press **Ctrl+Shift+B**, open **Get more**, and install **Playbox** and the **Playbox** theme.
+3. Turn Playbox on under **Redesigns**, and pick the Playbox theme under **Themes**.
+
+To install by hand instead, unzip **Playbox-BeyondSteam.zip** from the
+[latest release](https://github.com/OriginalSwayze/Playbox/releases/latest) into
+`%APPDATA%\Beyond Steam\plugins\com.originalswayze.kestrel`.
+
+## Install with Millennium
 1. Install [Millennium](https://steambrew.app) for Steam if you don't have it (version 3.4 or newer).
-2. Download **Playbox-1.0.0.zip** from the [latest release](https://github.com/OriginalSwayze/Playbox/releases/latest).
+2. Download **Playbox-1.1.0.zip** from the [latest release](https://github.com/OriginalSwayze/Playbox/releases/latest).
 3. Close Steam, then unzip it into your Steam folder (usually `C:\Program Files (x86)\Steam`), merging the
    `millennium` folder. That puts:
    - the plugin at `Steam\millennium\plugins\com.originalswayze.kestrel.star`
@@ -17,8 +26,7 @@ switches between them. The default interface, **Kestrel**, is described first; t
    Steam restart.
 
 The theme is optional: it dresses Steam's own pages, dialogs and menus to match. The plugin is the interfaces.
-The theme is also published on its own as [Playbox-Theme](https://github.com/OriginalSwayze/Playbox-Theme), so it can be
-installed from Millennium's theme browser once listed.
+The theme is also published on its own as [Playbox-Theme](https://github.com/OriginalSwayze/Playbox-Theme).
 
 ## Changing the design
 Every interface has a **button in its top strip** showing the current design's name. Click it (or press **Ctrl+I**
@@ -213,13 +221,15 @@ All of them use the same Steam integration as Kestrel, keep Ctrl+K, and open Ste
 ## Safety
 - **Ctrl+Shift+K** switches between Playbox and Steam's own interface at any time.
 - If an interface ever fails, Playbox steps aside and leaves Steam's normal interface on screen.
-- Nothing in Steam's installation is modified. Disable the plugin in Millennium to remove it completely.
+- Nothing in Steam's installation is modified. Turn it off under Redesigns in Beyond Steam (or disable the plugin in
+  Millennium) to remove it completely.
 
 ## Build
 The plugin lives at the repository root (`millennium.toml`, `frontend/`); the theme is in `skin/`.
 
     bun install
-    bun run release        # or: bun run build  (debug)
+    bun run release        # Millennium build (or: bun run build  for debug)
+    bun beyond/build.mjs   # Beyond Steam build in beyond/dist (add --install to copy it into Beyond Steam)
     node skin-src/gen.js && node "<Steam Theme Builder>/kit/build.js" skin-src
 
 See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for how it fits together and what Steam does not allow.
@@ -234,6 +244,8 @@ and a group) and `alt/registry.tsx`. Rebuild and it appears in the picker.
 - 39 new interfaces built as game launchers and game-style menus (listed above under Game launchers and Game
   worlds), on a shared launcher kit: game logos and key art, keyboard and controller navigation, live status.
 - The picker opens on the new Game launchers and Game worlds groups; the earlier designs follow in their groups.
+- Also runs on [Beyond Steam](https://github.com/OriginalSwayze/Beyond-Steam), with no Millennium needed: install it from
+  Beyond Steam's Get more tab, or use **Playbox-BeyondSteam.zip** from the release.
 
 ### 1.0.0
 - First public release: 124 interfaces in one plugin, a picker button in every top strip (Ctrl+I), the companion
